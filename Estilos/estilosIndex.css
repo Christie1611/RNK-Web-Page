@@ -1,23 +1,79 @@
- #index {
+html {
+    scroll-behavior: smooth;
+}
+
+#index {
     background-image: url(../Imagenes/Background2.png);
     background-size: 120%;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     padding: 0;
     margin: 0;
     color: white;
     font-family: "Agency FB", sans-serif;
 }
 
+.video-container {
+    width: auto;
+    height: 100vh;
+    position: relative;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.divMenu {
+    position: fixed;
+    z-index: 1000;
+    font-size: 3em;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.014);
+    backdrop-filter: blur(5px);
+}
+
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    padding: 2vh 0;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    transition: 0.5s ease;
+    text-shadow: 0 0 5px rgb(139, 14, 39), 0 0 10px rgb(139, 14, 39), 0 0 20px rgb(139, 14, 39),
+                0 0 40px rgb(139, 14, 39), 0 0 80px rgb(139, 14, 39);
+}
+
+.menu li a:hover {
+    color: black;
+    cursor: pointer;
+}
+
 #content {
     width: auto;
-    height: 97vh;  /* auto; */
+    height: auto;  /* 97vh; */
     background: rgba(0,0,0,0.4);
     margin: 10px
 }
 
-header {
-    max-height: 12vh;
+#factions {
+    scroll-margin-top: 100px;
+}
+
+footer {
+    max-height: 10vh;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
@@ -34,23 +90,6 @@ header {
     width: 30vw;
     height: auto;
     max-height: 100%;
-}
-
-.aboutus {
-    width: 40px;
-    height: 40px;
-
-    background-color: black;
-    color: white;
-
-    border: 2px solid white;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-weight: bold;
 }
 
 .users {
