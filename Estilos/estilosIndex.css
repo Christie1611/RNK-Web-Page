@@ -1,7 +1,15 @@
+/* ----------------------- HTML ----------------------- */
 html {
     scroll-behavior: smooth;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ----------------------- Body----------------------- */
 #index {
     background-image: url(../Imagenes/Background2.png);
     background-size: 120%;
@@ -13,6 +21,7 @@ html {
     font-family: "Agency FB", sans-serif;
 }
 
+/* ----------------------- Contenedor de Video ----------------------- */
 .video-container {
     width: auto;
     height: 100vh;
@@ -27,6 +36,7 @@ html {
     z-index: 0;
 }
 
+/* ----------------------- Menú ----------------------- */
 .divMenu {
     position: fixed;
     z-index: 1000;
@@ -34,6 +44,7 @@ html {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.014);
     backdrop-filter: blur(5px);
+    height: 11vh;
 }
 
 .menu {
@@ -46,6 +57,7 @@ html {
 
 .menu li {
     padding: 2vh 0;
+    
 }
 
 .menu li a {
@@ -61,17 +73,42 @@ html {
     cursor: pointer;
 }
 
+/* ----------------------- Id del Section ----------------------- */
 #content {
     width: auto;
     height: auto;  /* 97vh; */
     background: rgba(0,0,0,0.4);
-    margin: 10px
 }
 
-#factions {
-    scroll-margin-top: 100px;
+/* ----------------------- Titulos separadores ----------------------- */
+.dividerTitle {
+    background-image: url(../Imagenes/dividerTitle.png);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 13vh;
 }
 
+.dividerTitle div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    font-size: 4em;
+    color: black;
+    text-shadow: 0 0 5px rgb(139, 14, 39), 0 0 10px rgb(139, 14, 39), 0 0 20px rgb(139, 14, 39),
+                0 0 40px rgb(139, 14, 39), 0 0 80px rgb(139, 14, 39);
+}
+
+/* ----------------------- IDs del Index ----------------------- */
+ #story, #factions {
+    scroll-margin-top: 11vh;
+}
+/* ------------------------------------------------------------- */
+
+/* ----------------------- footer ----------------------- */
 footer {
     max-height: 10vh;
     overflow: hidden;
@@ -80,6 +117,7 @@ footer {
     align-items: center;
 }
 
+/* ----------------------- Logo ----------------------- */
 .imglogoIndex {
     width: auto;
     height: 100%;
@@ -92,7 +130,8 @@ footer {
     max-height: 100%;
 }
 
-.users {
+/* ----------------------- Usuarios (Actualmente descartado ----------------------- */
+/* .users {
     margin: auto 0;
     font-size: 2em;
     display: flex;
@@ -105,8 +144,9 @@ footer {
 .users:hover {
     color: black;
     cursor: pointer;
-}
+}*/
 
+/* ----------------------- Divs de las facciones ----------------------- */
 .cont {
     display: flex;
     flex-direction: row;
@@ -157,7 +197,6 @@ footer {
     background: rgba(0,0,0,0.5);
     align-items: center;
     justify-content: center;
-    
     color: whitesmoke;
     font-size: 5em;
     text-shadow: 0px 0px 10px gray;
