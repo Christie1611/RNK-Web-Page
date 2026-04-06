@@ -11,10 +11,6 @@ html {
 
 /* ----------------------- Body----------------------- */
 #index {
-    background-image: url(../Imagenes/Background2.png);
-    background-size: 120%;
-    background-position: center;
-    background-repeat: repeat;
     padding: 0;
     margin: 0;
     color: white;
@@ -42,9 +38,18 @@ html {
     z-index: 1000;
     font-size: 3em;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.014);
-    backdrop-filter: blur(5px);
     height: 11vh;
+    transition: background-color 0.3s, backdrop-filter 0.3s;
+}
+
+.divMenu.no-blur {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: none;
+}
+
+.divMenu.blur {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
 }
 
 .menu {
@@ -73,16 +78,9 @@ html {
     cursor: pointer;
 }
 
-/* ----------------------- Id del Section ----------------------- */
-#content {
-    width: auto;
-    height: auto;  /* 97vh; */
-    background: rgba(0,0,0,0.4);
-}
-
 /* ----------------------- Titulos separadores ----------------------- */
 .dividerTitle {
-    background-image: url(../Imagenes/dividerTitle.png);
+    background-image: linear-gradient(to bottom right, black, gray);/* background-image: url(../Imagenes/dividerTitle.png);*/
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -102,35 +100,30 @@ html {
                 0 0 40px rgb(139, 14, 39), 0 0 80px rgb(139, 14, 39);
 }
 
+
+/* ----------------------- Id del Section ----------------------- */
+#content {
+    width: auto;
+    height: auto;  /* 97vh; */
+    background-image: url(../Imagenes/Background2.png);
+    background-size: 120%;
+    background-position: center;
+    background-repeat: repeat;
+    padding: 10px;
+}
+
+#content .sect {
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+}
+
 /* ----------------------- IDs del Index ----------------------- */
  #story, #factions {
     scroll-margin-top: 11vh;
 }
 /* ------------------------------------------------------------- */
 
-/* ----------------------- footer ----------------------- */
-footer {
-    max-height: 10vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* ----------------------- Logo ----------------------- */
-.imglogoIndex {
-    width: auto;
-    height: 100%;
-    padding: 10px;
-}
-
-.imglogoIndex img {
-    width: 30vw;
-    height: auto;
-    max-height: 100%;
-}
-
-/* ----------------------- Usuarios (Actualmente descartado ----------------------- */
+/* ----------------------- Usuarios (Actualmente descartado) ----------------------- */
 /* .users {
     margin: auto 0;
     font-size: 2em;
@@ -145,6 +138,58 @@ footer {
     color: black;
     cursor: pointer;
 }*/
+
+/* ----------------------- Div de la historia ----------------------- */
+.divStory {
+    position: relative;
+    width: 50%;
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: 10px auto;
+    text-align: center;
+    font-size: 25px;
+    padding: 20px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 55px;
+    box-shadow: 0px 0px 5px 1px rgb(161, 161, 161);
+}
+
+.divStory::before {
+    content: "";
+    position: absolute;
+    top: -32px;
+    left: -32px;
+    width: 140px;
+    height: 140px;
+    background-image: url(../Imagenes/Root.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(-70deg);
+}
+
+.divStory::after {
+    content: "";
+    position: absolute;
+    bottom: -32px;
+    right: -32px;
+    width: 140px;
+    height: 140px;
+    background-image: url(../Imagenes/Root.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(110deg);
+}
+
+.cite {
+    font-style: italic;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.cite:nth-child(2) {
+    text-align: right;
+}
 
 /* ----------------------- Divs de las facciones ----------------------- */
 .cont {
@@ -200,4 +245,27 @@ footer {
     color: whitesmoke;
     font-size: 5em;
     text-shadow: 0px 0px 10px gray;
+}
+
+
+/* ----------------------- footer ----------------------- */
+footer {
+    max-height: 10vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ----------------------- Logo ----------------------- */
+.imglogoIndex {
+    width: auto;
+    height: 100%;
+    padding: 10px;
+}
+
+.imglogoIndex img {
+    width: 30vw;
+    height: auto;
+    max-height: 100%;
 }
