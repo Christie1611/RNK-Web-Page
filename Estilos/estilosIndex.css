@@ -13,7 +13,7 @@ html {
 #index {
     padding: 0;
     margin: 0;
-    color: white;
+    color: #F5F5F5;
     font-family: "Agency FB", sans-serif;
 }
 
@@ -39,6 +39,8 @@ html {
     font-size: 3em;
     width: 100%;
     height: 11vh;
+    border-bottom-style: solid;
+    border-width: 1px;
     transition: background-color 0.3s, backdrop-filter 0.3s;
 }
 
@@ -66,25 +68,28 @@ html {
 }
 
 .menu li a {
-    color: white;
+    color: #F5F5F5;
     text-decoration: none;
-    transition: 0.5s ease;
+    transition: 0.2s ease;
     text-shadow: 0 0 5px rgb(139, 14, 39), 0 0 10px rgb(139, 14, 39), 0 0 20px rgb(139, 14, 39),
                 0 0 40px rgb(139, 14, 39), 0 0 80px rgb(139, 14, 39);
 }
 
 .menu li a:hover {
-    color: black;
+    color: #bebebe; /* #CDC6A5 */
     cursor: pointer;
 }
 
 /* ----------------------- Titulos separadores ----------------------- */
 .dividerTitle {
-    background-image: linear-gradient(to bottom right, black, gray);/* background-image: url(../Imagenes/dividerTitle.png);*/
+    background-image: linear-gradient(to bottom , black, rgb(48, 48, 48), black);/* background-image: url(../Imagenes/dividerTitle.png);*/
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     height: 13vh;
+    border-style: solid;
+    border-color: rgb(48, 48, 48);
+    border-width: 1px 0;
 }
 
 .dividerTitle div {
@@ -95,9 +100,9 @@ html {
     width: 100%;
     height: 100%;
     font-size: 4em;
-    color: black;
-    text-shadow: 0 0 5px rgb(139, 14, 39), 0 0 10px rgb(139, 14, 39), 0 0 20px rgb(139, 14, 39),
-                0 0 40px rgb(139, 14, 39), 0 0 80px rgb(139, 14, 39);
+    color: #F5F5F5;
+    text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A, 0 0 20px #586A6A,
+                0 0 40px #586A6A, 0 0 80px #586A6A;
 }
 
 
@@ -109,7 +114,6 @@ html {
     background-size: 120%;
     background-position: center;
     background-repeat: repeat;
-    padding: 10px;
 }
 
 #content .sect {
@@ -148,7 +152,7 @@ html {
     margin: 10px auto;
     text-align: center;
     font-size: 25px;
-    padding: 20px;
+    padding: 30px;
     border-style: solid;
     border-width: 2px;
     border-radius: 55px;
@@ -250,11 +254,13 @@ html {
 
 /* ----------------------- footer ----------------------- */
 footer {
-    max-height: 10vh;
+    max-height: 15vh;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
+    background-color: black;
 }
 
 /* ----------------------- Logo ----------------------- */
