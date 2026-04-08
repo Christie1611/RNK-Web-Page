@@ -1,3 +1,4 @@
+// MENÚ DEL INDEX
 const menu = document.querySelector(".divMenu");
 const video = document.querySelector(".video-container");
 
@@ -12,7 +13,9 @@ window.addEventListener("scroll", () => {
         menu.classList.remove("no-blur");
     }
 });
+//----------------------------------------------------
 
+// GALERÍA
 const imagesGallery = [
     "Imagenes/Gallery-1.png",
     "Imagenes/Gallery-2.png",
