@@ -15,6 +15,7 @@ html {
     margin: 0;
     color: #F5F5F5;
     font-family: "Agency FB", sans-serif;
+    overflow-x: hidden;
 }
 
 /* ----------------------- Contenedor de Video ----------------------- */
