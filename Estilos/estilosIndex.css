@@ -83,7 +83,7 @@ html {
 
 /* ----------------------- Titulos separadores ----------------------- */
 .dividerTitle {
-    background-image: linear-gradient(to bottom , black, rgb(48, 48, 48), black);/* background-image: url(../Imagenes/dividerTitle.png);*/
+    background-image: linear-gradient(to bottom , black, #303030, black);/* background-image: url(../Imagenes/dividerTitle.png);*/
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
