@@ -225,8 +225,6 @@ html {
     object-fit: cover;
 }
 
-
-
 .info {
     width: 100%;
     height: 100%;
@@ -243,6 +241,9 @@ html {
 }
 
 #characterName, #characterTalent {
+    width: 140%;
+    position: relative;
+    left: -20%;
     border-bottom-style: double;
     border-color: #8b0e27;
     text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A;
@@ -269,7 +270,7 @@ html {
     font-size: 3em;
     cursor: pointer;
     margin: 0 2px;
-    text-shadow: 0 0 5px #000000;
+    text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A;
     transition: all 0.3s ease;
 }
 
@@ -285,6 +286,7 @@ html {
 
 button:hover {
     color: #ff0033;
+    text-shadow: 0 0 5px #000000, 0 0 10px #000000;
 }
 
 /* Intento de animación de los miembros */
@@ -311,7 +313,17 @@ button:hover {
     transition: all 0.5s ease;
 }
 
+.textLeft {
+    opacity: 0;
+    transform: translateX(-40px);
+}
+
+.textRight {
+    opacity: 0;
+    transform: translateX(40px);
+}
+
 .textOut {
     opacity: 0;
-    transform: translateY(10px)
+    transform: translateX(40px);
 }
