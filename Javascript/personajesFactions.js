@@ -32,7 +32,7 @@ export const characters = [
                 </div>`,
         talent: `<div>
                     <h4>Fruta de la Gravedad</h4>
-                    <p>Tiene la capacidad de crear manzanas con propiedades gravitacionales. Siempre que tenga una de estas manzanas en sus manos 
+                    <p>Tiene la capacidad de crear manzanas con propiedades gravitacionales y siempre que tenga una de estas en sus manos 
                     podrá controlar la gravedad a placer, algo que le sirve de forma tanto defensiva como ofensiva. Puede crear campos gravitacionales
                     a su alrededor para protegerse de ataques o usar estos mismos campos para limitar los movimientos de sus objetivos. Da igual el
                     tamaño o la fuerza de su oponente, éste sigue rigiéndose por las leyes de la gravedad, por lo que es imposible escapar de Newton.</p>

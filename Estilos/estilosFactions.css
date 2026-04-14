@@ -56,7 +56,7 @@ html {
     text-align: center;
     background-color: rgb(0, 0, 0, 0.8);
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.8), 
-    rgb(48, 48, 48, 0.8), rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.8));
+    rgba(27, 27, 27, 0.8), rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.8));
     padding: 10px;
     border-right: solid #F5F5F5 2px;
 }
@@ -216,6 +216,7 @@ html {
     height: 100%;
     border: double #8b0e27;
     overflow: hidden;
+    background-color: #000000;
 }
 
 .divCharacterImg img {
@@ -231,7 +232,6 @@ html {
     height: 100%;
     border-style: double;
     border-color: #8b0e27;
-    border-top-style: none;
     overflow: hidden;
     background-color: #000000;
     display: flex;
@@ -243,10 +243,13 @@ html {
 }
 
 #characterName, #characterTalent {
-    border-top-style: double;
     border-bottom-style: double;
     border-color: #8b0e27;
     text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A;
+}
+
+#characterTalent {
+    border-top-style: double;
 }
 
 #characterDesc, #characterDescT {
@@ -255,6 +258,7 @@ html {
     padding: 7px;
     display: flex;
     align-items: center;
+    height: 50%;
 }
 
 .prev, .next {
@@ -271,14 +275,43 @@ html {
 
 .prev {
     top: 50%;
-    left: 0%;
+    left: 0.3%;
 }
 
 .next {
     top: 50%;
-    right: 0%;
+    right: 0.3%;
 }
 
 button:hover {
-    color: #8b0e27;
+    color: #ff0033;
+}
+
+/* Intento de animación de los miembros */
+.imgAnim {
+    transition: all 0.5s ease;
+}
+
+.imgLeft {
+    opacity: 0;
+    transform: translateX(-40px);
+}
+
+.imgRight {
+    opacity: 0;
+    transform: translateX(40px);
+}
+
+.imgIn {
+    opacity: 0;
+    transform: translateX(40px);
+}
+
+.textPart {
+    transition: all 0.5s ease;
+}
+
+.textOut {
+    opacity: 0;
+    transform: translateY(10px)
 }

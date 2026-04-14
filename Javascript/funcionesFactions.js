@@ -39,15 +39,37 @@ function updateCharacter() {
     document.getElementById("characterDescT").innerHTML = characters[index].talent;
 }
 
+function animationCharacter(newIndex, direction) { // ANIMACIÓN (plis funciona)
+    const imgMember = document.getElementById("characterImg");
+    const textParts = document.querySelectorAll(".textPart");
+
+    imgMember.classList.add(direction === "next" ? "imgLeft" : "imgRight");
+    textParts.forEach(e => e.classList.add("textOut"));
+
+    setTimeout(() => {
+        index = newIndex;
+        updateCharacter();
+
+        imgMember.classList.remove("imgLeft", "imgRight");
+        imgMember.classList.add("imgIn");
+
+        textParts.forEach(e => e.classList.remove("textOut"));
+
+        setTimeout(() => {
+            imgMember.classList.remove("imgIn");
+        }, 50);
+    }, 400);
+}
+
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 
 next.addEventListener("click", () => {
-    index = (index + 1) % characters.length;
-    updateCharacter();
+    const newIndex = (index + 1) % characters.length;
+    animationCharacter(newIndex, "next");
 });
 
 prev.addEventListener("click", () => {
-    index = (index - 1 + characters.length) % characters.length;
-    updateCharacter();
+    const newIndex = (index - 1 + characters.length) % characters.length;
+    animationCharacter(newIndex, "prev");
 });
