@@ -33,9 +33,10 @@ readM.addEventListener("click", (e) => {
 // PERSONAJES DE LAS FACCIONES
 let index = 0;
 function updateCharacter() {
-    document.getElementById("characterName").textContent = characters[index].name;
+    document.getElementById("characterName").innerHTML = characters[index].name;
     document.getElementById("characterImg").src = characters[index].img ;
-    document.getElementById("characterDesc").textContent = characters[index].desc;
+    document.getElementById("characterDesc").innerHTML = characters[index].desc;
+    document.getElementById("characterDescT").innerHTML = characters[index].talent;
 }
 
 const prev = document.querySelector(".prev");
