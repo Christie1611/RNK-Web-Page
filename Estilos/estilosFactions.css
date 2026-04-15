@@ -23,6 +23,13 @@ html {
     overflow-x: hidden;
 }
 
+#forest::-webkit-scrollbar,
+#sinners::-webkit-scrollbar,
+#strays::-webkit-scrollbar,
+#others::-webkit-scrollbar {
+    display: none;
+}
+
 #forest .forest-link,
 #sinners .sinners-link,
 #strays .strays-link,
@@ -186,8 +193,6 @@ html {
     margin-bottom: 4vh;
 }
 
-
-
 /* ------------------ Miembros ------------------------ */
 .members {
     width: 100%;
@@ -289,7 +294,7 @@ button:hover {
     text-shadow: 0 0 5px #000000, 0 0 10px #000000;
 }
 
-/* Intento de animación de los miembros */
+/* ----------------------- Intento de animación de los miembros ----------------------- */
 .imgAnim {
     transition: all 0.5s ease;
 }
