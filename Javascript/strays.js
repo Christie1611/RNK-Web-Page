@@ -5,79 +5,105 @@ const strays = [
         name: "Samuel Morse",
         img: "../Imagenes/Morse.jpg",
         desc: `<div>
-                    <p>Ella es un miembro fundador y el cerebro detrás del Bosque de los Grandes, suele tener una expresión fría y calculadora. 
-                    Debido a su inteligencia, es bastante pesimista sobre el futuro que le depara a la humanidad. Es una Reencarnada 
-                    Perfecta que conoce su edad y pasado, esto es gracias a que utilizó su Talento para averiguar su  antigua identidad, 
-                    no obstante, se niega a hacer lo mismo con los demás miembros por más que se lo pidan. Es consciente de que si alguien se 
-                    cortó el cuello con la Rama fue para olvidarse de las duras memorias de su pasado.</p>
+                    <p>Ella es una Reencarnada que aparece acompañando a Ernetti. Es la encargada de transmitir la información que hay dentro
+                        de su rango de radiodifusión, lo que le permite comunicarse con quien desee desde la ubicación que desee. De esta forma, 
+                        Morse recibe los mensajes de Ernetti y ella se los proyecta a quien sea con quien quiera hablar. Por esa misma razón, 
+                        ambos son comunmente conocidos como "El viento y las mareas".
+                    </p>
+                    <br><p>
+                        Cuando te encuentres con ella y con Ernetti, será en una habitación blanca donde solo estarán ustedes.
+                    </p>
                 </div>`,
         talent: `<div>
-                    <h4>Demonio del Cálculo</h4>
-                    <p>Su Talento le permite interpretar toda la información que percibe de su entorno para calcular y predecir el futuro.</p><br>
-
-                    <h4>Padre de la Informática</h4>
-                    <p>Puede manipular todos los ordenadores que estén conectados a internet. Realmente tiene control sobre todo lo que
-                    use un procesador, lo que significa que, en tiempos modernos como estos, es capaz de conectarse con todo el planeta y
-                    ganar acceso al conocimiento colectivo de la humanidad.</p>
+                    <h4>Transmisor</h4>
+                    <p>
+                        Puede utilizar las ondas sonoras y la luz para recibir y transmitir mensajes, los cuales pueden ser tanto sonido puro como
+                        imágenes. La habitación en donde te la encuentras o su propia apariencia son un ejemplo de lo segundo. A pesar de 
+                        que ella se presente a sí misma como una mujer de 3.6 metros, lo cierto es que es una criatura similar a un ciempiés humano
+                        con un transmisor por cabeza. 
+                    </p><br>
+                    <p> 
+                        Su pasatiempo favorito es charlar con las ballenas y delfines.
+                    </p>
                 </div>`
     },
     {
-        name: "Henry Dunant",
+        name: "Henri Dunant",
         img: "../Imagenes/Henry.jpg",
         desc: `<div>
-                    <p>Con una actitud positiva y bromista, pero seria y decidida cuando el momento lo amerita, Newton es con diferencia el miembro 
-                    del Bosque de los Grandes al que podrías tener como amigo. Se volvió compañero de Albert Einstein para ayudarla a controlar mejor
-                    su Talento, siendo apoyada por la Fruta de la Gravedad. Ambos se volvieron inseparables después de compartir muchas misiones
-                    juntos.</p>
+                    <p>
+                        Aunque no es oficialmente una miembro del ejército de Pecadores, ella fue una de las seguidoras de Kouu junto con un grupo
+                        de Reencarnados que eran sus compañeros de viaje y mejores amigos. Tras el final de la guerra entre los Pecadores y el Bosque,
+                        decidió intervenir en los planes de los Grandes para respetar la última voluntad de Kouu. Lastimosamente, ocurrió un incidente
+                        que la dejó con graves heridas, pero sus amigos no corrieron la misma suerte.
+                    </p>
                     
-                    <br><p>Sí, su cabeza es una manzana, pero todavía puede hacer cosas como comer, dormir o incluso respirar.</p>
+                    <br><p>Ahora tendrá que aprender a vivir sin la compañía.</p>
                 </div>`,
         talent: `<div>
-                    <h4>Fruta de la Gravedad</h4>
-                    <p>Tiene la capacidad de crear manzanas con propiedades gravitacionales y siempre que tenga una de estas en sus manos 
-                    podrá controlar la gravedad a placer, algo que le sirve de forma tanto defensiva como ofensiva. Puede crear campos gravitacionales
-                    a su alrededor para protegerse de ataques o usar estos mismos campos para limitar los movimientos de sus objetivos. Da igual el
-                    tamaño o la fuerza de su oponente, éste sigue rigiéndose por las leyes de la gravedad, por lo que es imposible escapar de Newton.</p>
+                    <h4>Contrato de la Cruz Roja</h4>
+                    <p>
+                        Al besar a alguien en cualquier superficie de su cuerpo, puede crear un "contrato" con este. El contrato consiste en que,
+                        mientras la persona se mantenga cerca de Henri, todo el daño recibido, incluso el que puede ser mortal, se reducirán a 
+                        la mitad y se compartirá con ella. Henri siente el dolor de las heridas transmitidas, pero nunca morirá por estas,
+                        además, tienen la característica adicional de sanarse con mayor velocidad, sin embargo, si la dañas directamente, ninguna
+                        su Talento no funcionará, por lo que debe de mantenerse al margen.
+                    </p>
                 </div>`
     },
     {
         name: "Kamiizumi Ise-no-Kami",
         img: "../Imagenes/Strays.jpg",
         desc: `<div>
-                    <p>Fue la quinta y última miembro de los que fundaron originalmente el Bosque de los Grandes. Tiene un carácter bastante
-                    agresivo y emocional hacia los hombres, no siendo capaz de tolerar su presencia, lo que hace que suela golpear a Newton
-                    cada vez que éste la hace enojar. Fue una de las Reencarnadas que apoyaron el plan de Leonardo Da Vinci para conseguir
-                    la Paz Mundial.</p>
+                    <p>
+                        Tras recibir la carta de una de sus aprendices, entró en contacto con Haito para entrenarla en el arte de la espada. Él
+                        es apodado como el Santo de la Espada y se dice que su maestría con la espada es casi inigualable. Muy pocas personas
+                        han visto su cara debajo de la tela que lleva puesta; Kamiizumi se la puso porque prefiere utilizar sus otros sentidos
+                        que el de la vista, aunque parece ser que todavía puede ver un poco debajo de ésta.
+                    </p>
                     
-                    <br><p>A pesar de que lo odiaba al principio, con el paso del tiempo pudo encariñarse de Newton.</p>
+                    <br><p>El único espadachín que se considera un igual a Kamiizumi es su mejor amigo, Bokuden.</p>
                 </div>`,
         talent: `<div>
-                    <h4>Transferencia Espacial</h4>
-                    <p>Si Einstein saca y muerde su lengua podrá teletransportarse a la ubicación que desee. No obstante, hay muchas condiciones
-                    a seguir para que esto se cumpla: El área de teletransporte debe de ser una forma geométrica definida con sus medidas, 
-                    tiene que tener puntos de referencia en su cuerpo para una imagen clara, y necesita conocer las coordenadas exactas a las 
-                    que se moverá. Si alguna de estas condiciones no se cumple, puede correr el riesgo de afectar gravemente su salud o incluso
-                    perder la vida.</p>
+                    <h4>Inconsciente</h4>
+                    <p>
+                        Originalmente se había enfocado en perfeccionar el estilo "Desinteresado". Junto con Bokuden, Kamiizumi se vio envuelto
+                        en múltiples batallas en las que finalizaba con la vida de sus enemigos, pero pronto se dio cuenta que este camino no 
+                        era para él. Ahora, empleando el estilo "Inconsciente", tuvo que separarse de su amigo al ver que se habían vuelto 
+                        incompatibles.
+                    </p><br>
+                    <p>
+                        Se desconoce cuál es la función de este Talento, Bokuden es el único que ha sobrevivido para contarlo.
+                    </p>
                 </div>`
     }, 
     {
         name: "Zenon",
         img: "../Imagenes/Zenon.jpg",
         desc: `<div>
-                    <p>Es la Reencarnación de Miyamoto Musashi, sin embargo, como todavía es una Reencarnada Imperfecta, de momento no se ha
-                    ganado el reconocimiento de tomar el nombre de su vida pasada. Su propósito es convertirse en una Reencarnada Perfecta lo
-                    más rápido posible para poder reabrir el dojo de su padre y hacer que éste se sienta orgulloso de ella.</p>
-                    
-                    <br><p>Por petición de Neumann (y por su propio instinto) invitó a Touya a formar parte del Bosque de los Grandes, aunque
-                    eso no salió tan bien como esperaba.</p>
+                    <p>
+                        Una mujer calmada y reservada, suele incrementar la moral de sus compañeros en momentos de estrés con un abrazo. Incluso en
+                        situaciones cruciales donde su vida corre peligro, ella siempre se mantiene serena, quizás porque todo sigue dentro de
+                        la lógica en la que ella tanto confía, o porque ya hizo las paces con que eventualmente encontraría su final. Aún si sus 
+                        compañeros van en contra de la "lógica", estará dispuesta a seguirlos con tal de ver si serán capaces de anteponerse 
+                        al resultado.
+                    </p><br>
+                    <p>
+                        Antiguamente era un miembro de los Sabios.
+                    </p>
                 </div>`,
         talent: `<div>
-                    <h4>Ibitsu Niten Reihou</h4>
-                    <p>Haito es una de las espadachinas más habilidosas entre los Reencarnados, pero donde realmente recide el valor del
-                    Talento de Miyamoto Musashi es en las múltiples técnicas que puede utilizar. Ainuki inmoviliza
-                    forzosamente a sus oponentes y a ella al hacerlos sentir la presión de la muerte, Ittou Entetsu paraliza a su objetivo 
-                    y crea un corte que ignora las distancias, y Hued Corpse hace cortes simultáneos, la cantidad dependerá del usuario. 
-                    A cambio, su Talento se manifestará como un tatuaje de ciempiés que "devorará" todo su cuerpo si no tiene cuidado.</p>
+                    <h4>Paradojas</h4>
+                    <p>
+                        Al entrar en un estado de hiperconcentración, ella puede traer paradojas a la realidad al aplicar reestricciones a objetos en
+                        movimiento desde su perspectiva, pero debido a que esto puede ocasionar efectos mariposa, reduce sus usos estrictamente.
+                    </p><br>
+                    <p>
+                        Aquiles y la Tortuga: Si un objeto se mueve en la misma dirección que Zenon, no será capaz de alcanzarla sin importar su velocidad.
+                    </p>
+                    <p>
+                        Flecha Voladora: Si Zenon se vuelve completamente inmóvil o va en reversa, su objetivo estará obligado a imitarle. 
+                    </p>
                 </div>`
     },
     {
@@ -98,46 +124,85 @@ const strays = [
 
                     <br><p>Cualquiera que toque esta bala traicionará a su equipo y hará todo lo posible para acabar con sus vidas.</p>
                 </div>`
-    },
-    {
+    },{
         name: "Laplace & Maxwell",
-        img: "../Imagenes/Maxwell & Laplace.jpg", //"../Imagenes/Laplace & Maxwell.png",
+        img: "../Imagenes/Maxwell & Laplace X2.jpg",
         desc: `<div>
-                    <p>Uno de los Reyes y la mano derecha de la lider del Bosque de los Grandes. Originalmente era un Reencarnado Errante que
-                    seguía a "The White Person", pero después de discrepar con sus ideales, decidió unirse al Bosque para hacer posible el
-                    plan de la Paz Mundial. No obstante, este plan es solo una tapadera. Nikola Tesla es un Reencarnado que busca el sentido
-                    de su existencia, la razón por la que volvió a nacer. Necesita estar seguro de que es necesario para este
-                    mundo, que éste no continuará girando sin él, de otro modo, ¿Por qué está aquí para empezar?</p>
+                    <p>
+                        Pierre-Simon Laplace y James Clerk Maxwell son un dúo de Reencarnados que se mantienen al margen del conflicto entre
+                        los humanos o los Reencarnados. No tienen el deseo de intervenir, tan solo el de observar. 
+                    </p><br>
+
+                    <p>
+                        Eran cercanos a Erwin Schrödinger y hablaban sobre las teorías cuánticas que crearon en sus vidas pasadas. Sin embargo,
+                        después de que éste se uniera al Bosque de los Grandes, ellos observaron algo, despidiéndolo con un último mensaje:</p>
+                       <p> "La caja se ha abierto" "El gato ha muerto."
+                    </p>
                 </div>`,
         talent: `<div>
-                    <h4>Bala Mística de la Traición</h4>
-                    <p>Nikola Tesla acumula la energía que le provee la rotación del planeta para convertirla en otra totalmente
-                    diferente. Ya sea eléctrica, magnética, cinética, térmica, o lumínica; es posible utilizar cualquier tipo de energía
-                    existente mientras la Tierra siga girando sobre su propio eje.</p>
+                    <h4>Demonio de Laplace</h4>
+                    <p>Talento de Laplace. Mientras él se mantenga como un observador, podrá ver la verdadera conclusión de lo que sea.</p>
 
-                    <br><p>La potencia de sus ataques varían dependiendo de cuánta energía acumule Tesla dentro de sí mismo, siéndole posible
-                    destruir un planeta según sus propias palabras.</p>
+                    <br><h4>Demonio de Maxwell</h4>
+                    <p>Talento de Maxwell. Mientras él se mantenga como un observador, podrá ver todo movimiento de lo que sea.</p>
+
+                    <br><p>Cuando ambos activan sus Talentos, las cremalleras de sus cabezas se abren para revelar ojos gigantes.</p>
                 </div>`
     },
     {
         name: "Alexander Non Grata",
         img: "../Imagenes/Alexander.jpg",
         desc: `<div>
-                    <p>Miembro fundador y una de los más jóvenes dentro del Bosque de los Grandes, suele llevar puesta una máscara que muchas 
-                    veces es confundida con su cara real. Picasso tiene la costumbre de pintar sobre todas las superficies que vea, lo que hace que
-                    constantemente tengan que limpiar las instalaciones. Es bastante conocida en la Asociasión del Arte, pero no es un miembro 
-                    oficial por razones desconocidas; se teoriza que se debe a que su Talento como pintora es mucho más aterrador que el de 
-                    los demás, lo que terminó aislándola. A pesar de que hayan pasado tantos años, sigue siendo una niña.</p>
+                    <p>
+                        La única forma posible de describirla es "poder puro". Es una de los Cuatro Reencarnados que iniciaron la Great Men's
+                        War y la primera en salir de su prisión al considerar que ya tuvo suficiente de esperar. Al enterarse de la muerte de
+                        dos de sus mejores amigos, decidió que era momento de reinaugurar la Great Men's War para honrarlos.
+                    </p><br>
+                    <p>
+                        No es un jefe final, ni un jefe secreto más fuerte que el jefe final, no es un personaje desbloqueable, tampoco
+                        un DLC. Ella es la pantalla final de Game Over que verás cuando termines de jugar.
+                    </p>
                 </div>`,
         talent: `<div>
-                    <h4>Periodo Negro</h4>
-                    <p>El Talento de los Pintores consiste en influenciar las percepciones mentales de los videntes por medio del arte, por
-                    lo que Picasso no es la excepción. Quien sea que vea sus pinturas las interpretará como algo real, lo que hará que las
-                    susodichas cobren vida y se vuelvan capaces de tener efectos en la propia realidad. No es que las pinturas
-                    literalmente salgan de sus cuadros, éstas permanecerán en su sitio, pero la mente es tan fuerte que, desde la perspectiva
-                    del vidente, se verá como si la pintura de verdad se pudiera manifestar en nuestro mundo.</p>
+                    <h4>"Existencia"</h4>
+                    <p>
+                        El nombre de su Talento es desconocido, pero es identificado bajo el apodo de "Existencia". De lo poco que se ha visto
+                        en la historia, cada vez que golpea, es capaz de alterar las leyes de la física, destruyendo materia casi-indestructible,
+                        o enviarle un mensaje a todos los Reencarnados de que el final se acercaba al hacer que un terremoto cruce en línea 
+                        recta a través de todo el planeta, a pesar de que las leyes dictan que las vibraciones que crucen el manto terrestre 
+                        deberían de curvarse. Se cree que puede destruir o alterar el curso del movimiento de los planetas. 
+                    </p>
                 </div>`
     }
 ];
 
 characterSlider(strays);
+
+/*
+{
+        name: "Karl XII",
+        img: "../Imagenes/Karl.jpg",
+        desc: `<div>
+                    <p>
+                        Ella es en realidad un miembro del Bosque de los Grandes, siendo una de los Reyes que llevarían a cabo el plan de
+                        la Paz Mundial cuando llegase el momento. No obstante, tras ver indicios del comienzo de la Great Men's War, parece
+                        ser que abandonó su lealtad al Bosque y emprendió su propio viaje para acabar con aquellos Reencarnados que
+                        amenazaban con destruir el planeta.
+                    </p><br>
+
+                    <p>
+                        No es asegurado que ella abandone su posición en el Bosque de forma permanente, lo más probable es que regrese una vez
+                        exista una manera para detener la Great Men's War.
+                    </p>
+                </div>`,
+        talent: `<div>
+                    <h4>Meteorito de la Destrucción</h4>
+                    <p>Las estrellas que la rodean le permiten flotar y acelerar su cuerpo para arrasar con sus enemigos. Es un ataque simple,
+                    pero muy poderoso mientras más tiempo se encuentre acelerando, volviéndose su defensa casi impenetrable en este estado.</p>
+
+                    <br><h4>Cabello de Estrella Fugaz</h4>
+                    <p>La velocidad que alcanza con su Talento aumenta la fricción y presión sobre su cuerpo al punto en el que éste empieza a
+                    calentarse, cristalizando en rocas su cabello y ropas.</p>
+                </div>`
+    },
+    */

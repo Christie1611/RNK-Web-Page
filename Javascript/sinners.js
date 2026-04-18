@@ -74,7 +74,7 @@ const sinners = [
         img: "../Imagenes/Rudel.png",
         desc: `<div>
                     <p>Uno de los 5 Generales del ejército de los Pecadores. Cuando Kouu desertó del Bosque de los Grandes, él fue de
-                    los primeros en incitar una guerra contra el Bosque de los Grandes, queriendo pelear contra aquellos que estaban en
+                    los primeros en avivar las llamas para iniciar una guerra, queriendo pelear contra aquellos que estaban en
                     la cima.</p>
                     
                     <br><p>Él no posee ningún deseo en ser un "Grande" o un "Pecador", tampoco siente orgullo por el nombre que
