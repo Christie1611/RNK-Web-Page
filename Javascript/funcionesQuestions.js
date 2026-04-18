@@ -81,7 +81,7 @@ contentQuestions.innerHTML = `
 </p><br>
 <p>
     No obstante, la Great Men's War no es la única amenaza de los Sabios. Ellos tienen que hacerse cargo de un monstruo cambia formas
-    que ha tomado la apariencia de una humana que viste de blanco; temen que, de no poder hacerlo, la realidad como la conocemos puede
+    que ha tomado la apariencia de una humana que viste de blanco; temen que, de no poder hacerlo, la realidad como la conocemos pueda
     correr un gran peligro.
 </p><br>
 

@@ -28,26 +28,28 @@ const strays = [
                 </div>`
     },
     {
-        name: "Henri Dunant",
-        img: "../Imagenes/Henry.jpg",
+        name: "Pellegrino Ernetti",
+        img: "../Imagenes/Ernetti.png",
         desc: `<div>
                     <p>
-                        Aunque no es oficialmente una miembro del ejército de Pecadores, ella fue una de las seguidoras de Kouu junto con un grupo
-                        de Reencarnados que eran sus compañeros de viaje y mejores amigos. Tras el final de la guerra entre los Pecadores y el Bosque,
-                        decidió intervenir en los planes de los Grandes para respetar la última voluntad de Kouu. Lastimosamente, ocurrió un incidente
-                        que la dejó con graves heridas, pero sus amigos no corrieron la misma suerte.
+                        Es sarcástico y orgulloso, pero ama a los humanos y le gusta ver la historia de la humanidad. A pesar de no haber estado en
+                        la Great Men's War, gracias a que su Talento el permite ver el pasado, tomó una posición similar a aquellos que presenciaron
+                        tal catástrofe. Utiliza su Talento para reunir información para mantener informada a Alexander; aunque ella nunca se lo
+                        pidió directamente, entiende que su habilidad es invaluable para entender cualquier situación que pueda presentarse
                     </p>
-                    
-                    <br><p>Ahora tendrá que aprender a vivir sin la compañía.</p>
+                    <br><p>
+                        Esta apariencia solo es la que Morse quiere que veas.
+                    </p>
                 </div>`,
         talent: `<div>
-                    <h4>Contrato de la Cruz Roja</h4>
+                    <h4>Cronovisor</h4>
                     <p>
-                        Al besar a alguien en cualquier superficie de su cuerpo, puede crear un "contrato" con este. El contrato consiste en que,
-                        mientras la persona se mantenga cerca de Henri, todo el daño recibido, incluso el que puede ser mortal, se reducirán a 
-                        la mitad y se compartirá con ella. Henri siente el dolor de las heridas transmitidas, pero nunca morirá por estas,
-                        además, tienen la característica adicional de sanarse con mayor velocidad, sin embargo, si la dañas directamente, ninguna
-                        su Talento no funcionará, por lo que debe de mantenerse al margen.
+                        Ernetti puede ver el pasado al interpretar sus rayos electromagnéticos. Sin embargo, el dispositivo que utiliza
+                        para esto es tan grande que es casi inamovible, por esta razón, no puede abandonar su habitación.
+                    </p><br>
+                    <p> 
+                        Sumado a esto, él no puede ver arbitrariamente al pasado, mientras más lejos vaya, mayor interferencia recibe, lo que obstaculiza
+                        el uso de su Talento. Por alguna razón, Ernetti es incapaz de ver eventos concretos por más que se esfuerce.
                     </p>
                 </div>`
     },
@@ -177,32 +179,3 @@ const strays = [
 ];
 
 characterSlider(strays);
-
-/*
-{
-        name: "Karl XII",
-        img: "../Imagenes/Karl.jpg",
-        desc: `<div>
-                    <p>
-                        Ella es en realidad un miembro del Bosque de los Grandes, siendo una de los Reyes que llevarían a cabo el plan de
-                        la Paz Mundial cuando llegase el momento. No obstante, tras ver indicios del comienzo de la Great Men's War, parece
-                        ser que abandonó su lealtad al Bosque y emprendió su propio viaje para acabar con aquellos Reencarnados que
-                        amenazaban con destruir el planeta.
-                    </p><br>
-
-                    <p>
-                        No es asegurado que ella abandone su posición en el Bosque de forma permanente, lo más probable es que regrese una vez
-                        exista una manera para detener la Great Men's War.
-                    </p>
-                </div>`,
-        talent: `<div>
-                    <h4>Meteorito de la Destrucción</h4>
-                    <p>Las estrellas que la rodean le permiten flotar y acelerar su cuerpo para arrasar con sus enemigos. Es un ataque simple,
-                    pero muy poderoso mientras más tiempo se encuentre acelerando, volviéndose su defensa casi impenetrable en este estado.</p>
-
-                    <br><h4>Cabello de Estrella Fugaz</h4>
-                    <p>La velocidad que alcanza con su Talento aumenta la fricción y presión sobre su cuerpo al punto en el que éste empieza a
-                    calentarse, cristalizando en rocas su cabello y ropas.</p>
-                </div>`
-    },
-    */

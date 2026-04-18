@@ -2,144 +2,193 @@ import { characterSlider } from "./funcionesFactions.js";
 
 const others = [
     {
-        name: "John V. Neumann",
-        img: "../Imagenes/Neumann.jpg",
+        name: "Salvador Dalí",
+        img: "../Imagenes/Others.jpg",
         desc: `<div>
-                    <p>Ella es un miembro fundador y el cerebro detrás del Bosque de los Grandes, suele tener una expresión fría y calculadora. 
-                    Debido a su inteligencia, es bastante pesimista sobre el futuro que le depara a la humanidad. Es una Reencarnada 
-                    Perfecta que conoce su edad y pasado, esto es gracias a que utilizó su Talento para averiguar su  antigua identidad, 
-                    no obstante, se niega a hacer lo mismo con los demás miembros por más que se lo pidan. Es consciente de que si alguien se 
-                    cortó el cuello con la Rama fue para olvidarse de las duras memorias de su pasado.</p>
+                    <p>
+                        Miembro de la Asociasión del Arte. Fue el primer Reencarnado con el que Touya y sus compañeros entraron en contacto en
+                        la Isla de Enoshima, haciéndoles experimentar "Un breve viaje a las Artes". Su intención era mantenerlos presos dentro
+                        de esta habilidad por el resto de sus vidas, pero al descubrir que no tenían malas intenciones, decidió rendirse. 
+                    </p><br>
+                    <p>
+                        Pasa su tiempo dentro de Enoshima pintando cuadros junto a Van Gogh, René Magritte y Zdzisław Beksinski, siempre 
+                        vigilando si hay algún intruso que no sepa valorar lo que es el Arte.
+                    </p>
                 </div>`,
         talent: `<div>
-                    <h4>Demonio del Cálculo</h4>
-                    <p>Su Talento le permite interpretar toda la información que percibe de su entorno para calcular y predecir el futuro.</p><br>
-
-                    <h4>Padre de la Informática</h4>
-                    <p>Puede manipular todos los ordenadores que estén conectados a internet. Realmente tiene control sobre todo lo que
-                    use un procesador, lo que significa que, en tiempos modernos como estos, es capaz de conectarse con todo el planeta y
-                    ganar acceso al conocimiento colectivo de la humanidad.</p>
+                    <h4>Método Crítico-Paranoico - Surrealismo</h4>
+                    <p>
+                        Como cualquier Reencarnado Artista, amplifica la sensitividad de aquellos que observen sus trabajos. Sus efectos cambian
+                        acorde con los motivos detrás de su arte. Algunos de estos son:
+                    </p><br>
+                    <p>
+                        La persistencia de la Memoria: Vuelve líquidos los objetos.
+                    </p>
+                    <p>
+                        El gran masturbador: El observador entrará en pánico.
+                    </p>
+                    <p>
+                        Cara de hormiga: Causa pérdida de energía.
+                    </p>
+                    <p>
+                        El enigma del deseo, mi madre, mi madre, mi madre: Temporalmente borra de tu memoria lo que más amas.
+                    </p>
                 </div>`
     },
     {
-        name: "Isaac Newton",
-        img: "../Imagenes/Newton.jpg",
+        name: "Friedrich Nietzsche",
+        img: "../Imagenes/Nietzsche.png",
         desc: `<div>
-                    <p>Con una actitud positiva y bromista, pero seria y decidida cuando el momento lo amerita, Newton es con diferencia el miembro 
-                    del Bosque de los Grandes al que podrías tener como amigo. Se volvió compañero de Albert Einstein para ayudarla a controlar mejor
-                    su Talento, siendo apoyada por la Fruta de la Gravedad. Ambos se volvieron inseparables después de compartir muchas misiones
-                    juntos.</p>
+                    <p>
+                        Miembro y potencial líder de los Sabios. A pesar de que ninguno tenga interés en presentarse con sus verdaderos nombres,
+                        él suele hacerlo para entablar conversación con alguna persona que sea de su interés. Su misión es el encontrar "la 
+                        Semilla" para detener la Great Men's War. Tras descubrir que su ubicación era en la guarida del Monstruo, sabía que 
+                        era el momento perfecto para poder exterminar a la criatura y regresarla al ciclo de la Reencarnación.
+                    </p><br>
                     
-                    <br><p>Sí, su cabeza es una manzana, pero todavía puede hacer cosas como comer, dormir o incluso respirar.</p>
+                    <p>
+                        Su apodo dentro de los filósofos es "Mirada hacia al abismo".
+                    </p>
                 </div>`,
         talent: `<div>
-                    <h4>Fruta de la Gravedad</h4>
-                    <p>Tiene la capacidad de crear manzanas con propiedades gravitacionales y siempre que tenga una de estas en sus manos 
-                    podrá controlar la gravedad a placer, algo que le sirve de forma tanto defensiva como ofensiva. Puede crear campos gravitacionales
-                    a su alrededor para protegerse de ataques o usar estos mismos campos para limitar los movimientos de sus objetivos. Da igual el
-                    tamaño o la fuerza de su oponente, éste sigue rigiéndose por las leyes de la gravedad, por lo que es imposible escapar de Newton.</p>
+                    <h4>Mirada hacia al abismo</h4>
+                    <p>
+                        Cuando miras por un largo tiempo al abismo, el abismo te devolverá la mirada. Una vez activa su Talento, su rostro
+                        se volverá oscuro como la noche, al verlo, del abismo saldrá una copia del observador. Dicha copia tendrá todas sus
+                        habilidades y Talento, y no parará de perseguir a su objetivo hasta que puede atraparlo y hundirlo en la oscuridad
+                        de la que provino.
+                    </p><br>
+                    <p>
+                        Con este Talento le fue posible asesinar a uno de los Reencarnados más poderosos dentro del Bosque de los Grandes.
+                    </p>
                 </div>`
     },
     {
-        name: "Albert Einsten",
-        img: "../Imagenes/Einstein.jpg",
+        name: "Karl XII",
+        img: "../Imagenes/Karl.jpg",
         desc: `<div>
-                    <p>Fue la quinta y última miembro de los que fundaron originalmente el Bosque de los Grandes. Tiene un carácter bastante
-                    agresivo y emocional hacia los hombres, no siendo capaz de tolerar su presencia, lo que hace que suela golpear a Newton
-                    cada vez que éste la hace enojar. Fue una de las Reencarnadas que apoyaron el plan de Leonardo Da Vinci para conseguir
-                    la Paz Mundial.</p>
+                    <p>
+                        Ella es en realidad un miembro del Bosque de los Grandes, siendo una de los Reyes que llevarían a cabo el plan de
+                        la Paz Mundial cuando llegase el momento. No obstante, tras ver indicios del comienzo de la Great Men's War, parece
+                        ser que abandonó su lealtad al Bosque y emprendió su propio viaje para acabar con aquellos Reencarnados que
+                        amenazaban con destruir el planeta.
+                    </p><br>
+
+                    <p>
+                        No se puede asegurar que ella haya abandonado su posición en el Bosque de forma permanente, lo más probable es que
+                        regrese una vez exista una manera para detener la Great Men's War.
+                    </p>
+                </div>`,
+        talent: `<div>
+                    <h4>Meteorito de la Destrucción</h4>
+                    <p>Las estrellas que la rodean le permiten flotar y acelerar su cuerpo para arrasar con sus enemigos. Es un ataque simple,
+                    pero muy poderoso mientras más tiempo se encuentre acelerando, volviéndose su defensa casi impenetrable en este estado.</p>
+
+                    <br><h4>Cabello de Estrella Fugaz</h4>
+                    <p>La velocidad que alcanza con su Talento aumenta la fricción en su cuerpo al punto en el que éste empieza a
+                    calentarse. Su cabello y ropas se cristalizan en rocas, similar a un meteorito.</p>
+                </div>`
+    },
+    {
+        name: "Victor Hugo",
+        img: "../Imagenes/Hugo.png",
+        desc: `<div>
+                    <p>
+                        Miembro y líder de Lumiéres. Muchos se preguntan por qué no está en la Asociasión de Novelistas. Su asociasión es la
+                        encargada de recopilar información para el periodico conocido como "El Diario de los Reencarnados", donde no solo 
+                        informan sobre los sucesos recientes ocurridos en el mundo de los Reencarnados de una forma extremadamente detallada
+                        y precisa, sino que también tiene un apartado donde se dedica a contar historias que son consideradas cuentos de 
+                        hadas. Fue el responsable de hacerle creer a todos los Reencarnados que la Great Men's War no era más que un mito.
+
+                    </p>
                     
-                    <br><p>A pesar de que lo odiaba al principio, con el paso del tiempo pudo encariñarse de Newton.</p>
                 </div>`,
         talent: `<div>
-                    <h4>Transferencia Espacial</h4>
-                    <p>Si Einstein saca y muerde su lengua podrá teletransportarse a la ubicación que desee. No obstante, hay muchas condiciones
-                    a seguir para que esto se cumpla: El área de teletransporte debe de ser una forma geométrica definida con sus medidas, 
-                    tiene que tener puntos de referencia en su cuerpo para una imagen clara, y necesita conocer las coordenadas exactas a las 
-                    que se moverá. Si alguna de estas condiciones no se cumple, puede correr el riesgo de afectar gravemente su salud o incluso
-                    perder la vida.</p>
+                    <h4>Les Rayons Et Les Ombres</h4>
+                    <p>
+                        Un Talento que le permite a Hugo cambiar de forma. Le gusta tomar la forma de aves o de ratones con el propósito de
+                        recopilar información para sus noticias.
+                    </p><br>
+
+                    <h4>Les Misérables</h4>
+                    <p>
+                        Un Talento de larga distancia que hace que Hugo sea capaz de distribuir su periodico por todo el planeta. El diario
+                        se crea con los materiales que hayan cerca de sus clientes; en el peor de los casos, se escribe en las paredes o en el suelo.
+                    </p>
                 </div>`
-    }, 
+    },
     {
-        name: "Haito Le Buffet",
-        img: "../Imagenes/Haito.jpg",
+        name: "Antoni Gaudi",
+        img: "../Imagenes/Gaudi2.png",
         desc: `<div>
-                    <p>Es la Reencarnación de Miyamoto Musashi, sin embargo, como todavía es una Reencarnada Imperfecta, de momento no se ha
-                    ganado el reconocimiento de tomar el nombre de su vida pasada. Su propósito es convertirse en una Reencarnada Perfecta lo
-                    más rápido posible para poder reabrir el dojo de su padre y hacer que éste se sienta orgulloso de ella.</p>
+                    <p>
+                        Uno de los Reencarnados que estuvo en la Great Men's War. Tras haberse acabado, fue el responsable de reconstruir los edificios
+                        y reparar las tierras que fueron arrasadas por la guerra. Después de aquello, viajó por todo el mundo para observar todos los
+                        trabajos arquitécticos que la humanidad había creado; también recopiló información sobre construcciones perdidas y destruidas,
+                        pero prefirió no repararlas. Él es un gran fanático de la arquitectura y de la historia. La gran caja en su espalda contiene los
+                        dibujos de sus manuales de construcción y algunos brazos de repuesto.</p>
+                </div>`,
+        talent: `<div>
+                    <h4>El Arquitecto Envidiado por Dios</h4>
+                    <p>
+                        Mientras tenga su manual, puede construir instantáneamente cualquier estructura. Su Talento también le permite reconstruir toda
+                        una ciudad utilizando su mapa, o darle forma a un paisaje desde un mapa topográfico. No obstante, todavía necesita materiales 
+                        con una calidad igual o superior a la original. Y finalmente, él no puede recrear construcciones a la perfección, pues ha
+                        dicho que no existe construcción que carezca de fallos.
+                    </p><br>
+                    <p>
+                        Si se lo piden, construirá las tumbas para sus compañeros.
+                    </p>
+                </div>`
+    },
+    {
+        name: "Franz Anton Mesmer",
+        img: "../Imagenes/Mesmer2.png",
+        desc: `<div>
+                    <p>
+                        Uno de los Reencarnados que estuvo en la Great Men's War y uno de los responsables de esconderle al mundo la existencia de
+                        ésta. Utilizó sus poderes hipnóticos proveídos por su Talento para sellar las memorias sobre la Great Men's War, haciendo
+                        que ésta fuera olvidada por casi todos, salvo por aquellos que eran resistentes a su hipnósis o los que debían de mantener
+                        sus recuerdos para poder ocultar el evento. Él se mantiene en silencio para que la hipnósis no pierda sus efectos, 
+                        cualquier palabra podría debilitarla, por lo que decidió esconderse en una cueva, al menos hasta que fue encontrado por
+                        Henri.
+                    </p>
+                </div>`,
+        talent: `<div>
+                    <h4>Armonía</h4>
+                    <p>
+                        Puede poner en trance a sus objetivos con una armónica que es parte de su cuerpo. El isntrumento está ubicado entre su hombro
+                        izquierdo y su axila derecha, haciendo parecer que está besando su pecho cuando empieza a tocar su música. Su hipnosis es
+                        muy potente, pero lleva un tiempo para que surja efecto y solo ocurre en un área pequeña. Muchos Reencarnados
+                        combinaron sus poderes para que Mesmer pudiese afectar todo el Planeta.
+                    </p><br>
+                    <p>
+                        Por la promesa que hizo, nunca volverá a hablar.
+                    </p>
+                </div>`
+    },
+    {
+        name: "Henri Dunant",
+        img: "../Imagenes/Henry.jpg",
+        desc: `<div>
+                    <p>
+                        Aunque no es oficialmente una miembro del ejército de Pecadores, ella fue una de las seguidoras de Kouu junto con el grupo de
+                        las Algas Marinas, compañeros de viaje y sus mejores amigos. Tras el final de la guerra entre los Pecadores y el Bosque,
+                        decidió intervenir en los planes de los Grandes para respetar la última voluntad de Kouu. Lastimosamente, ocurrió un incidente
+                        que la dejó con graves heridas, pero sus amigos no corrieron la misma suerte.
+                    </p>
                     
-                    <br><p>Por petición de Neumann (y por su propio instinto) invitó a Touya a formar parte del Bosque de los Grandes, aunque
-                    eso no salió tan bien como esperaba.</p>
+                    <br><p>Ahora tendrá que aprender a vivir sin su compañía.</p>
                 </div>`,
         talent: `<div>
-                    <h4>Ibitsu Niten Reihou</h4>
-                    <p>Haito es una de las espadachinas más habilidosas entre los Reencarnados, pero donde realmente recide el valor del
-                    Talento de Miyamoto Musashi es en las múltiples técnicas que puede utilizar. Ainuki inmoviliza
-                    forzosamente a sus oponentes y a ella al hacerlos sentir la presión de la muerte, Ittou Entetsu paraliza a su objetivo 
-                    y crea un corte que ignora las distancias, y Hued Corpse hace cortes simultáneos, la cantidad dependerá del usuario. 
-                    A cambio, su Talento se manifestará como un tatuaje de ciempiés que "devorará" todo su cuerpo si no tiene cuidado.</p>
-                </div>`
-    },
-    {
-        name: "Nikola Tesla",
-        img: "../Imagenes/Tesla.jpg",
-        desc: `<div>
-                    <p>Uno de los Reyes y la mano derecha de la lider del Bosque de los Grandes. Originalmente era un Reencarnado Errante que
-                    seguía a "The White Person", pero después de discrepar con sus ideales, decidió unirse al Bosque para hacer posible el
-                    plan de la Paz Mundial. No obstante, este plan es solo una tapadera. Nikola Tesla es un Reencarnado que busca el sentido
-                    de su existencia, la razón por la que volvió a nacer. Necesita estar seguro de que es necesario para este
-                    mundo, que éste no continuará girando sin él, de otro modo, ¿Por qué está aquí para empezar?</p>
-                </div>`,
-        talent: `<div>
-                    <h4>Sistema del Mundo</h4>
-                    <p>Nikola Tesla acumula la energía que le provee la rotación del planeta para convertirla en otra totalmente
-                    diferente. Ya sea eléctrica, magnética, cinética, térmica, o lumínica; es posible utilizar cualquier tipo de energía
-                    existente mientras la Tierra siga girando sobre su propio eje.</p>
-
-                    <br><p>La potencia de sus ataques varían dependiendo de cuánta energía acumule Tesla dentro de sí mismo, siéndole posible
-                    destruir un planeta según sus propias palabras.</p>
-                </div>`
-    },
-    {
-        name: "Pablo Picasso",
-        img: "../Imagenes/Picasso.jpg",
-        desc: `<div>
-                    <p>Miembro fundador y una de los más jóvenes dentro del Bosque de los Grandes, suele llevar puesta una máscara que muchas 
-                    veces es confundida con su cara real. Picasso tiene la costumbre de pintar sobre todas las superficies que vea, lo que hace que
-                    constantemente tengan que limpiar las instalaciones. Es bastante conocida en la Asociasión del Arte, pero no es un miembro 
-                    oficial por razones desconocidas; se teoriza que se debe a que su Talento como pintora es mucho más aterrador que el de 
-                    los demás, lo que terminó aislándola. A pesar de que hayan pasado tantos años, sigue siendo una niña.</p>
-                </div>`,
-        talent: `<div>
-                    <h4>Periodo Negro</h4>
-                    <p>El Talento de los Pintores consiste en influenciar las percepciones mentales de los videntes por medio del arte, por
-                    lo que Picasso no es la excepción. Quien sea que vea sus pinturas las interpretará como algo real, lo que hará que las
-                    susodichas cobren vida y se vuelvan capaces de tener efectos en la propia realidad. No es que las pinturas
-                    literalmente salgan de sus cuadros, éstas permanecerán en su sitio, pero la mente es tan fuerte que, desde la perspectiva
-                    del vidente, se verá como si la pintura de verdad se pudiera manifestar en nuestro mundo.</p>
-                </div>`
-    },
-    {
-        name: "Florence Nightingale",
-        img: "../Imagenes/Nightingale.jpg",
-        desc: `<div>
-                    <p>Una de los primeros miembros que se unieron después de que el Bosque de los Grandes se volvió una organización
-                    oficial. Es la principal encargada de curar a todos los Reencarnados que resulten heridos en las misiones de
-                    exploración y caza de Pecadores. Suele tener una personalidad alegre y amable, por lo que para ella es un placer
-                    tratar con los heridos. No obstante, últimamente se ha empezado a comportar de una forma un poco extraña.</p>
-
-                    <br><p>Se parece a &#9632;&#9632;&#9632; &#9632;&#9632;&#9632;&#9632;&#9632; &#9632;&#9632;&#9632;&#9632;&#9632;&#9632;.</p>
-                </div>`,
-        talent: `<div>
-                    <h4>Ángel de la Sanación</h4>
-                    <p>Nightingale puede curar a quien sea con el que entre en contacto. Los efectos aumentan si
-                    las interacciones son más cercanas e íntimas, como abrazos o besos en la mejilla.</p>
-
-                    <br>
-                    <h4>Sombra Roja de Crimea</h4>
-                    <p>Cuentan las leyendas que aquellos soldados que eran sanados por Nightingale besaban su sombra en señal de devoción.
-                    Este Talento nació de esas creencias. Quien sea que toque su sombra caerá bajo un control mental y seguirá sus órdenes 
-                    sin dudar.</p>
+                    <h4>Contrato de la Cruz Roja</h4>
+                    <p>
+                        Al besar a alguien en cualquier superficie de su cuerpo, puede crear un "contrato" con este. El contrato consiste en que,
+                        mientras la persona se mantenga cerca de Henri, todo el daño recibido, incluso el que puede ser mortal, se reducirán a 
+                        la mitad y se compartirá con ella. Henri siente el dolor de las heridas transmitidas, pero nunca morirá por estas,
+                        además, tienen la característica adicional de sanarse con mayor velocidad, sin embargo, si la dañas directamente, ninguna
+                        su Talento no funcionará, por lo que debe de mantenerse al margen.
+                    </p>
                 </div>`
     }
 ];
