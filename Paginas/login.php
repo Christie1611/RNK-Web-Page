@@ -15,7 +15,7 @@
                     <div class="divFormImg"></div>
                     
                     <div>
-                        <h1>Inicio de Sesión</h1><br>
+                        <h1 class="titForm">Inicio de Sesión</h1><br>
                         <input type="hidden" name="action" value="login">
 
                         <label>Usuario</label><br>

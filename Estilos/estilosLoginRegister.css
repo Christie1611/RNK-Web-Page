@@ -40,7 +40,7 @@ html {
     background-color: rgb(0, 0, 0, 0.6);
 }
 
-/* ------------------------ formularios ------------------------ */
+/* ------------------------ Formularios (la parte externa) ------------------------ */
 .form {
     position: relative;
     width: 65vw;
@@ -61,7 +61,7 @@ html {
     background-image: url(../Imagenes/Root.png);
     background-size: contain;
     background-repeat: no-repeat;
-    filter: drop-shadow(0 0 7px #586A6A);
+    filter: drop-shadow(0 0 7px #8b0e27);
     transform: rotate(-70deg);
     z-index: 5;
 }
@@ -76,7 +76,7 @@ html {
     background-image: url(../Imagenes/Root.png);
     background-size: contain;
     background-repeat: no-repeat;
-    filter: drop-shadow(0 0 7px #586A6A);
+    filter: drop-shadow(0 0 7px #8b0e27);
     transform: rotate(110deg);
     z-index: 6;
 }
@@ -89,13 +89,20 @@ html {
     z-index: 2;
     aspect-ratio: 16 / 9;
     border-style: solid;
+    border-color: #8b0e27;
     border-width: 2px;
     border-radius: 55px;
-    box-shadow: 0 0 .2rem #F5F5F5,
-            0 0 .2rem #F5F5F5,
-            0 0 0.8rem #586A6A,
-            inset 0 0 1.3rem #586A6A;
+    box-shadow: 0 0 .2rem #8b0e27,
+            0 0 .2rem #8b0e27,
+            0 0 0.8rem #8b0e27,
+            inset 0 0 1.3rem #8b0e27;
 
+}
+
+/* ------------------------ Formularios (parte interna) ------------------------ */
+.titForm {
+    text-shadow: 0 5px #8b0e27, 0 0 10px rgb(139, 14, 39), 0 0 20px rgb(139, 14, 39),
+                0 0 40px rgb(139, 14, 39), 0 0 80px rgb(139, 14, 39);
 }
 
 input[type=text],
@@ -105,7 +112,33 @@ input[type=submit] {
     font-family: "Agency FB", sans-serif;
     font-size: 25px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    padding: 2px;
+}
+
+input[type=submit] {
+    border: 1px solid #8B0E27;
+    border-radius: 6px;
+    font-size: 25px;
+    padding: 8px;
+    color: #F5F5F5;
+    background-color: #000000;
+    box-shadow:
+        0 0 5px #8B0E27,
+        0 0 10px #8B0E27;
+    transition: all 0.3s ease;
+    /*color: #f5f5f5;
+    background-image: linear-gradient(to bottom , black, black, #303030, black, black);*/
+}
+
+input[type=submit]:hover {
+    cursor: pointer;
+    color: #ffffff;
+    border-color: #586A6A;
+    box-shadow:
+        0 0 5px #586A6A,
+        0 0 15px #586A6A;
+    /*background-image: linear-gradient(to bottom , #171717, #171717, #3f3f3f, #171717, #171717); background-image: linear-gradient(to bottom , #8b0e27, #4f0816, #8b0e27); */
 }
 
 .divForm {
@@ -130,12 +163,14 @@ input[type=submit] {
     display: flex;
     align-items: center;
     width: 85%;
-    height: 30%;
+    height: 25%;
+    font-size: 20px;
     border-radius: 4px;
     padding: 5px;
-    text-shadow: 0 0 5px #586A6A;
+    text-shadow: 0 0 5px #8b0e27;
 }
 
+/* ------------------------ Imagen al lado del formulario ------------------------ */
 .divFormImg {
     position: absolute;
     top: 0;
@@ -164,17 +199,19 @@ input[type=submit] {
     border-bottom-left-radius: 55px;
 }
 
+/* ------------------------ Enlace para cambiar entre sesión y registro ------------------------ */
 .link {
     color: #f5f5f5;
-    text-shadow: 0 0 5px #586A6A;
+    text-shadow: 0 0 5px #8b0e27, 0 0 10px #8b0e27, 0 0 20px #8b0e27;
     transition: 0.2s ease;
 }
 
 .link:hover {
-    color: #bebebe;
-    text-shadow: 0 0 5px #586A6A;
+    /*color: #bebebe;*/
+    text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A;
 }
 
+/* ------------------------ Salirse de los formularios y volver al index ------------------------ */
 .close {
     color: #f5f5f5;
     text-decoration: none;
@@ -182,13 +219,16 @@ input[type=submit] {
     position: absolute;
     top: 0;
     right: 3%;
-    text-shadow: 0 0 5px #8b0e27, 0 0 10px #8b0e27;
+    text-shadow: 0 0 5px #8b0e27, 
+                0 0 10px #8b0e27,
+                0 0 15px #8b0e27;
     transition: all 0.3s ease;
     z-index: 10;
 }
 
 .close:hover {
     cursor: pointer;
-    color: black;
-    text-shadow: 0 0 2px #f5f5f5, 0 0 4px #f5f5f5;
+    text-shadow: 0 0 5px #586A6A, 
+                0 0 10px #586A6A,
+                0 0 15px #586A6A;
 }

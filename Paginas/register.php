@@ -9,20 +9,20 @@
         <section class="content">
             <form class="form" action="../PHP/validarUsers.php" method="POST">
                 <a href="../Index.html" class="close">&#10005;</a>
-                
+
                 <div class="divNeon"></div>
                     <div class="divForm">
                         <div class="divFormImg"></div>
                         
                         <div>
-                            <h1>Registro</h1><br>
+                            <h1 class="titForm">Registro</h1><br>
                             <input type="hidden" name="action" value="registrar"/>
 
                             <label>Usuario</label><br>
                             <input type="text" name="usuario" placeholder="Usuario" required>
 
                             <label>Email</label><br>
-                            <input type="email" name="email" placeholder="Correo" required>
+                            <input type="email" name="email" placeholder="Email" required>
 
                             <label>Contraseña</label><br>
                             <input type="password" name="contrasena" placeholder="Contraseña" required>
