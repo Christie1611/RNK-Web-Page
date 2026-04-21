@@ -1,5 +1,5 @@
 <?php
-include_once "conexion.php";
+include_once "connection.php";
 
 class Usuario {
     private $id;
@@ -20,7 +20,7 @@ class Usuario {
 
     public function _get($property) {
         if (property_exists($this, $property)) {
-            return $this->$property;y;
+            return $this->$property;
         }
     }
 
@@ -62,7 +62,7 @@ class Usuario {
 
         if ($fila = $res->fetch_assoc()) {
             return [
-                "id" => $fila["id"],
+                "id" => $fila["idusuario"],
                 "usuario" => $fila["usuario"]
             ];
         }

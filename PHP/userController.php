@@ -1,8 +1,9 @@
 <?php
-    session_start();
-    require_once "usuarios.php";
+    require_once "users.php";
 
-    if ($_POST['accion'] == "registrar") {
+class UsuarioController {
+    public function registrar() {
+        session_start();
 
         $usuario = new Usuario(
             null,
@@ -17,12 +18,12 @@
             $_SESSION['usuario'] = $res;
             header("Location: ../Index.html");
         } else {
-            echo "El correo ya está registrado";
+            header("Location: ../Paginas/register.php?error=registro");// echo "El correo ya está registrado";
         }
     }
 
-    if ($_POST['accion'] == "login") {
-
+    public function login() {
+        session_start();
         $usuario = new Usuario(
             null,
             $_POST['usuario'],
@@ -36,7 +37,8 @@
             $_SESSION['usuario'] = $res;
             header("Location: ../Index.html");
         } else {
-            echo "Usuario o contraseña incorrectos";
+            header("Location: ../Paginas/register.php?error=login"); // echo "Usuario o contraseña incorrectos";
         }
     }
+}
 ?>
