@@ -35,7 +35,7 @@ const strays = [
                         Es sarcástico y orgulloso, pero ama a los humanos y le gusta ver la historia de la humanidad. A pesar de no haber estado en
                         la Great Men's War, gracias a que su Talento el permite ver el pasado, tomó una posición similar a aquellos que presenciaron
                         tal catástrofe. Utiliza su Talento para reunir información para mantener informada a Alexander; aunque ella nunca se lo
-                        pidió directamente, entiende que su habilidad es invaluable para entender cualquier situación que pueda presentarse
+                        pidió directamente, entiende que su habilidad es invaluable para entender cualquier situación que pueda presentarse.
                     </p>
                     <br><p>
                         Esta apariencia solo es la que Morse quiere que veas.

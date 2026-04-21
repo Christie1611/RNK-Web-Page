@@ -32,6 +32,14 @@ contentQuestions.innerHTML = `
     trato justo para muchas personas que se someten a la reencarnación.
 </p><br>
 
+<h2>Talento</h2>
+<p>
+    Es la habilidad innata con la que nacen algunas personas. Da igual por cuánto tiempo entrenes; incluso si lo haces por toda
+    tu vida, jamás podrás alcanzar a aquellos que poseen Talento. Los Reencarnados pueden utilizar los Talentos de sus
+    vidas pasadas, desplegando habilidades que exceden con creces a cualquier ser humano. Lo único que puede superar el Talento
+    de un Reencarnado es el Talento de otro.
+</p><br>
+
 <h2>Rama de la Reencarnación</h2>
 <p>
     Es el cuchillo con el que los humanos pueden hacer la transmigración para volverse Reencarnados. Se le da este nombre

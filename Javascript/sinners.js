@@ -105,7 +105,7 @@ const sinners = [
         talent: `<div>
                     <h4>Testamento del Héroe</h4>
                     <p>Él puede invocar cualquier arma existente y usarla con la mayor de las eficacias. Por "cualquier arma existente"
-                    hablamos de cualquier arma que ha existido en la historia humana, lo que incluye aquellas que solo se quedaron en
+                    hablamos de cualquier arma que ha sido registrada en la historia humana, lo que incluye aquellas que solo se quedaron en
                     los planos.</p>
 
                     <br><h4>Pigmalion</h4>
@@ -119,7 +119,8 @@ const sinners = [
         desc: `<div>
                     <p>Uno de los 5 Generales del ejército de los Pecadores. Hitler es un niño que le tiene desprecio a aquellos
                     Reencarnados que perdieron toda su humanidad y se dejaron consumir por el orgullo de tener un Talento. Como el
-                    Bosque está lleno de Reencarnados que cumplen esas características, se propuso el matar a todos los que pudiera.</p>
+                    Bosque está lleno de Reencarnados que cumplen con esas características, su misión era acabar con todos los que
+                    pudiera.</p>
 
                     <br><p>Él sabe perfectamente la clase de persona que fue en su vida pasada, por eso tiene planeado suicidarse
                     cuando la guerra termine. Entre todos los pecadores, él es de los peores.</p>
