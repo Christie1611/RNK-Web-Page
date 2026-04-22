@@ -25,7 +25,7 @@
             } else {
                 $errores["contrasena"] = "La contraseña no está definida";
             }
-        } else if ($action === "registro" || $action === "modificar") {
+        } else if ($action === "registrar" || $action === "modificar") {
             if (isset($_POST["usuario"])) {
                 $usuario = trim(strip_tags($_POST["usuario"]));
 
@@ -36,20 +36,20 @@
                 $errores["usuario"] = "El usuario no está definido";
             }
 
-            if (isset($_POST["correo"])) {
-                $correo = trim(strip_tags($_POST["correo"]));
+            if (isset($_POST["email"])) {
+                $email = trim(strip_tags($_POST["email"]));
 
-                if ($correo === "") {
-                    $errores["correo"] = "El correo no puede estar vacío";
+                if ($email === "") {
+                    $errores["email"] = "El email no puede estar vacío";
                 } else {
                     $patron = "/^[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)?@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)?\.[a-z]{2,3}$/";
 
-                    if (!preg_match($patron, $correo)) {
-                        $errores["correo"] = "El correo no tiene el formato correcto. <br>Correcto: bb@ibai.net / bb.gg@ibai.net / bb-gg@ibai.net / bb.gg@rr.ibai.es";
+                    if (!preg_match($patron, $email)) {
+                        $errores["email"] = "El email no tiene el formato correcto.";
                     }
                 }
             } else {
-                $errores["correo"] = "El correo no está definido";
+                $errores["email"] = "El email no está definido";
             }
 
             if (isset($_POST["contrasena"])) {
@@ -68,24 +68,31 @@
 
     $_SESSION["errores"] = $errores;
 
-    if (array_filter($_SESSION["errores"]) && $action !== "modificar") {
-        header("Location: ../index.php");
-        exit;
-        } elseif (array_filter($_SESSION["errores"]) && $action === "modificar") {
+    if (array_filter($_SESSION["errores"])) {
+
+        $_SESSION["old"] = $_POST;
+
+        if ($action === "login") {
+            header("Location: ../Paginas/login.php");
+        } elseif ($action === "registrar") {
+            header("Location: ../Paginas/register.php");
+        } elseif ($action === "modificar") {
             $id = $_POST["id"];
             header("Location: ./acciones/modificar.php?id=$id");
-            exit;
+        }
+        exit;
+
     } else {
-        include_once "userController.php";
 
-        $controlador = new UsuarioController();
+        require_once "userController.php";
+        $usuario = new UsuarioController();
 
-        if ($action === "registrar") {
-            $controlador->registrar();
-        } elseif ($action === "login") {
-            $controlador->login();
+        if ($action === "login") {
+            $usuario->login();
+        } elseif ($action === "registrar") {
+            $usuario->registrar();
         } elseif ($action === "modificar") {
-            $controlador->modificar();
+            $usuario->modificar();
         }
     }
 ?>

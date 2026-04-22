@@ -34,7 +34,7 @@
     width: 100%;
     height: auto;
     max-height: 100%;
-    filter: drop-shadow(0 0 15px #8b0e27);
+    filter: drop-shadow(0 0 20px #586A6A);
     transition: opacity 0.3s ease;
 }
 
@@ -62,7 +62,7 @@
 
 .menu li {
     list-style: none;
-    padding: 15px;
+    padding: 10px;
     margin: 10px 0;
     color: #F5F5F5;
     cursor: pointer;
@@ -73,10 +73,10 @@
 
 .menu li a {
     display: block;
-    width: 100%;
+    width: 107.5%;
     height: 100%;
-    margin: -15px;
-    padding: 15px;
+    margin: -10px;
+    padding: 10px;
     text-decoration: none;
     color: inherit;
 }

@@ -15,7 +15,10 @@ class UsuarioController {
         $res = $usuario->registrar();
 
         if ($res) {
-            $_SESSION['usuario'] = $res;
+            $_SESSION["auth"] = [
+                "id" => $res["id"],
+                "usuario" => $res["usuario"]
+            ];
             header("Location: ../Paginas/dashboard.php");
         } else {
             header("Location: ../Paginas/register.php?error=registro"); // echo "El correo ya está registrado";
@@ -34,10 +37,13 @@ class UsuarioController {
         $res = $usuario->login();
 
         if ($res) {
-            $_SESSION['usuario'] = $res;
+            $_SESSION["auth"] = [
+                "id" => $res["id"],
+                "usuario" => $res["usuario"]
+            ];
             header("Location: ../Paginas/dashboard.php");
         } else {
-            header("Location: ../Paginas/register.php?error=login"); // echo "Usuario o contraseña incorrectos";
+            header("Location: ../Paginas/login.php?error=login"); // echo "Usuario o contraseña incorrectos";
         }
     }
 }

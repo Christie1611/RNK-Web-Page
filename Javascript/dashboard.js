@@ -42,7 +42,7 @@ function loadSection(section) {
 
     if (section === "logout") {
         localStorage.removeItem("currentSection");
-        window.location.href = "index.html";
+        window.location.href = "logout.php";
     }
 }
 

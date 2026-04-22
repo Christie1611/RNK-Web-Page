@@ -1,3 +1,25 @@
+<?php
+    session_start();
+    $old = [];
+    $errores = [];
+    $error = "";
+
+    if (isset($_GET["error"])) {
+        $error = $_GET["error"];
+    }
+
+    if (isset($_SESSION["old"])) {
+        $old = $_SESSION["old"];
+        unset($_SESSION["old"]);
+    }
+
+    if (isset($_SESSION["errores"])) {
+        $errores = $_SESSION["errores"];
+        unset($_SESSION["errores"]);
+    }
+
+?>
+
 <!DOCTYPE html>
     <head>
         <title>RNK</title>
@@ -15,25 +37,48 @@
                     <div class="divFormImg"></div>
                     
                     <div>
-                        <h1 class="titForm">Inicio de Sesión</h1><br>
+                        <div class="formGroup">
+                            <h1 class="titForm">Inicio de Sesión</h1>
+                            <span class="error">
+                                <?php if ($error === "login") {
+                                    echo "Usuario o contraseña incorrectos";
+                                    // header('Refresh: 1.5; URL=login.php');
+                                }?>
+                            </span>
+                        </div>
                         <input type="hidden" name="action" value="login">
 
-                        <label>Usuario</label><br>
-                        <input type="text" name="usuario" placeholder="Usuario" required>
+                        <div class="formGroup">
+                            <label>Usuario</label>
+                            <input type="text" name="usuario" placeholder="Usuario" value="<?= $old["usuario"] ?? "" ?>" required>
+                            <span class="error">
+                                <?php if (!empty($errores['usuario'])): ?>
+                                    <?php echo $errores['usuario']; ?>
+                                <?php endif; ?>
+                            </span>
+                        </div>
 
-                        <label>Contraseña</label><br>
-                        <input type="password" name="contrasena" placeholder="Contraseña" required>
+                        <div class="formGroup">
+                            <label>Contraseña</label>
+                            <input type="password" name="contrasena" placeholder="Contraseña" value="<?= $old["contrasena"] ?? "" ?>" required>
+                            <span class="error">
+                                <?php if (!empty($errores['contrasena'])) {
+                                    echo $errores['contrasena'];
+                                }
+                                ?>
+                            </span>
+                        </div>
 
-                        <input type="submit" value="Iniciar Sesión" />
-                        <p>¿Todavía no has iniciado sesión? <a class="link" href="register.php">Regístrate</a></p>
+                        <div class="formGroup">
+                            <input type="submit" value="Iniciar Sesión" />
+                            <p>¿Todavía no has iniciado sesión? <a class="link" href="register.php">Regístrate</a></p>
+                        </div>
 
                         <br>
-                        <div>
+                        <div class="message">
                             <p>
-                                Explora y descubre los Reencarnados hechos por la comunidad, desarrolla tu propio
-                                personaje dentro del mundo de Petals of Reincarnation; créale un trasfondo,
-                                un diseño, un Talento y cuéntanos el personaje histórico en el que se basa. 
-                                Puedes hacer todo esto aquí.
+                                Explora y descubre los Reencarnados hechos por la comunidad y crea tu propio
+                                personaje dentro del mundo de Petals of Reincarnation.
                             </p>
                         </div>
                     </div>

@@ -1,3 +1,14 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION["auth"])) {
+        header("Location: login.php");
+        exit;
+    }
+
+    $usuario = $_SESSION["auth"]["usuario"];
+?>
+
 <!DOCTYPE html>
     <head>
         <title>RNK</title>
@@ -9,7 +20,7 @@
     <body id="dashboard" data-page="dashboard">
         <section class="layout">
             <div class="divMenu">
-                <h2>Usuario</h2>
+                <h2><?= $usuario === "" ? "Usuario" : $usuario?></h2>
                 <ul class="menu">
                     <li data-section="profile" class="active">Perfil</li>
                     <li data-section="edit">Editar perfil</li>
