@@ -4,7 +4,6 @@ const questions = document.querySelector(".questions");
 const frequestions = document.querySelector(".frequentlyQuestions");
 const close = document.querySelector(".close");
 const body = document.getElementsByTagName("body")[0];
-const whoAreWe = document.querySelector(".whoAreWe");
 const contentQuestions = document.querySelector(".contentQuestions");
 
 function divEmergent() {
@@ -12,11 +11,14 @@ function divEmergent() {
     body.style.overflowY = "hidden";
 }
 
-whoAreWe.addEventListener("click", () => {
-    divEmergent()
-    contentQuestions.innerHTML = who;
+if (document.querySelector(".whoAreWe")) {
+    const whoAreWe = document.querySelector(".whoAreWe");
 
-});
+    whoAreWe.addEventListener("click", () => {
+        divEmergent()
+        contentQuestions.innerHTML = who;
+    });
+}
 
 questions.addEventListener("click", () => {
     divEmergent()

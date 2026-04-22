@@ -1,28 +1,36 @@
 const page = document.body.dataset.page;
 
-if (page === "index") {
-    import("./funcionesIndex.js");
-    import("./funcionesQuestions.js");
-}
+switch (page) {
+    case "index":
+        import("./funcionesIndex.js");
+        import("./funcionesQuestions.js");
+        break;
 
-if (page === "forest") {
-    import ("./forest.js");
-}
+    case "forest":
+        import ("./forest.js");
+        import ("./funcionesFactions.js");
+        import("./funcionesQuestions.js");
+        break;
 
-if (page === "sinners") {
-    import ("./sinners.js");
-}
+    case "sinners":
+        import ("./sinners.js");
+        import ("./funcionesFactions.js");
+        import("./funcionesQuestions.js");
+        break;
 
-if (page === "others") {
-    import ("./others.js");
-}
+    case "others":
+        import ("./others.js");
+        import ("./funcionesFactions.js");
+        import("./funcionesQuestions.js");
+        break;
 
-if (page === "strays") {
-    import ("./strays.js");
-}
+    case "strays":
+        import ("./strays.js");
+        import ("./funcionesFactions.js");
+        import("./funcionesQuestions.js");
+        break;
 
-if (page === "forest" || page === "sinners" || page === "others" || page === "strays") {
-    import ("./funcionesFactions.js");
-    import("./funcionesQuestions.js");
+    case "dashboard":
+        import ("./dashboard.js");
+        break;
 }
-

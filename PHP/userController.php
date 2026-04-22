@@ -16,9 +16,9 @@ class UsuarioController {
 
         if ($res) {
             $_SESSION['usuario'] = $res;
-            header("Location: ../Index.html");
+            header("Location: ../Paginas/dashboard.php");
         } else {
-            header("Location: ../Paginas/register.php?error=registro");// echo "El correo ya está registrado";
+            header("Location: ../Paginas/register.php?error=registro"); // echo "El correo ya está registrado";
         }
     }
 
@@ -35,7 +35,7 @@ class UsuarioController {
 
         if ($res) {
             $_SESSION['usuario'] = $res;
-            header("Location: ../Index.html");
+            header("Location: ../Paginas/dashboard.php");
         } else {
             header("Location: ../Paginas/register.php?error=login"); // echo "Usuario o contraseña incorrectos";
         }
