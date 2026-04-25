@@ -26,6 +26,7 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/png" href="../Imagenes/NeumannLogo.png">
         <link rel="stylesheet" type="text/css" href="../Estilos/estilosLoginRegister.css">
+        <link rel="stylesheet" type="text/css" href="../Estilos/estilosForm.css">
     </head>
     <body id="register">
         <section class="content">

@@ -25,7 +25,7 @@
             } else {
                 $errores["contrasena"] = "La contraseña no está definida";
             }
-        } else if ($action === "registrar" || $action === "modificar") {
+        } elseif ($action === "registrar" || $action === "modificar") {
             if (isset($_POST["usuario"])) {
                 $usuario = trim(strip_tags($_POST["usuario"]));
 
@@ -63,14 +63,42 @@
             }
         }
     } else {
-        $errores["action"] = "Action no está definido"; 
+        $errores["action"] = "Action no está definido";
+    }
+    
+    if ($action === "modificar") {
+        if (!isset($_POST["descripcion"])) { // RECUERDA QUE ESTO ES OPCIONAL, NO NECESITO COMPROBAR SI ESTÁ VACÍO
+            $errores["descripcion"] = "La descripcion no está definida";
+        }
+        
+        if (isset($_FILES["imagen"])) {
+
+            if ($_FILES["imagen"]["error"] !== UPLOAD_ERR_NO_FILE) {
+                $file = $_FILES["imagen"];
+                $allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+                $maxSize = 8 * 1024 * 1024; // SON 8 MEGABYTES, ACUÉRDATE CHRIS
+
+                if (!in_array($file["type"], $allowedTypes)) {
+                    $errores["imagen"] = "Formato no permitido (jpg, png, webp)";
+                }
+
+                if ($file["size"] > $maxSize) {
+                    $errores["imagen"] = "La imagen es demasiado grande (máx. 8MB)";
+                }
+            }
+            
+        } else {
+            $errores["imagen"] = "La imagen no está definida";
+        }
+    } else {
+        $errores["action"] = "Action no está definido";
     }
 
     $_SESSION["errores"] = $errores;
 
     if (array_filter($_SESSION["errores"])) {
 
-        $_SESSION["old"] = $_POST;
+        $_SESSION["old"] = trim(strip_tags($_POST));
 
         if ($action === "login") {
             header("Location: ../Paginas/login.php");
@@ -78,7 +106,7 @@
             header("Location: ../Paginas/register.php");
         } elseif ($action === "modificar") {
             $id = $_POST["id"];
-            header("Location: ./acciones/modificar.php?id=$id");
+            header("Location: ../Paginas/dashboard.php");
         }
         exit;
 

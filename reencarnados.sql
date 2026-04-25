@@ -2,10 +2,12 @@ CREATE DATABASE IF NOT EXISTS proyectofinalchris;
 USE proyectofinalchris;
 
 CREATE TABLE IF NOT EXISTS usuarios (
-    idusuario INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NOT NULL UNIQUE,
-    contrasena VARCHAR(255) NOT NULL
+    email VARCHAR(50) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    imagen VARCHAR(255),
+    descripcion TEXT
 );
 
 CREATE TABLE IF NOT EXISTS facciones (
@@ -22,7 +24,7 @@ CREATE TABLE IF NOT EXISTS reencarnados (
     idusuario INT NOT NULL,
 
     FOREIGN KEY (idfaccion) REFERENCES facciones(idfaccion),
-    FOREIGN KEY (idusuario) REFERENCES usuarios(idusuario)
+    FOREIGN KEY (idusuario) REFERENCES usuarios(id)
 );
 
 CREATE TABLE IF NOT EXISTS talentos (

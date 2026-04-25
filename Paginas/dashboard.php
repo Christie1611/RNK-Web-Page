@@ -1,12 +1,18 @@
 <?php
     session_start();
+    include_once "../PHP/userController.php";
+
+    $user = new UsuarioController();
 
     if (!isset($_SESSION["auth"])) {
         header("Location: login.php");
         exit;
     }
 
+    $id = $_SESSION["auth"]["id"];
     $usuario = $_SESSION["auth"]["usuario"];
+
+    $res = $user->listarReencarnados($id);
 ?>
 
 <!DOCTYPE html>
@@ -16,11 +22,12 @@
         <link rel="icon" type="image/png" href="../Imagenes/NeumannLogo.png">
         <link rel="stylesheet" type="text/css" href="../Estilos/estilosDashboard.css">
         <link rel="stylesheet" type="text/css" href="../Estilos/estilosMenu.css">
+        <link rel="stylesheet" type="text/css" href="../Estilos/estilosForm.css">
     </head>
     <body id="dashboard" data-page="dashboard">
         <section class="layout">
             <div class="divMenu">
-                <h2><?= $usuario === "" ? "Usuario" : $usuario?></h2>
+                <h2 id="user"><?= $usuario === "" ? "Usuario" : $usuario?></h2>
                 <ul class="menu">
                     <li data-section="profile" class="active">Perfil</li>
                     <li data-section="edit">Editar perfil</li>
@@ -39,4 +46,9 @@
 
     <script type="module" src="../Javascript/main.js"></script>
     </body>
+    <script>
+        const userData = <?= json_encode($_SESSION["auth"]); ?>;
+        const userErrors = <?= json_encode($_SESSION["errores"]); ?>;
+        const userReen = <?= json_encode($res); ?>;
+    </script>
 </html>

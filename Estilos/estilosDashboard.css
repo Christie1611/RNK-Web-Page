@@ -28,30 +28,26 @@ html {
     overflow-y: auto;
 }
 
+/* -------------------------- Perfil -------------------------- */
 .profileCard {
     display: flex;
     gap: 30px;
-
     background: rgba(0,0,0,0.7);
     padding: 30px;
     border-radius: 20px;
-
     border: 1px solid #586A6A;
-
     box-shadow:
         0 0 10px #586A6A,
         inset 0 0 15px #000;
+    width: 100%;
 }
 
-.profileLeft img {
+.profileImage {
     width: 250px;
     height: 250px;
     object-fit: cover;
-
     border-radius: 15px;
-
     border: 2px solid #8B0E27;
-
     box-shadow: 0 0 15px #8B0E27;
 }
 
@@ -62,6 +58,10 @@ html {
 .profileRight h2 {
     font-size: 2em;
     color: #F5F5F5;
+}
+
+.profileLeft {
+    text-align: center;
 }
 
 .email {
@@ -82,6 +82,7 @@ html {
     color: #8B0E27;
 }
 
+/* -------------------------- Borrar cuenta -------------------------- */
 .modal {
     position: fixed;
     top: 0;
@@ -104,4 +105,66 @@ html {
     border: 1px solid #8B0E27;
 
     box-shadow: 0 0 20px #8B0E27;
+}
+
+/* -------------------------- FORMULARIOOOO -------------------------- */
+.form {
+    width: 100%;
+    font-size: 25px;
+}
+
+input[type=text], 
+input[type=password],
+input[type=submit], 
+textarea {
+    width: 100%;
+    padding: 2px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: "Agency FB", sans-serif;
+}
+
+textarea {
+    resize: none;
+    height: 200px;
+}
+
+input[type=file] {
+    margin-bottom: 20px;
+}
+
+input[type=submit] {
+    border: 1px solid #8B0E27;
+    border-radius: 6px;
+    font-size: 25px;
+    padding: 8px;
+    color: #F5F5F5;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: "Agency FB", sans-serif;
+    box-shadow:
+        0 0 5px #8B0E27,
+        0 0 10px #8B0E27;
+    transition: all 0.3s ease;
+    /*color: #f5f5f5;
+    background-image: linear-gradient(to bottom , black, black, #303030, black, black);*/
+}
+
+input[type=submit]:hover {
+    cursor: pointer;
+    color: #ffffff;
+    border-color: #586A6A;
+    font-family: "Agency FB", sans-serif;
+    box-shadow:
+        0 0 5px #586A6A,
+        0 0 15px #586A6A;
+    /*background-image: linear-gradient(to bottom , #171717, #171717, #3f3f3f, #171717, #171717); background-image: linear-gradient(to bottom , #8b0e27, #4f0816, #8b0e27); */
+}
+
+.previewContainer {
+    width: 250px;
+    height: 250px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
