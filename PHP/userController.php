@@ -1,5 +1,5 @@
 <?php
-    require_once "users.php";
+require_once "users.php";
 
 class UsuarioController {
     public function registrar() {
@@ -9,12 +9,17 @@ class UsuarioController {
             null,
             $_POST['usuario'],
             $_POST['email'],
-            $_POST['contrasena']
+            password_hash($_POST['contrasena'], PASSWORD_DEFAULT)
         );
 
         $res = $usuario->registrar();
 
         if ($res) {
+            $_SESSION["flash"] = [
+                "type" => "success",
+                "message" => "Usuario registrado correctamente"
+            ];
+
             $_SESSION["auth"] = [
                 "id" => $res["id"],
                 "usuario" => $res["usuario"],
@@ -23,14 +28,23 @@ class UsuarioController {
                 "imagen" => $res["imagen"],
                 "descripcion" => $res["descripcion"]
             ];
+
             header("Location: ../Paginas/dashboard.php");
-        } else {
-            header("Location: ../Paginas/register.php?error=registro"); // echo "El correo ya está registrado";
+            exit;
         }
+
+        $_SESSION["flash"] = [
+            "type" => "error",
+            "message" => "El correo ya está registrado"
+        ];
+
+        header("Location: ../Paginas/register.php");
+        exit;
     }
 
     public function login() {
         session_start();
+
         $usuario = new Usuario(
             null,
             $_POST['usuario'],
@@ -41,18 +55,24 @@ class UsuarioController {
         $res = $usuario->login();
 
         if ($res) {
-            $_SESSION["auth"] = [
-                "id" => $res["id"],
-                "usuario" => $res["usuario"],
-                "email" => $res["email"],
-                "contrasena" => $res["contrasena"],
-                "imagen" => $res["imagen"],
-                "descripcion" => $res["descripcion"]
+            $_SESSION["flash"] = [
+                "type" => "success",
+                "message" => "Bienvenido " . $res["usuario"]
             ];
+
+            $_SESSION["auth"] = $res;
+
             header("Location: ../Paginas/dashboard.php");
-        } else {
-            header("Location: ../Paginas/login.php?error=login"); // echo "Usuario o contraseña incorrectos";
+            exit;
         }
+
+        $_SESSION["flash"] = [
+            "type" => "error",
+            "message" => "Usuario o contraseña incorrectos"
+        ];
+
+        header("Location: ../Paginas/login.php");
+        exit;
     }
 
     public function listarReencarnados($id) {
@@ -67,29 +87,47 @@ class UsuarioController {
 
     public function modificar() {
         session_start();
+
         $id = $_SESSION["auth"]["id"];
 
         $usuario = new Usuario(
             $id,
             $_POST["usuario"],
             $_POST["email"],
-            $_POST["contrasena"],
+            $_POST["contrasena"] ?? null,
             null,
             $_POST["descripcion"]
         );
 
-        $res = $usuario->modificar($_FILES["imagen"]);
+        $res = $usuario->modificar($_FILES["imagen"] ?? null);
 
-        if ($res) {
+        if ($res["success"]) {
             $_SESSION["auth"]["usuario"] = $_POST["usuario"];
             $_SESSION["auth"]["email"] = $_POST["email"];
-            $_SESSION["auth"]["imagen"] = $usuario->_get("imagen");
+            $_SESSION["auth"]["imagen"] = $res["imagen"];
             $_SESSION["auth"]["descripcion"] = $_POST["descripcion"];
 
+            $_SESSION["flash"] = [
+                "type" => "success",
+                "message" => $res["message"]
+            ];
+
             header("Location: ../Paginas/dashboard.php");
-        } else {
-            header("Location: ../Paginas/dashboard.php?error=update");
+            exit;
         }
+
+        $_SESSION["flash"] = [
+            "type" => "error",
+            "message" => $res["message"] ?? "Error al actualizar"
+        ];
+
+        header("Location: ../Paginas/dashboard.php");
+        exit;
+    }
+
+    public function borrar($id) {
+        $usuario = new Usuario();
+        $usuario->borrar($id);
     }
 }
 ?>

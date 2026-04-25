@@ -49,13 +49,11 @@ class Usuario {
         );
 
         $stmt->bind_param("sss", $this->usuario, $this->email, $this->contrasena);
-
         if (!$stmt->execute()) {
             return false;
         }
 
         $last_id = $this->conexion->insert_id;
-
         $stmt = $this->conexion->prepare(
             "SELECT * FROM usuarios WHERE id = ?"
         );
@@ -91,15 +89,8 @@ class Usuario {
 
         $fila = $res->fetch_assoc();
 
-        if ($this->contrasena == $fila["contrasena"]) {
-            return [
-                "id" => $fila["id"],
-                "usuario" => $fila["usuario"],
-                "email" => $fila["email"],
-                "contrasena" => $fila["contrasena"],
-                "imagen" => $fila["imagen"],
-                "descripcion" => $fila["descripcion"]
-            ];
+        if (password_verify($this->contrasena, $fila["contrasena"])) {
+            return $fila;
         }
 
         return false;
@@ -127,8 +118,7 @@ class Usuario {
         $stmt = $this->conexion->prepare("SELECT imagen FROM usuarios WHERE id = ?");
         $stmt->bind_param("i", $this->id);
         $stmt->execute();
-        $res = $stmt->get_result();
-        $user = $res->fetch_assoc();
+        $user = $stmt->get_result()->fetch_assoc();
 
         $oldImage = $user["imagen"];
         $newImage = $oldImage;
@@ -144,11 +134,17 @@ class Usuario {
             }
 
             move_uploaded_file($file["tmp_name"], $path);
-
             $newImage = $fileName;
         }
 
-        $this->imagen = $newImage;
+        if (!empty($this->contrasena)) {
+            $this->contrasena = password_hash($this->contrasena, PASSWORD_DEFAULT);
+        } else {
+            $stmt = $this->conexion->prepare("SELECT contrasena FROM usuarios WHERE id = ?");
+            $stmt->bind_param("i", $this->id);
+            $stmt->execute();
+            $this->contrasena = $stmt->get_result()->fetch_assoc()["contrasena"];
+        }
 
         $stmt = $this->conexion->prepare("
             UPDATE usuarios SET
@@ -165,11 +161,28 @@ class Usuario {
             $this->usuario,
             $this->email,
             $this->contrasena,
-            $this->imagen,
+            $newImage,
             $this->descripcion,
             $this->id
         );
 
+        if ($stmt->execute()) {
+            return [
+                "success" => true,
+                "message" => "Perfil actualizado correctamente",
+                "imagen" => $newImage
+            ];
+        }
+
+        return [
+            "success" => false,
+            "message" => "Error al actualizar el perfil"
+        ];
+    }
+
+    public function borrar($id) {
+        $stmt = $this->conexion->prepare("DELETE FROM usuarios WHERE id = ?");
+        $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
 }

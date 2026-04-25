@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    $usuario = "";
+
+    if (isset($_SESSION["auth"]["usuario"])) {
+        $usuario = $_SESSION["auth"]["usuario"];
+    }
+?>
+
 <!DOCTYPE html>
     <head>
         <title>RNK</title>
@@ -15,7 +25,8 @@
                 <li><a href="Index.html#factions">Facciones</a></li>
                 <li><a href="Index.html#gallery">Galeria</a></li>
                 <!--<li><a>Crear</a></li>-->
-                <li><a href="Paginas/login.php">Iniciar Sesión</a></li>
+                <li><a href="<?= isset($_SESSION["auth"]["usuario"]) ? "Paginas/dashboard.php" : "Paginas/login.php" ?>">
+                <?= $usuario === "" ? "Iniciar Sesión" : $usuario ?></a></li>
             </ul>
         </nav>
         <div class="video-container">

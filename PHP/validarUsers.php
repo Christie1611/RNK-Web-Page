@@ -25,7 +25,7 @@
             } else {
                 $errores["contrasena"] = "La contraseña no está definida";
             }
-        } elseif ($action === "registrar" || $action === "modificar") {
+        } elseif ($action === "registrar") {
             if (isset($_POST["usuario"])) {
                 $usuario = trim(strip_tags($_POST["usuario"]));
 
@@ -67,6 +67,36 @@
     }
     
     if ($action === "modificar") {
+        if (isset($_POST["usuario"])) {
+            $usuario = trim(strip_tags($_POST["usuario"]));
+
+            if ($usuario === "") {
+                $errores["usuario"] = "El usuario no puede estar vacío";
+            }
+        } else {
+            $errores["usuario"] = "El usuario no está definido";
+        }
+
+        if (isset($_POST["email"])) {
+            $email = trim(strip_tags($_POST["email"]));
+
+            if ($email === "") {
+                $errores["email"] = "El email no puede estar vacío";
+            } else {
+                $patron = "/^[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)?@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)?\.[a-z]{2,3}$/";
+
+                if (!preg_match($patron, $email)) {
+                    $errores["email"] = "El email no tiene el formato correcto.";
+                }
+            }
+        } else {
+            $errores["email"] = "El email no está definido";
+        }
+
+        if (!isset($_POST["contrasena"])) { // AQUÍ LA CONTRASEÑA ES OPCIONAL, RECUERDA
+            $errores["contrasena"] = "La contraseña no está definida";
+        }
+
         if (!isset($_POST["descripcion"])) { // RECUERDA QUE ESTO ES OPCIONAL, NO NECESITO COMPROBAR SI ESTÁ VACÍO
             $errores["descripcion"] = "La descripcion no está definida";
         }
@@ -87,11 +117,7 @@
                 }
             }
             
-        } else {
-            $errores["imagen"] = "La imagen no está definida";
         }
-    } else {
-        $errores["action"] = "Action no está definido";
     }
 
     $_SESSION["errores"] = $errores;

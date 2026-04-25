@@ -1,45 +1,44 @@
 const content = document.getElementById("mainContent");
 const menuItems = document.querySelectorAll(".divMenu li");
-const h2 = document.getElementById("user").textContent;
 
-// Guarda la sección hecha
+let previousSection = null;
+
+// Guarda la sección
+function setActiveMenu(section) {
+    menuItems.forEach(item => {
+        item.classList.toggle("active", item.dataset.section === section);
+    });
+}
+
 menuItems.forEach(item => {
     item.addEventListener("click", () => {
 
-        menuItems.forEach(i => i.classList.remove("active"));
-        item.classList.add("active");
-
         const section = item.dataset.section;
 
-        localStorage.setItem("currentSection", section);
+        if (section === "delete") {
+            loadSection("delete");
+            return;
+        }
 
+        localStorage.setItem("currentSection", section);
+        setActiveMenu(section);
         loadSection(section);
     });
 });
 
-const savedSection = localStorage.getItem("currentSection");
+const savedSection = localStorage.getItem("currentSection") || "profile";
+setActiveMenu(savedSection);
+loadSection(savedSection);
 
-if (savedSection) {
-    loadSection(savedSection);
-
-    menuItems.forEach(item => {
-        if (item.dataset.section === savedSection) {
-            item.classList.add("active");
-        } else {
-            item.classList.remove("active");
-        }
-    });
-
-} else {
-    loadSection("profile");
-}
 // ----------------------------------------------------
 
 // Lo que cargará las secciones.
 function loadSection(section) {
     switch(section) {
         case "home":
-            content.innerHTML = `<h1>Bienvenido</h1>`;
+            //content.innerHTML = `<h1>Bienvenido</h1>`;
+            localStorage.removeItem("currentSection");
+            window.location.href = "../Index.php";
             break;
 
         case "explore":
@@ -59,6 +58,7 @@ function loadSection(section) {
             break;
 
         case "delete":
+            previousSection = localStorage.getItem("currentSection") || "profile";
             showDeleteModal();
             break;
 
@@ -102,6 +102,8 @@ function loadProfile() {
 // Contenido para editar el perfil
 function loadEditForm() {
     const userImage = (userData.imagen && userData.imagen !== null) ? `../uploads/${userData.imagen}` : "../uploads/defaultImage.png";
+    const userDesc = (userData.descripcion && userData.descripcion !== null)  ? userData.descripcion : "";
+
     content.innerHTML = content.innerHTML = `
         <form action="../PHP/validarUsers.php" method="POST" enctype="multipart/form-data" class="form">
         <div class="profileCard">
@@ -134,13 +136,13 @@ function loadEditForm() {
 
                 <div class="formGroup">
                     <label>Contraseña</label>
-                    <input type="password" name="contrasena" placeholder="Contraseña" value="${userData.contrasena}" required>
+                    <input type="password" name="contrasena" placeholder="Nueva contraseña (OPCIONAL)">
                     <span class="error" id="error-contrasena"></span>
                 </div>
 
                 <div class="formGroup">
                     <label>Descripción</label>
-                    <textarea name="descripcion" placeholder="Opcional">${userData.descripcion}</textarea>
+                    <textarea name="descripcion" placeholder="Añadir descripción, (Opcional)">${userDesc}</textarea>
                     <span class="error" id="error-descripcion"></span>
                 </div>
             </div>
@@ -187,19 +189,55 @@ function previewImage() {
 
 // BOTÓN DE BORRAR
 function showDeleteModal() {
-    const modal = document.createElement("div");
 
+    const modal = document.createElement("div");
     modal.classList.add("modal");
 
     modal.innerHTML = `
         <div class="modalBox">
-            <p>¿Seguro que quieres borrar tu cuenta?</p>
-            <button id="cancel">Cancelar</button>
-            <button id="confirm" class="danger">Eliminar</button>
+            <form action="../PHP/eliminar.php?id=${userData.id}" method="POST">
+                <p class="warning">¡ATENCIÓN!</p>
+                <p>¿Seguro/a que quieres borrar tu cuenta?</p>
+                <input type="submit" id="cancel" value="Cancelar">
+                <input type="submit" id="confirm" class="danger" value="Eliminar">
+            </form>
         </div>
     `;
 
     document.body.appendChild(modal);
 
-    document.getElementById("cancel").onclick = () => modal.remove();
+    document.getElementById("cancel").onclick = () => {
+
+        modal.remove();
+
+        // Restaura a la sección anterior, acúerdate porfavor..
+        localStorage.setItem("currentSection", previousSection);
+
+        setActiveMenu(previousSection);
+        loadSection(previousSection);
+    };
+}
+
+// MENSAJE PARA LOS FORMUARIOS
+// Nota personal, NUNCA usar DOMContentLoaded PORQUE POR ALGÚN MOTIVO NO ME FUNCIONA. Solo ponlo todo al final.
+document.querySelectorAll(".flash").forEach(flash => {
+    setTimeout(() => removeFlash(flash), 4000);
+});
+
+document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".flashClose");
+    if (!btn) return;
+
+    const flash = btn.closest(".flash");
+    if (!flash) return;
+
+    removeFlash(flash);
+});
+
+function removeFlash(flash) {
+    flash.classList.add("hide");
+
+    setTimeout(() => {
+        flash.remove();
+    }, 400);
 }

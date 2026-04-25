@@ -120,12 +120,13 @@ export const who = `
     al mercado. Aquí te contaremos una pequeña sinopsis sobre lo que consiste, verás una galería de imágenes sobre algunos de 
     los paneles más icónicos del manga, y podrás leer información sobre las distintas facciones que conviven en este mundo. 
     Detallaremos un poco sobre el trasfondo de cada facción y pondremos algunos de los Reencarnados que pertenecen a cada una de 
-    estas. Con los miembros habrá una descripción de su personaje y se hablará del Talento que poseen.
+    estas. Con los miembros habrá una descripción de su personaje y se hablará del Talento que poseen. Si te preguntas qué son los 
+    "Reencarnados" o los "Talentos", siempre puedes darle click al ícono que está en la parte inferior derecha, el cuál te 
+    explicará sobre algunos de los Términos más comunes dentro de la obra; de esta forma, nos será posible mostrar lo extenso y 
+    profundo que es el lore de esta historia.
 </p><br>
 <p>
-    Si te preguntas qué son los "Reencarnados" o los "Talentos", siempre puedes darle click al ícono que está en la
-    parte inferior derecha, el cuál te explicará sobre algunos de los Términos más comunes dentro de la obra; de esta forma,
-    nos será posible mostrar lo extenso y profundo que es el lore de esta historia.
+    Esta es una página hecha de una fan para fans, no se tiene ninguna intención de lucro.
 </p><br>
 <div><img src="Imagenes/RNKportada.png"></div>
 ` 
