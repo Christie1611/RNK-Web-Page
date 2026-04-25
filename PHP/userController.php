@@ -57,7 +57,7 @@ class UsuarioController {
         if ($res) {
             $_SESSION["flash"] = [
                 "type" => "success",
-                "message" => "Bienvenido " . $res["usuario"]
+                "message" => "Bienvenido/a " . $res["usuario"]
             ];
 
             $_SESSION["auth"] = $res;

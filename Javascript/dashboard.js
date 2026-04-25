@@ -20,6 +20,11 @@ menuItems.forEach(item => {
             return;
         }
 
+        if (section === "logout") {
+            loadSection("logout");
+            return;
+        }
+
         localStorage.setItem("currentSection", section);
         setActiveMenu(section);
         loadSection(section);
@@ -63,8 +68,8 @@ function loadSection(section) {
             break;
 
         case "logout":
-            localStorage.removeItem("currentSection");
-            window.location.href = "logout.php";
+            previousSection = localStorage.getItem("currentSection") || "profile";
+            showLogoutModal();
             break;
     }
 }
@@ -106,45 +111,43 @@ function loadEditForm() {
 
     content.innerHTML = content.innerHTML = `
         <form action="../PHP/validarUsers.php" method="POST" enctype="multipart/form-data" class="form">
-        <div class="profileCard">
-
-            <div class="profileLeft">
-                <label>Imagen de perfil</label>
-                <input type="hidden" name="action" value="modificar">
-                
-                <div class="previewContainer">
-                    <img class="profileImage" id="previewImage" src="${userImage}" alt="preview">
-                </div>
-                
-                <input type="file" name="imagen" id="fileInput" accept="image/*">
-                
-                <input type="submit" value="Guardar cambios">
-            </div>
-
-            <div class="profileRight">
-                <div class="formGroup">
-                    <label>Usuario</label>
-                    <input type="text" name="usuario" placeholder="Usuario" value="${userData.usuario}">
-                    <span class="error" id="error-usuario"></span>
+            <div class="profileCard">
+                <div class="profileLeft">
+                    <!--<label>Imagen de perfil</label>-->
+                    <input type="hidden" name="action" value="modificar">
+                    
+                    <div class="previewContainer">
+                        <img class="profileImage" id="previewImage" src="${userImage}" alt="preview">
+                        <input type="file" name="imagen" id="fileInput" accept="image/*" hidden>
+                    </div>
+                    
+                    <input type="submit" value="Guardar cambios">
                 </div>
 
-                <div class="formGroup">
-                    <label>Email</label>
-                    <input type="text" name="email" placeholder="Email" value="${userData.email}" required>
-                    <span class="error" id="error-email"></span>
-                </div>
+                <div class="profileRight">
+                    <div class="formGroup">
+                        <label>Usuario</label>
+                        <input type="text" name="usuario" placeholder="Usuario" value="${userData.usuario}">
+                        <span class="error" id="error-usuario"></span>
+                    </div>
 
-                <div class="formGroup">
-                    <label>Contraseña</label>
-                    <input type="password" name="contrasena" placeholder="Nueva contraseña (OPCIONAL)">
-                    <span class="error" id="error-contrasena"></span>
-                </div>
+                    <div class="formGroup">
+                        <label>Email</label>
+                        <input type="text" name="email" placeholder="Email" value="${userData.email}" required>
+                        <span class="error" id="error-email"></span>
+                    </div>
 
-                <div class="formGroup">
-                    <label>Descripción</label>
-                    <textarea name="descripcion" placeholder="Añadir descripción, (Opcional)">${userDesc}</textarea>
-                    <span class="error" id="error-descripcion"></span>
-                </div>
+                    <div class="formGroup">
+                        <label>Contraseña</label>
+                        <input type="password" name="contrasena" placeholder="Nueva contraseña (OPCIONAL)">
+                        <span class="error" id="error-contrasena"></span>
+                    </div>
+
+                    <div class="formGroup">
+                        <label>Descripción</label>
+                        <textarea name="descripcion" placeholder="Añadir descripción, (Opcional)">${userDesc}</textarea>
+                        <span class="error" id="error-descripcion"></span>
+                    </div>
             </div>
         </form>
     `;
@@ -158,6 +161,12 @@ function loadEditForm() {
     });
 
     previewImage();
+    const img = document.getElementById("previewImage");
+    const input = document.getElementById("fileInput");
+
+    img.addEventListener("click", () => {
+        input.click();
+    });
 }
 // ----------------------------------------------------
 
@@ -187,35 +196,60 @@ function previewImage() {
     });
 }
 
-// BOTÓN DE BORRAR
-function showDeleteModal() {
+// BOTÓN DE CERRAR SESIÓN / BORRAR
+function showLogoutModal() {
+    showModal(
+        "logout",
+        "¿Seguro/a que quieres cerrar sesión?",
+        () => {
+            localStorage.removeItem("currentSection");
+            window.location.href = "logout.php";
+        }
+    );
+}
 
+function showDeleteModal() {
+    showModal(
+        "delete",
+        "¿Seguro/a que quieres borrar tu cuenta?",
+        () => {
+            window.location.href = `../PHP/eliminar.php?id=${userData.id}`;
+        }
+    );
+}
+
+function showModal(type, message, onConfirm) {
     const modal = document.createElement("div");
     modal.classList.add("modal");
+    const isDelete = type === "delete";
 
     modal.innerHTML = `
         <div class="modalBox">
-            <form action="../PHP/eliminar.php?id=${userData.id}" method="POST">
-                <p class="warning">¡ATENCIÓN!</p>
-                <p>¿Seguro/a que quieres borrar tu cuenta?</p>
-                <input type="submit" id="cancel" value="Cancelar">
-                <input type="submit" id="confirm" class="danger" value="Eliminar">
-            </form>
+            <p class="warning">${isDelete ? "¡ATENCIÓN!" : "Confirmación"}</p>
+            <p>${message}</p>
+
+            <button class="cancel">Cancelar</button>
+            <button class="confirm ${isDelete ? "danger" : ""}">
+                ${isDelete ? "Eliminar" : "Aceptar"}
+            </button>
         </div>
     `;
 
     document.body.appendChild(modal);
+    const cancelBtn = modal.querySelector(".cancel");
+    const confirmBtn = modal.querySelector(".confirm");
 
-    document.getElementById("cancel").onclick = () => {
-
+    cancelBtn.addEventListener("click", () => {
         modal.remove();
+    });
 
-        // Restaura a la sección anterior, acúerdate porfavor..
+    confirmBtn.addEventListener("click", () => {
+        modal.remove();
+        if (onConfirm) onConfirm();
         localStorage.setItem("currentSection", previousSection);
-
         setActiveMenu(previousSection);
         loadSection(previousSection);
-    };
+    });
 }
 
 // MENSAJE PARA LOS FORMUARIOS

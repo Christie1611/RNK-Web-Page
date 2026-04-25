@@ -3,6 +3,7 @@
     $old = [];
     $errores = [];
     $error = "";
+    $mensaje = "";
 
     if (isset($_GET["error"])) {
         $error = $_GET["error"];
@@ -16,6 +17,11 @@
     if (isset($_SESSION["errores"])) {
         $errores = $_SESSION["errores"];
         unset($_SESSION["errores"]);
+    }
+
+    if (isset($_SESSION["flash"]["message"])) {
+        $mensaje = $_SESSION["flash"]["message"];
+        unset($_SESSION["flash"]["message"]);
     }
 
 ?>
@@ -41,10 +47,7 @@
                         <div class="formGroup">
                             <h1 class="titForm">Inicio de Sesión</h1>
                             <span class="error">
-                                <?php if ($error === "login") {
-                                    echo "Usuario o contraseña incorrectos";
-                                    // header('Refresh: 1.5; URL=login.php');
-                                }?>
+                                <?= $mensaje ?>
                             </span>
                         </div>
                         <input type="hidden" name="action" value="login">

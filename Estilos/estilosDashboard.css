@@ -49,6 +49,7 @@ html {
     border-radius: 15px;
     border: 2px solid #8B0E27;
     box-shadow: 0 0 15px #8B0E27;
+    transition: 0.2s ease;
 }
 
 .profileRight {
@@ -112,11 +113,14 @@ html {
                 0 0 40px rgb(139, 14, 39), 0 0 80px rgb(139, 14, 39);
 }
 
-input[type=submit] {
+.cancel, .confirm {
+    width: 100%;
+    font-family: "Agency FB", sans-serif;;
     border: 1px solid #8B0E27;
     border-radius: 6px;
     font-size: 25px;
     padding: 8px;
+    margin-bottom: 10px;
     color: #F5F5F5;
     background-color: #000000;
     box-shadow:
@@ -127,7 +131,7 @@ input[type=submit] {
     background-image: linear-gradient(to bottom , black, black, #303030, black, black);*/
 }
 
-input[type=submit]:hover {
+.cancel:hover, .confirm:hover {
     cursor: pointer;
     color: #ffffff;
     border-color: #586A6A;
@@ -197,6 +201,12 @@ input[type=submit]:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.previewContainer .profileImage:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    /*transform: scale(1.02); Me tienta... */
 }
 
 /* ------------------- Mensaje al cambiar el formulario ------------------------ */

@@ -118,7 +118,8 @@ class Usuario {
         $stmt = $this->conexion->prepare("SELECT imagen FROM usuarios WHERE id = ?");
         $stmt->bind_param("i", $this->id);
         $stmt->execute();
-        $user = $stmt->get_result()->fetch_assoc();
+        $res = $stmt->get_result();
+        $user = $res->fetch_assoc();
 
         $oldImage = $user["imagen"];
         $newImage = $oldImage;
@@ -134,8 +135,11 @@ class Usuario {
             }
 
             move_uploaded_file($file["tmp_name"], $path);
+
             $newImage = $fileName;
         }
+
+        $this->imagen = $newImage;
 
         if (!empty($this->contrasena)) {
             $this->contrasena = password_hash($this->contrasena, PASSWORD_DEFAULT);
@@ -161,7 +165,7 @@ class Usuario {
             $this->usuario,
             $this->email,
             $this->contrasena,
-            $newImage,
+            $this->imagen,
             $this->descripcion,
             $this->id
         );
