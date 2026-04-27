@@ -160,94 +160,193 @@ function loadEditForm() {
         </form>
     `;
 
-    Object.keys(userErrors).forEach(key => {
-        const errorElement = document.querySelector(`#error-${key}`);
 
-        if (errorElement && userErrors[key]) {
-            errorElement.textContent = userErrors[key];
-        }
-    });
-
+    inputImage();
     previewImage();
-    const img = document.getElementById("previewImage");
-    const input = document.getElementById("fileInput");
-
-    img.addEventListener("click", () => {
-        input.click();
-    });
+    paintErrors();
 }
 // ----------------------------------------------------
 
 // Contenido para editar el perfil
 function loadReenForm() {
-    const userImage = (userData.imagen && userData.imagen !== null) ? `../uploads/${userData.imagen}` : "../uploads/defaultImage.png";
-    const userDesc = (userData.descripcion && userData.descripcion !== null)  ? userData.descripcion : "";
+    const reenImage = (reenDataOld.diseno && reenDataOld.diseno !== null) ? `../uploads/${reenDataOld.diseno}` : "../uploads/defaultImage.png";
 
     content.innerHTML = content.innerHTML = `
-        <form action="../PHP/validarUsers.php" method="POST" enctype="multipart/form-data" class="form">
+        <form action="../PHP/validarReen.php" method="POST" enctype="multipart/form-data" class="form">
             <div class="profileCard">
+
                 <div class="profileLeft">
-                
                     <h2 class="titForm">Reencarnado</h2>
-                    <input type="hidden" name="action" value="modificar">
-                    
+                    <input type="hidden" name="action" value="insertar">
+
                     <div class="previewContainer">
-                        <img class="profileImage" id="previewImage" src="${userImage}" alt="preview">
-                        <input type="file" name="imagen" id="fileInput" accept="image/*" hidden>
+                        <img class="profileImage" id="previewImage" src="${reenImage}">
+                        <input type="file" name="diseno" id="fileInput" accept="image/*" hidden>
                     </div>
-                    
+
                     <div class="formGroup">
-                        <span class="error errimage" id="error-imagen"></span>
-                        <input type="submit" value="Guardar cambios">
+                        <span class="error errimage" id="error-diseno"></span>
+                        <input type="submit" value="Crear personaje">
                     </div>
                 </div>
 
                 <div class="profileRight">
                     <div class="formGroup">
-                        <label>Usuario</label>
-                        <input type="text" name="usuario" placeholder="Usuario" value="${userData.usuario}">
-                        <span class="error" id="error-usuario"></span>
+                        <label>Nombre</label>
+                        <input type="text" name="nombre" value="${reenDataOld?.nombre || ""}">
+                        <span class="error" id="error-nombre"></span>
                     </div>
 
                     <div class="formGroup">
-                        <label>Email</label>
-                        <input type="text" name="email" placeholder="Email" value="${userData.email}" required>
-                        <span class="error" id="error-email"></span>
+                        <label>Facción</label>
+                        <select name="idfaccion">
+                            <option value=""></option>
+                            <option value="1" ${reenDataOld?.idfaccion == 1 ? "selected" : ""}>Forest</option>
+                            <option value="2" ${reenDataOld?.idfaccion == 2 ? "selected" : ""}>Sinners</option>
+                            <option value="3" ${reenDataOld?.idfaccion == 3 ? "selected" : ""}>Strays</option>
+                            <option value="4" ${reenDataOld?.idfaccion == 4 ? "selected" : ""}>Others</option>
+                        </select>
+                        <span class="error" id="error-idfaccion"></span>
                     </div>
 
                     <div class="formGroup">
-                        <label>Contraseña</label>
-                        <input type="password" name="contrasena" placeholder="Nueva contraseña (OPCIONAL)">
-                        <span class="error" id="error-contrasena"></span>
+                        <label>Trasfondo</label>
+                        <textarea name="trasfondo">${reenDataOld?.trasfondo || ""}</textarea>
+                        <span class="error" id="error-trasfondo"></span>
                     </div>
 
-                    <div class="formGroup">
-                        <label>Descripción</label>
-                        <textarea name="descripcion" placeholder="Añadir descripción, (Opcional)">${userDesc}</textarea>
-                        <span class="error" id="error-descripcion"></span>
+                    <div id="talentosContainer">
+                        <div class="talentoItem">
+                            <div class="formGroup">
+                                <label>Talento</label>
+                                <input type="text" name="talento[]" placeholder="Nombre del talento">
+                                <textarea name="descripcionTalento[]" placeholder="Descripción (Opcional)"></textarea>
+                                
+                                <span class="error error-talento"></span>
+
+                                <button type="button" class="removeTalento">Eliminar</button>
+                            </div>
+                        </div>
                     </div>
+
+                    <button type="button" id="addTalento">+ Añadir talento</button>
+                </div>
+
             </div>
         </form>
     `;
 
-    Object.keys(userErrors).forEach(key => {
+Object.keys(reenErrors).forEach(key => {
+    if (key.startsWith("talento_")) {
+        const index = key.split("_")[1];
+        const items = document.querySelectorAll(".talentoItem");
+
+        if (items[index]) {
+            const errorSpan = items[index].querySelector(".error-talento");
+            if (errorSpan) {
+                errorSpan.textContent = reenErrors[key];
+            }
+        }
+    } else {
         const errorElement = document.querySelector(`#error-${key}`);
 
-        if (errorElement && userErrors[key]) {
-            errorElement.textContent = userErrors[key];
+        if (errorElement && reenErrors[key]) {
+            errorElement.textContent = reenErrors[key];
         }
+    }
+});
+
+    inputImage();
+    previewImage();
+    rebuildTalentos();
+    talentosHandler(); 
+    paintErrors();
+}
+// ----------------------------------------------------
+
+// LOS ENCARGADOS DE LOS TALENTOS
+function talentosHandler() {
+    const container = document.getElementById("talentosContainer");
+    const addBtn = document.getElementById("addTalento");
+
+    addBtn.addEventListener("click", () => {
+        const div = document.createElement("div");
+        div.classList.add("talentoItem");
+
+        div.innerHTML = `
+            <div class="formGroup">
+                <label>Talento</label>
+                <input type="text" name="talento[]" placeholder="Nombre del talento">
+                <textarea name="descripcionTalento[]" placeholder="Descripción (Opcional)"></textarea>
+                <span class="error error-talento"></span>
+                <button type="button" class="removeTalento">Eliminar</button>
+            </div>
+        `;
+
+        container.appendChild(div);
     });
 
-    previewImage();
-    const img = document.getElementById("previewImage");
-    const input = document.getElementById("fileInput");
+    container.addEventListener("click", (e) => {
+        if (e.target.classList.contains("removeTalento")) {
 
-    img.addEventListener("click", () => {
-        input.click();
+            if (container.children.length > 1) {
+                e.target.closest(".talentoItem").remove();
+            }
+        }
+    });
+}
+
+function rebuildTalentos() {
+    const container = document.getElementById("talentosContainer");
+
+    if (!reenDataOld?.talentos || reenDataOld.talentos.length === 0) return;
+
+    if (reenDataOld?.talentos?.length) {
+        container.innerHTML = "";
+    }
+
+    reenDataOld.talentos.forEach(t => {
+        const div = document.createElement("div");
+        div.classList.add("talentoItem");
+
+        div.innerHTML = `
+            <div class="formGroup">
+                <label>Talento</label>
+                <input type="text" name="talento[]" value="${t.talento || ""}" placeholder="Nombre del talento">
+                <textarea name="descripcionTalento[]" placeholder="Descripción (Opcional)">${t.descripcion || ""}</textarea>
+                <span class="error error-talento"></span>
+                <button type="button" class="removeTalento">Eliminar</button>
+            </div>
+        `;
+
+        container.appendChild(div);
     });
 }
 // ----------------------------------------------------
 
+function paintErrors() {
+    Object.keys(reenErrors).forEach(key => {
+
+        if (key.startsWith("talento_")) {
+            const index = key.split("_")[1];
+            const items = document.querySelectorAll(".talentoItem");
+
+            if (items[index]) {
+                const errorSpan = items[index].querySelector(".error-talento");
+                if (errorSpan) {
+                    errorSpan.textContent = reenErrors[key];
+                }
+            }
+
+        } else {
+            const errorElement = document.querySelector(`#error-${key}`);
+
+            if (errorElement && reenErrors[key]) {
+                errorElement.textContent = reenErrors[key];
+            }
+        }
+    });
+}
 
 // PREVIEW DE IMAGEN
 function previewImage() {
@@ -272,6 +371,15 @@ function previewImage() {
         }
 
         reader.readAsDataURL(file);
+    });
+}
+
+function inputImage() {
+    const img = document.getElementById("previewImage");
+    const input = document.getElementById("fileInput");
+
+    img.addEventListener("click", () => {
+        input.click();
     });
 }
 

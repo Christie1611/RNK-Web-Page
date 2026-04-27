@@ -3,6 +3,8 @@
     $errores = [];
 
     if (isset($_POST["action"])) {
+        $action = trim(strip_tags($_POST["action"]));
+
         if (isset($_POST["nombre"])) {
             $nombre = trim(strip_tags($_POST["nombre"]));
 
@@ -41,14 +43,28 @@
             $errores["idfaccion"] = "La facción no está definida";
         }
 
-        if (isset($_POST["transfondo"])) {
-            $transfondo = trim(strip_tags($_POST["transfondo"]));
+        if (isset($_POST["trasfondo"])) {
+            $trasfondo = trim(strip_tags($_POST["trasfondo"]));
 
-            if ($transfondo === "") {
-                $errores["transfondo"] = "El transfondo no puede estar vacío";
+            if ($trasfondo === "") {
+                $errores["trasfondo"] = "El trasfondo no puede estar vacío";
             } 
         } else {
-            $errores["transfondo"] = "El transfondo no está definido";
+            $errores["trasfondo"] = "El trasfondo no está definido";
+        }
+
+        if (isset($_POST["talento"])) {
+            $talentos = $_POST["talento"];
+            $descripciones = $_POST["descripcionTalento"]; //LA DESCRIPCIÓN ES OPCIONAL, NO NECESITA VALIDACIÓN
+
+            foreach ($talentos as $i => $talento) {
+                $talento = trim(strip_tags($talento));
+                $descripcion = trim(strip_tags($descripciones[$i] ?? ""));
+
+                if ($talento === "") {
+                    $errores["talento_$i"] = "El talento no puede estar vacío";
+                }
+            }
         }
 
         /* if (isset($_POST["idusuario"])) {
@@ -64,15 +80,31 @@
         $errores["action"] = "Action no está definido";
     }
 
-    $_SESSION["errores"] = $errores;
+    $_SESSION["erroresReen"] = $errores;
 
-    if (array_filter($_SESSION["errores"])) {
-        $_SESSION["old"] = trim(strip_tags($_POST));
+    if (array_filter($_SESSION["erroresReen"])) {
+        $talentosOld = [];
+
+        if (isset($_POST["talento"])) {
+            foreach ($_POST["talento"] as $i => $t) {
+                $talentosOld[] = [
+                    "talento" => trim(strip_tags($t)),
+                    "descripcion" => trim(strip_tags($_POST["descripcionTalento"][$i] ?? ""))
+                ];
+            }
+        }
+
+        $_SESSION["oldReen"] = [
+            "nombre" => $_POST["nombre"] ?? "",
+            "idfaccion" => $_POST["idfaccion"] ?? "",
+            "trasfondo" => $_POST["trasfondo"] ?? "",
+            "talentos" => $talentosOld
+        ];
+
         header("Location: ../Paginas/dashboard.php");
         exit;
-
     } else {
-        require_once "userController.php";
+        require_once "reenController.php";
         $reencarnado = new ReenController();
 
         if ($action === "insertar") {

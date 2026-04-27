@@ -126,7 +126,10 @@
 
     if (array_filter($_SESSION["errores"])) {
 
-        $_SESSION["old"] = trim(strip_tags($_POST));
+       // $_SESSION["old"] = trim(strip_tags($_POST));
+       $_SESSION["old"] = array_map(function($value) {
+            return is_string($value) ? trim(strip_tags($value)) : $value;
+        }, $_POST);
 
         if ($action === "login") {
             header("Location: ../Paginas/login.php");

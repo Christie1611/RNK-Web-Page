@@ -14,7 +14,7 @@ class Reencarnado {
         $this->idreencarnado = $idreencarnado;
         $this->nombre = $nombre;
         $this->diseno = $diseno;
-        this->idfaccion = $idfaccion;
+        $this->idfaccion = $idfaccion;
         $this->trasfondo = $trasfondo;
         $this->idusuario = $idusuario;
 
@@ -34,23 +34,60 @@ class Reencarnado {
         }
     }
 
-    public function insertar() {
-        $stmt->bind_param("i", $last_id);
-        $stmt->execute();
-        $res = $stmt->get_result();
+    public function insertar($file = null, $talentos = [], $descripciones = []) {
+        $newImage = null;
 
-        if ($fila = $res->fetch_assoc()) {
+        if ($file && $file["error"] === UPLOAD_ERR_OK) {
+            $folder = "../reen/";
+            $fileName = time() . "_" . basename($file["name"]);
+            move_uploaded_file($file["tmp_name"], $folder . $fileName);
+            $newImage = $fileName;
+        }
+
+        $stmt = $this->conexion->prepare("
+            INSERT INTO reencarnados (nombre, diseno, idfaccion, trasfondo, idusuario)
+            VALUES (?, ?, ?, ?, ?)
+        ");
+
+        $stmt->bind_param(
+            "ssisi",
+            $this->nombre,
+            $newImage,
+            $this->idfaccion,
+            $this->trasfondo,
+            $this->idusuario
+        );
+
+        if ($stmt->execute()) {
+            $idReen = $this->conexion->insert_id;
+
+            if (!empty($talentos)) {
+                $stmtTal = $this->conexion->prepare("
+                    INSERT INTO talentos (idreencarnado, talento, descripcion)
+                    VALUES (?, ?, ?)
+                ");
+
+                foreach ($talentos as $i => $tal) {
+                    $tal = trim(strip_tags($tal));
+                    $desc = trim(strip_tags($descripciones[$i] ?? ""));
+
+                    if ($tal !== "") {
+                        $stmtTal->bind_param("iss", $idReen, $tal, $desc);
+                        $stmtTal->execute();
+                    }
+                }
+            }
+
             return [
-                "idreencarnado" => $fila["idreencarnado"],
-                "nombre" => $fila["nombre"],
-                "diseno" => $fila["diseno"],
-                "idfaccion" => $fila["idfaccion"],
-                "trasfondo" => $fila["trasfondo"],
-                "idusuario" => $fila["idusuario"]
+                "success" => true,
+                "message" => "Reencarnado creado correctamente"
             ];
         }
 
-        return false;
+        return [
+            "success" => false,
+            "message" => "Error al crear el Reencarnado"
+        ];
     }
 
     public function listar() {
@@ -58,7 +95,7 @@ class Reencarnado {
         return mysqli_query($this->conexion, $sql);
     }
 
-    public function modificar($file = null) {
+    public function modificar($file = null, $talentos = [], $descripciones = []) {
         $stmt = $this->conexion->prepare("SELECT diseno FROM reencarnados WHERE idreencarnado = ?");
         $stmt->bind_param("i", $this->idreencarnado);
         $stmt->execute();

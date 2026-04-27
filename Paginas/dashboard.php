@@ -4,9 +4,28 @@
 
     $user = new UsuarioController();
 
+    $erroresUsers = [];
+    $reenDataOld = [];
+    $erroresRen = [];
+
     if (!isset($_SESSION["auth"])) {
-        header("Location: login.php");
+        header("Location: ../index.php");
         exit;
+    }
+
+    if (isset($_SESSION["errores"])) {
+        $erroresUsers = $_SESSION["errores"];
+        unset($_SESSION["errores"]);
+    }
+
+    if (isset($_SESSION["oldReen"])) {
+        $reenDataOld = $_SESSION["oldReen"];
+        unset($_SESSION["oldReen"]);
+    }
+
+    if (isset($_SESSION["erroresReen"])) {
+        $erroresRen = $_SESSION["erroresReen"];
+        unset($_SESSION["erroresReen"]);
     }
 
     $id = $_SESSION["auth"]["id"];
@@ -14,12 +33,7 @@
 
     $res = $user->listarReencarnados($id);
 
-    $errores = "";
-
-    if (isset($_SESSION["errores"])) {
-        $errores = $_SESSION["errores"];
-        unset($_SESSION["errores"]);
-    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -68,8 +82,9 @@
     </body>
     <script>
         const userData = <?= json_encode($_SESSION["auth"]); ?>;
-        const userErrors = <?= json_encode($errores); ?>;
+        const userErrors = <?= json_encode($erroresUsers); ?>;
         const userReen = <?= json_encode($res); ?>;
-       
+        const reenDataOld = <?= json_encode($reenDataOld); ?>;
+        const reenErrors = <?= json_encode($erroresRen); ?>;
     </script>
 </html>

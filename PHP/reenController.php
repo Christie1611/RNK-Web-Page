@@ -2,43 +2,37 @@
 require_once "reen.php";
 
 class ReenController {
-    public function registrar() {
+    public function insertar() {
         session_start();
 
-        $usuario = new Usuario(
+        $idusuario = $_SESSION["auth"]["id"];
+
+        $reen = new Reencarnado(
             null,
-            $_POST['usuario'],
-            $_POST['email'],
-            password_hash($_POST['contrasena'], PASSWORD_DEFAULT)
+            $_POST["nombre"],
+            null,
+            $_POST["idfaccion"],
+            $_POST["trasfondo"],
+            $idusuario
         );
 
-        $res = $usuario->registrar();
+        $res = $reen->insertar($_FILES["diseno"] ?? null,
+                                $_POST["talento"] ?? [], 
+                                $_POST["descripcionTalento"] ?? []);
 
-        if ($res) {
+        if ($res["success"]) {
             $_SESSION["flash"] = [
                 "type" => "success",
-                "message" => "Usuario registrado correctamente"
+                "message" => "Reencarnado creado correctamente"
             ];
-
-            $_SESSION["auth"] = [
-                "id" => $res["id"],
-                "usuario" => $res["usuario"],
-                "email" => $res["email"],
-                "contrasena" => $res["contrasena"],
-                "imagen" => $res["imagen"],
-                "descripcion" => $res["descripcion"]
+        } else {
+            $_SESSION["flash"] = [
+                "type" => "error",
+                "message" => $res["message"]
             ];
-
-            header("Location: ../Paginas/dashboard.php");
-            exit;
         }
 
-        $_SESSION["flash"] = [
-            "type" => "error",
-            "message" => "El correo ya está registrado"
-        ];
-
-        header("Location: ../Paginas/register.php");
+        header("Location: ../Paginas/dashboard.php");
         exit;
     }
 
