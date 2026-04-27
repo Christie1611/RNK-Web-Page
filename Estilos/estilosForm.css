@@ -1,3 +1,8 @@
+.titForm {
+    text-shadow: 0 5px #8b0e27, 0 0 10px rgb(139, 14, 39), 0 0 20px rgb(139, 14, 39),
+                0 0 40px rgb(139, 14, 39), 0 0 80px rgb(139, 14, 39);
+}
+
 .formGroup {
     display: flex;
     flex-direction: column;
@@ -14,6 +19,10 @@
     font-size: 14px;
     margin-top: 4px;
     min-height: 18px;
+}
+
+.errimage {
+    margin: 0px auto 10px;
 }
 
 .message{

@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+    $usuario = "";
+
+    if (isset($_SESSION["auth"]["usuario"])) {
+        $usuario = $_SESSION["auth"]["usuario"];
+    }
+?>
+
 <!DOCTYPE html>
     <head>
         <title>RNK</title>
@@ -10,21 +20,22 @@
     <body id="strays" data-page="strays">
         <section class="layout">
             <div class="divMenu">
-                <a href="../Index.html#index"><img src="../Imagenes/RNKLogo.png" alt=""></a>
+                <a href="../Index.php#index"><img src="../Imagenes/RNKLogo.png" alt=""></a>
                 <!--<p class="cite">"Death is not the end"</p>-->
                 <ul class="menu">
-                    <li><a href="../Index.html#story">Historia</a></li>
+                    <li><a href="../Index.php#story">Historia</a></li>
                     <li>
                         <a href="#">Facciones</a>
                         <ul class="submenu">
-                            <li><a href="Forest.html" class="forest-link">Greats</a></li>
-                            <li><a href="Sinners.html" class="sinners-link">Sinners</a></li>
+                            <li><a href="Forest.php" class="forest-link">Greats</a></li>
+                            <li><a href="Sinners.php" class="sinners-link">Sinners</a></li>
                             <li><a href="#" class="strays-link">Strays</a></li>
-                            <li><a href="Others.html" class="others-link">Others</a></li>
+                            <li><a href="Others.php" class="others-link">Others</a></li>
                         </ul>
                     </li>
-                    <li><a href="../Index.html#gallery">Galeria</a></li>
-                    <li><a href="login.php">Iniciar Sesión</a></li>
+                    <li><a href="../Index.php#gallery">Galeria</a></li>
+                    <li><a href="<?= isset($_SESSION["auth"]["usuario"]) ? "dashboard.php" : "login.php" ?>">
+                    <?= $usuario === "" ? "Iniciar Sesión" : $usuario ?></a></li>
                 </ul>
                 <div class="copyright">&#169; Mikihisa Konishi / Mag Garden&#x2022;Comité de Producción de <br>"Reincarnation no Kaben"</div>
             </div>

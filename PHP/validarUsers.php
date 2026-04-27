@@ -117,6 +117,8 @@
                 }
             }
             
+        } else {
+            $errores["imagen"] = "La imagen no está definida";
         }
     }
 

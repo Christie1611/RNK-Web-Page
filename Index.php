@@ -21,9 +21,9 @@
             <ul class="menu">
                 <!--<li><a href="">&#9654;</a></li>-->
                 <li class="whoAreWe">¿?</li>
-                <li><a href="Index.html#story">Historia</a></li>
-                <li><a href="Index.html#factions">Facciones</a></li>
-                <li><a href="Index.html#gallery">Galeria</a></li>
+                <li><a href="Index.php#story">Historia</a></li>
+                <li><a href="Index.php#factions">Facciones</a></li>
+                <li><a href="Index.php#gallery">Galeria</a></li>
                 <!--<li><a>Crear</a></li>-->
                 <li><a href="<?= isset($_SESSION["auth"]["usuario"]) ? "Paginas/dashboard.php" : "Paginas/login.php" ?>">
                 <?= $usuario === "" ? "Iniciar Sesión" : $usuario ?></a></li>
@@ -70,24 +70,24 @@
         <section id="content">
             <div class="sect">
                 <div class="cont">
-                    <a href="Paginas/Forest.html">
+                    <a href="Paginas/Forest.php">
                         <div class="reen forest">
                             <div class="textreen">Greats</div>
                         </div>
                     </a>
-                    <a href="Paginas/Sinners.html">
+                    <a href="Paginas/Sinners.php">
                         <div class="reen sinners">
                             <div class="textreen">Sinners</div>
                         </div>
                     </a>
                 </div>
                 <div class="cont">
-                    <a href="Paginas/Strays.html">
+                    <a href="Paginas/Strays.php">
                         <div class="reen strays">
                             <div class="textreen">Strays</div>
                         </div>
                     </a>
-                    <a href="Paginas/Others.html">
+                    <a href="Paginas/Others.php">
                         <div class="reen others">
                             <div class="textreen">Others</div>
                         </div>

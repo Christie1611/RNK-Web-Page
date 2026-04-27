@@ -125,7 +125,6 @@ class Usuario {
         $newImage = $oldImage;
 
         if ($file && $file["error"] === UPLOAD_ERR_OK) {
-
             $folder = "../uploads/";
             $fileName = time() . "_" . basename($file["name"]);
             $path = $folder . $fileName;
@@ -185,6 +184,26 @@ class Usuario {
     }
 
     public function borrar($id) {
+        $stmt = $this->conexion->prepare("SELECT imagen FROM usuarios WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $res = $stmt->get_result();
+
+        if ($res->num_rows === 0) {
+            return false;
+        }
+
+        $user = $res->fetch_assoc();
+        $imagen = $user["imagen"];
+
+        if (!empty($imagen)) {
+            $path = __DIR__ . "/../uploads/" . $imagen;
+
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+
         $stmt = $this->conexion->prepare("DELETE FROM usuarios WHERE id = ?");
         $stmt->bind_param("i", $id);
         return $stmt->execute();

@@ -100,11 +100,6 @@ html {
 }
 
 /* ------------------------ Formularios (parte interna) ------------------------ */
-.titForm {
-    text-shadow: 0 5px #8b0e27, 0 0 10px rgb(139, 14, 39), 0 0 20px rgb(139, 14, 39),
-                0 0 40px rgb(139, 14, 39), 0 0 80px rgb(139, 14, 39);
-}
-
 input[type=text],
 input[type=password],
 input[type=submit] {

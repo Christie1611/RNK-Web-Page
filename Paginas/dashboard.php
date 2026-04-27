@@ -13,6 +13,13 @@
     $usuario = $_SESSION["auth"]["usuario"];
 
     $res = $user->listarReencarnados($id);
+
+    $errores = "";
+
+    if (isset($_SESSION["errores"])) {
+        $errores = $_SESSION["errores"];
+        unset($_SESSION["errores"]);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +68,8 @@
     </body>
     <script>
         const userData = <?= json_encode($_SESSION["auth"]); ?>;
-        const userErrors = <?= json_encode($_SESSION["errores"]); ?>;
+        const userErrors = <?= json_encode($errores); ?>;
         const userReen = <?= json_encode($res); ?>;
+       
     </script>
 </html>
