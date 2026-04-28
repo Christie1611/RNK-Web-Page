@@ -66,16 +66,6 @@
                 }
             }
         }
-
-        /* if (isset($_POST["idusuario"])) {
-            $idusuario = trim(strip_tags($_POST["idusuario"]));
-
-            if ($idusuario === "") {
-                $errores["idusuario"] = "El usuario no puede estar vacío";
-            }
-        } else {
-            $errores["idusuario"] = "El usuario no está definido";
-        } */
     } else {
         $errores["action"] = "Action no está definido";
     }

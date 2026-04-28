@@ -75,14 +75,20 @@ class UsuarioController {
         exit;
     }
 
-    public function listarReencarnados($id) {
+    public function listarCantReencarnados($id) {
         $usuario = new Usuario($id);
 
-        $res = $usuario->listarReencarnados();
+        $res = $usuario->listarCantReencarnados();
 
         if ($fila = $res->fetch_assoc()) {
             return $fila["Reencarnados"];
         }
+    }
+
+    public function listarReencarnados($id) {
+        $usuario = new Usuario($id);
+
+        return $usuario->listarReencarnados();
     }
 
     public function modificar() {

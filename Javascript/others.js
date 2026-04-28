@@ -186,7 +186,7 @@ const others = [
                         Al besar a alguien en cualquier superficie de su cuerpo, puede crear un "contrato" con este. El contrato consiste en que,
                         mientras la persona se mantenga cerca de Henri, todo el daño recibido, incluso el que puede ser mortal, se reducirán a 
                         la mitad y se compartirá con ella. Henri siente el dolor de las heridas transmitidas, pero nunca morirá por estas,
-                        además, tienen la característica adicional de sanarse con mayor velocidad, sin embargo, si la dañas directamente, ninguna
+                        además, tienen la característica adicional de sanarse con mayor velocidad, sin embargo, si la dañas directamente,
                         su Talento no funcionará, por lo que debe de mantenerse al margen.
                     </p>
                 </div>`

@@ -82,7 +82,7 @@ const sinners = [
                     quién fue o por qué tomó esta decisión, solo le queda su Talento, y por ende, no le queda nada.</p>
                 </div>`,
         talent: `<div>
-                    <h4>Fenix</h4>
+                    <h4>Fénix</h4>
                     <p>Cualquier daño que reciba, ya sea físico o por medio de los Talentos, será contrarrestado por un poder equivalente
                     salido de su cuerpo. Desde el exterior parecerá invulnerable, pero es algo mucho más complejo que eso: Es Inmortal.</p>
 

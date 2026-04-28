@@ -133,7 +133,7 @@
 
         <footer class="footer">
             <div class="imglogoIndex">
-                <a href="Index.html#index"><img src="Imagenes/RNKLogo.png"></a>
+                <a href="Index.php#index"><img src="Imagenes/RNKLogo.png"></a>
             </div>
             <div>
                 <span class="copyright">&#169; Mikihisa Konishi / Mag Garden&#x2022;Comité de Producción de "Reincarnation no Kaben"</span>

@@ -31,8 +31,8 @@
     $id = $_SESSION["auth"]["id"];
     $usuario = $_SESSION["auth"]["usuario"];
 
-    $res = $user->listarReencarnados($id);
-
+    $contReen = $user->listarCantReencarnados($id);
+    $listaReen = $user->listarReencarnados($id);
     
 ?>
 
@@ -73,7 +73,6 @@
                         <button class="flashClose">&times;</button>
                     </div>
                 </div>
-
                 <?php unset($_SESSION["flash"]); ?>
             <?php endif; ?>
         </section>
@@ -83,7 +82,8 @@
     <script>
         const userData = <?= json_encode($_SESSION["auth"]); ?>;
         const userErrors = <?= json_encode($erroresUsers); ?>;
-        const userReen = <?= json_encode($res); ?>;
+        const userCantReen = <?= json_encode($contReen); ?>;
+        const userReen = <?= json_encode($listaReen); ?>;
         const reenDataOld = <?= json_encode($reenDataOld); ?>;
         const reenErrors = <?= json_encode($erroresRen); ?>;
     </script>

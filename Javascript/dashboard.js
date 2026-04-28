@@ -12,9 +12,7 @@ function setActiveMenu(section) {
 
 menuItems.forEach(item => {
     item.addEventListener("click", () => {
-
         const section = item.dataset.section;
-
         if (section === "delete") {
             loadSection("delete");
             return;
@@ -78,33 +76,180 @@ function loadSection(section) {
 
 // Contenido para cargar el perfil
 function loadProfile() {
+    let reenHTML = "";
     const userImage = (userData.imagen && userData.imagen !== null) ? `../uploads/${userData.imagen}` : "../uploads/defaultImage.png";
     const userDesc = (userData.descripcion && userData.descripcion !== null)  ? userData.descripcion : "Descripción del usuario...";
 
+    if (userReen.length > 0) {
+        userReen.forEach(reen => {
+            const reenImage = (reen.diseno && reen.diseno !== null)
+                ? `../reen/${reen.diseno}`
+                : "../uploads/defaultImage.png";
+
+            reenHTML += `
+                <div class="reenCard" data-id="${reen.idreencarnado}">
+                    <img src="${reenImage}" class="reenImage">
+                    <p class="reenName">${reen.nombre}</p>
+                </div>
+            `;
+        });
+    } else {
+        reenHTML = `<p>No hay personajes creados.</p>`;
+    }
+
     content.innerHTML = `
-        <div class="profileCard">
-            <div class="profileLeft">
-                <div class="previewContainer">
-                    <img class="profileImage" src="${userImage}">
+        <div class="profileWrapper">
+            <div class="profileCard">
+                <div class="profileLeft">
+                    <div class="previewContainer">
+                        <img class="profileImage" src="${userImage}">
+                    </div>
+                </div>
+
+                <div class="profileRight">
+                    <h2>${userData.usuario}</h2>
+                    <p class="email">${userData.email}</p>
+
+                    <div class="infoBlock">
+                        <h3>Biografía</h3>
+                        <p>${userDesc}</p>
+                    </div>
+
+                    <div class="infoBlock">
+                        <h3>Personajes creados</h3>
+                        <p>${userCantReen} personajes</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="profileRight">
-                <h2>${userData.usuario}</h2>
-                <p class="email">${userData.email}</p>
+            <div class="reenSection">
+                <h2 class="reenTitle">Tus personajes</h2>
 
-                <div class="infoBlock">
-                    <h3>Biografía</h3>
-                    <p>${userDesc}</p>
-                </div>
-
-                <div class="infoBlock">
-                    <h3>Personajes creados</h3>
-                    <p>${userReen} personajes</p>
+                <div class="reenCarouselWrapper">
+                    <button class="carouselBtn left" id="carouselLeft">&#10094;</button>
+                    <div class="reenCarousel" id="reenCarousel">
+                        ${reenHTML}
+                    </div>
+                    <button class="carouselBtn right" id="carouselRight">&#10095;</button>
                 </div>
             </div>
         </div>
     `;
+
+   infiniteCarousel();
+   reenProfileHandler();
+}
+
+// Scroll para los Reencarnados
+function infiniteCarousel() {
+    const carousel = document.getElementById("reenCarousel");
+    const leftBtn = document.getElementById("carouselLeft");
+    const rightBtn = document.getElementById("carouselRight");
+
+    if (!carousel) return;
+
+    const cards = carousel.querySelectorAll(".reenCard");
+    if (cards.length === 0) return;
+
+    const cardWidth = cards[0].offsetWidth + (1/100);
+    let index = 0;
+
+    function updateButtons() {
+        const hasOverflow = carousel.scrollWidth > carousel.clientWidth;
+        if (!hasOverflow) {
+            leftBtn.style.display = "none";
+            rightBtn.style.display = "none";
+        } else {
+            leftBtn.style.display = "flex";
+            rightBtn.style.display = "flex";
+        }
+    }
+
+    updateButtons();
+    window.addEventListener("resize", updateButtons);
+
+    rightBtn.addEventListener("click", () => {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        if (carousel.scrollLeft >= maxScroll - 5) {
+            carousel.scrollLeft = 0;
+        } else {
+            carousel.scrollLeft += cardWidth;
+        }
+    });
+
+    leftBtn.addEventListener("click", () => {
+        if (carousel.scrollLeft <= 5) {
+            carousel.scrollLeft = carousel.scrollWidth;
+        } else {
+            carousel.scrollLeft -= cardWidth;
+        }
+    });
+
+    carousel.style.scrollBehavior = "smooth";
+}
+
+function reenProfileHandler() {
+    const cards = document.querySelectorAll(".reenCard");
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            const id = card.dataset.id;
+            const reen = userReen.find(r => r.idreencarnado == id);
+
+            if (reen) {
+                loadReenProfile(reen);
+            }
+        });
+    });
+}
+
+function loadReenProfile(reen) {
+    const reenImage = (reen.diseno && reen.diseno !== null)
+        ? `../reen/${reen.diseno}`
+        : "../uploads/defaultImage.png";
+
+    content.innerHTML = `
+        <div class="profileWrapper">
+            <div class="profileCard">
+                <div class="profileLeft">
+                    <div class="previewContainer">
+                        <img class="profileImage" src="${reenImage}">
+                    </div>
+                </div>
+
+                <div class="profileRight">
+                    <h2>${reen.nombre}</h2>
+                    <div class="infoBlock">
+                        <h3>Facción</h3>
+                        <p>${getFactionName(reen.idfaccion)}</p>
+                    </div>
+
+                    <div class="infoBlock">
+                        <h3>Trasfondo</h3>
+                        <p>${reen.trasfondo}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function getFactionName(id) {
+    switch(id) {
+        case 1:
+            return "Forest";
+
+        case 2:
+            return "Sinners";
+
+        case 3:
+            return "Strays";
+
+        case 4:
+            return "Others";
+
+        default:
+            return "Desconocida";
+    }
 }
 
 // Contenido para editar el perfil
@@ -160,14 +305,13 @@ function loadEditForm() {
         </form>
     `;
 
-
     inputImage();
     previewImage();
-    paintErrors();
+    paintErrors(userErrors);
 }
 // ----------------------------------------------------
 
-// Contenido para editar el perfil
+// Contenido para crear a los Reencarnados
 function loadReenForm() {
     const reenImage = (reenDataOld.diseno && reenDataOld.diseno !== null) ? `../uploads/${reenDataOld.diseno}` : "../uploads/defaultImage.png";
 
@@ -218,13 +362,14 @@ function loadReenForm() {
                     <div id="talentosContainer">
                         <div class="talentoItem">
                             <div class="formGroup">
-                                <label>Talento</label>
+                                <div>
+                                    <label>Talento</label> 
+                                    <button type="button" class="removeTalento">Eliminar</button>
+                                </div>
                                 <input type="text" name="talento[]" placeholder="Nombre del talento">
                                 <textarea name="descripcionTalento[]" placeholder="Descripción (Opcional)"></textarea>
                                 
                                 <span class="error error-talento"></span>
-
-                                <button type="button" class="removeTalento">Eliminar</button>
                             </div>
                         </div>
                     </div>
@@ -236,31 +381,11 @@ function loadReenForm() {
         </form>
     `;
 
-Object.keys(reenErrors).forEach(key => {
-    if (key.startsWith("talento_")) {
-        const index = key.split("_")[1];
-        const items = document.querySelectorAll(".talentoItem");
-
-        if (items[index]) {
-            const errorSpan = items[index].querySelector(".error-talento");
-            if (errorSpan) {
-                errorSpan.textContent = reenErrors[key];
-            }
-        }
-    } else {
-        const errorElement = document.querySelector(`#error-${key}`);
-
-        if (errorElement && reenErrors[key]) {
-            errorElement.textContent = reenErrors[key];
-        }
-    }
-});
-
     inputImage();
     previewImage();
     rebuildTalentos();
     talentosHandler(); 
-    paintErrors();
+    paintErrors(reenErrors);
 }
 // ----------------------------------------------------
 
@@ -275,11 +400,14 @@ function talentosHandler() {
 
         div.innerHTML = `
             <div class="formGroup">
-                <label>Talento</label>
+                <div>
+                    <label>Talento</label> 
+                    <button type="button" class="removeTalento">Eliminar</button>
+                </div>
                 <input type="text" name="talento[]" placeholder="Nombre del talento">
                 <textarea name="descripcionTalento[]" placeholder="Descripción (Opcional)"></textarea>
+                
                 <span class="error error-talento"></span>
-                <button type="button" class="removeTalento">Eliminar</button>
             </div>
         `;
 
@@ -288,7 +416,6 @@ function talentosHandler() {
 
     container.addEventListener("click", (e) => {
         if (e.target.classList.contains("removeTalento")) {
-
             if (container.children.length > 1) {
                 e.target.closest(".talentoItem").remove();
             }
@@ -300,7 +427,6 @@ function rebuildTalentos() {
     const container = document.getElementById("talentosContainer");
 
     if (!reenDataOld?.talentos || reenDataOld.talentos.length === 0) return;
-
     if (reenDataOld?.talentos?.length) {
         container.innerHTML = "";
     }
@@ -311,11 +437,13 @@ function rebuildTalentos() {
 
         div.innerHTML = `
             <div class="formGroup">
-                <label>Talento</label>
+                <div>
+                    <label>Talento</label> 
+                    <button type="button" class="removeTalento">Eliminar</button>
+                </div>
                 <input type="text" name="talento[]" value="${t.talento || ""}" placeholder="Nombre del talento">
                 <textarea name="descripcionTalento[]" placeholder="Descripción (Opcional)">${t.descripcion || ""}</textarea>
                 <span class="error error-talento"></span>
-                <button type="button" class="removeTalento">Eliminar</button>
             </div>
         `;
 
@@ -324,9 +452,8 @@ function rebuildTalentos() {
 }
 // ----------------------------------------------------
 
-function paintErrors() {
-    Object.keys(reenErrors).forEach(key => {
-
+function paintErrors(dataErrors) {
+    Object.keys(dataErrors).forEach(key => {
         if (key.startsWith("talento_")) {
             const index = key.split("_")[1];
             const items = document.querySelectorAll(".talentoItem");
@@ -334,15 +461,13 @@ function paintErrors() {
             if (items[index]) {
                 const errorSpan = items[index].querySelector(".error-talento");
                 if (errorSpan) {
-                    errorSpan.textContent = reenErrors[key];
+                    errorSpan.textContent = dataErrors[key];
                 }
             }
-
         } else {
             const errorElement = document.querySelector(`#error-${key}`);
-
-            if (errorElement && reenErrors[key]) {
-                errorElement.textContent = reenErrors[key];
+            if (errorElement && dataErrors[key]) {
+                errorElement.textContent = dataErrors[key];
             }
         }
     });

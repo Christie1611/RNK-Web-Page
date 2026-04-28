@@ -14,6 +14,19 @@
     margin-top: 15px;
 }
 
+.formGroup > div {
+    width: 100%;
+}
+
+.formGroup > div label {
+    float: left;
+    padding-top: 18px;
+}
+
+.formGroup > div button {
+    float: right;
+}
+
 .error {
     color: #ff4d6d;
     font-size: 14px;

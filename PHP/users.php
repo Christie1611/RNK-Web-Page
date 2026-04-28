@@ -101,19 +101,6 @@ class Usuario {
         return mysqli_query($this->conexion, $sql);
     }
 
-    public function listarReencarnados() {
-        $sql = "SELECT COUNT(*) AS Reencarnados
-        FROM usuarios INNER JOIN reencarnados ON usuarios.id = reencarnados.idusuario 
-        WHERE usuarios.id = ? AND usuarios.id = reencarnados.idusuario";
-
-        $stmt = $this->conexion->prepare($sql);
-        $stmt->bind_param("i", $this->id);
-        $stmt->execute();
-        $res = $stmt->get_result();
-
-        return $res;
-    }
-
     public function modificar($file = null) {
         $stmt = $this->conexion->prepare("SELECT imagen FROM usuarios WHERE id = ?");
         $stmt->bind_param("i", $this->id);
@@ -208,4 +195,42 @@ class Usuario {
         $stmt->bind_param("i", $id);
         return $stmt->execute();
     }
+
+    
+    // MI LISTA DE REENCARNADOS 
+    public function listarCantReencarnados() {
+        $sql = "SELECT COUNT(*) AS Reencarnados
+                FROM reencarnados
+                WHERE idusuario = ?";
+
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bind_param("i", $this->id);
+        $stmt->execute();
+        $res = $stmt->get_result();
+
+        return $res;
+    }
+
+    public function listarReencarnados() {
+        $sql = "
+            SELECT *
+            FROM reencarnados
+            WHERE idusuario = ?
+        ";
+
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bind_param("i", $this->id);
+        $stmt->execute();
+
+        $res = $stmt->get_result();
+
+        $reencarnados = [];
+
+        while ($fila = $res->fetch_assoc()) {
+            $reencarnados[] = $fila;
+        }
+
+        return $reencarnados;
+    }
+    // -------------------------------------------------------
 }
