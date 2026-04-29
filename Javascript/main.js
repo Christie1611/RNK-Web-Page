@@ -7,30 +7,30 @@ switch (page) {
         break;
 
     case "forest":
-        import ("./forest.js");
-        import ("./funcionesFactions.js");
+        import ("./factions/forest.js");
+        import ("./factions/funcionesFactions.js");
         import("./funcionesQuestions.js");
         break;
 
     case "sinners":
-        import ("./sinners.js");
-        import ("./funcionesFactions.js");
+        import ("./factions/sinners.js");
+        import ("./factions/funcionesFactions.js");
         import("./funcionesQuestions.js");
         break;
 
     case "others":
-        import ("./others.js");
-        import ("./funcionesFactions.js");
+        import ("./factions/others.js");
+        import ("./factions/funcionesFactions.js");
         import("./funcionesQuestions.js");
         break;
 
     case "strays":
-        import ("./strays.js");
-        import ("./funcionesFactions.js");
+        import ("./factions/strays.js");
+        import ("./factions/funcionesFactions.js");
         import("./funcionesQuestions.js");
         break;
 
     case "dashboard":
-        import ("./dashboard.js");
+        import ("./dashboard/dashboard.js");
         break;
 }

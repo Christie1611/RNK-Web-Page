@@ -106,14 +106,14 @@
             if ($_FILES["imagen"]["error"] !== UPLOAD_ERR_NO_FILE) {
                 $file = $_FILES["imagen"];
                 $allowedTypes = ["image/jpeg", "image/png", "image/webp"];
-                $maxSize = 8 * 1024 * 1024; // SON 8 MEGABYTES, ACUÉRDATE CHRIS
+                $maxSize = 4 * 1024 * 1024; // SON 4 MEGABYTES, ACUÉRDATE CHRIS
 
                 if (!in_array($file["type"], $allowedTypes)) {
                     $errores["imagen"] = "Formato no permitido (jpg, png, webp)";
                 }
 
                 if ($file["size"] > $maxSize) {
-                    $errores["imagen"] = "La imagen es demasiado grande (máx. 8MB)";
+                    $errores["imagen"] = "La imagen es demasiado grande (máx. 4MB)";
                 }
             }
             

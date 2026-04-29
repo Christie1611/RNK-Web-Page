@@ -19,14 +19,14 @@
             if ($_FILES["diseno"]["error"] !== UPLOAD_ERR_NO_FILE) {
                 $file = $_FILES["diseno"];
                 $allowedTypes = ["image/jpeg", "image/png", "image/webp"];
-                $maxSize = 8 * 1024 * 1024; // SON 8 MEGABYTES, ACUÉRDATE CHRIS
+                $maxSize = 4 * 1024 * 1024; // SON 4 MEGABYTES, ACUÉRDATE CHRIS
 
                 if (!in_array($file["type"], $allowedTypes)) {
                     $errores["diseno"] = "Formato no permitido (jpg, png, webp)";
                 }
 
                 if ($file["size"] > $maxSize) {
-                    $errores["diseno"] = "La imagen es demasiado grande (máx. 8MB)";
+                    $errores["diseno"] = "La imagen es demasiado grande (máx. 4MB)";
                 }
             }
         } else {
@@ -54,17 +54,26 @@
         }
 
         if (isset($_POST["talento"])) {
-            $talentos = $_POST["talento"];
-            $descripciones = $_POST["descripcionTalento"]; //LA DESCRIPCIÓN ES OPCIONAL, NO NECESITA VALIDACIÓN
+            if (isset($_POST["descripcionTalento"])) {
+                $talentos = $_POST["talento"];
+                $descripciones = $_POST["descripcionTalento"];
 
-            foreach ($talentos as $i => $talento) {
-                $talento = trim(strip_tags($talento));
-                $descripcion = trim(strip_tags($descripciones[$i] ?? ""));
+                foreach ($talentos as $i => $talento) {
+                    $talento = trim(strip_tags($talento));
+                    $descripcion = trim(strip_tags($descripciones[$i] ?? ""));
 
-                if ($talento === "") {
-                    $errores["talento_$i"] = "El talento no puede estar vacío";
+                    if ($talento === "") {
+                        $errores["talento_$i"] = "El talento no puede estar vacío";
+                    }
+                    if ($descripcion === "") {
+                        $errores["descripcion_$i"] = "La descripción del talento no puede estar vacía";
+                    }
                 }
+            } else {
+                $errores["descripcion"] = "La descripción del talento no está definida";
             }
+        } else {
+            $errores["talento"] = "El talento no está definido";
         }
     } else {
         $errores["action"] = "Action no está definido";

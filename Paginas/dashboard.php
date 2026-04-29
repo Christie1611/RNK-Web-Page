@@ -80,11 +80,11 @@
     <script type="module" src="../Javascript/main.js"></script>
     </body>
     <script>
-        const userData = <?= json_encode($_SESSION["auth"]); ?>;
-        const userErrors = <?= json_encode($erroresUsers); ?>;
-        const userCantReen = <?= json_encode($contReen); ?>;
-        const userReen = <?= json_encode($listaReen); ?>;
-        const reenDataOld = <?= json_encode($reenDataOld); ?>;
-        const reenErrors = <?= json_encode($erroresRen); ?>;
+        window.userData = <?= json_encode($_SESSION["auth"]); ?>;
+        window.userErrors = <?= json_encode($erroresUsers); ?>;
+        window.userCantReen = <?= json_encode($contReen); ?>;
+        window.userReen = <?= json_encode($listaReen); ?>;
+        window.reenDataOld = <?= json_encode($reenDataOld); ?>;
+        window.reenErrors = <?= json_encode($erroresRen); ?>;
     </script>
 </html>

@@ -18,6 +18,7 @@ html {
     background-size: 120%;
     background-position: center;
     background-repeat: repeat;
+    background-attachment: fixed;
     font-family: "Agency FB", sans-serif;
     color:#F5F5F5;
     overflow-x: hidden;

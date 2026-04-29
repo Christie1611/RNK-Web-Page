@@ -15,6 +15,7 @@ html {
     background-size: 120%;
     background-position: center;
     background-repeat: repeat;
+    background-attachment: fixed;
     font-family: "Agency FB", sans-serif;
     color: #F5F5F5;
     overflow-x: hidden;
@@ -29,7 +30,7 @@ html {
 .mainContent {
     flex: 1;
     padding: 40px;
-    height: 100%;
+    display: flex;
 }
 
 /* -------------------------- Perfil -------------------------- */
@@ -89,6 +90,7 @@ html {
 
 /* ------------------------- Reencarnados en el perfil ---------------------------- */
 .profileWrapper {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -131,6 +133,7 @@ html {
 
 .reenCard {
     width: 180px;
+    /*width: 250px;*/
     background: rgba(0,0,0,0.5);
     border: 1px solid #8B0E27;
     border-radius: 15px;
@@ -149,6 +152,7 @@ html {
 .reenImage {
     width: 100%;
     height: 220px;
+    /* height: 250px;*/
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -186,6 +190,10 @@ html {
 
 .carouselBtn.right {
     right: -10px;
+}
+
+#carouselLeft, #carouselRight {
+    display: none;
 }
 
 /* -------------------------- Borrar cuenta -------------------------- */
@@ -255,15 +263,20 @@ html {
     align-items: center;
 }
 
+label {
+    text-shadow:
+        0 0 5px #586a6a, 0 0 10px #586a6a, 0 0 20px #586a6a;
+}
+
 input[type=text], 
 input[type=password],
 input[type=submit],
 textarea {
     width: 100%;
-    padding: 2px;
+    padding: 5px;
     margin-bottom: 10px;
     font-size: 20px;
-    font-family: "Agency FB", sans-serif;
+    
 }
 
 select {
@@ -271,7 +284,20 @@ select {
     padding: 2px;
     margin-bottom: 10px;
     font-size: 20px;
+}
+
+input[type=text], 
+input[type=password],
+input[type=submit],
+textarea, 
+select {
     font-family: "Agency FB", sans-serif;
+    border-radius: 10px;
+    background-color: #141414;
+    border-color: #b7b6c1;
+    color: #f5f5f5;
+    box-shadow: 0 0 5px #586a6a, 
+        inset 0 0 20px #000000;
 }
 
 textarea {
@@ -333,6 +359,190 @@ input[type=submit]:hover,
     opacity: 0.8;
     /*transform: scale(1.02); Me tienta... */
 }
+
+/* -------------------- Perfil de los Reencarnados ----------------------------- */
+.reenProfile {
+    width: 100%;
+    min-height: 100%;
+    background: #000000;
+    color: #f5f5f5;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 .2rem #ff0033,
+            0 0 .2rem #ff0033,
+            0 0 0.8rem #8b0e27;
+    transition: height 0.25s;
+}
+
+.reenProfile::after {
+    content: "";
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    box-shadow: inset 0 0 1.3rem #8b0e27; 
+}
+
+.reenBanner {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(#1d1d1d, black);
+    position: relative;
+    overflow: hidden;
+}
+
+.reenTop {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 0 60px;
+    margin-top: -90px;
+    z-index: 2;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.reenImageContainer {
+    width: 220px;
+    height: 220px;
+    border-radius: 25px;
+    overflow: hidden;
+    border: 4px double #8b0e27;
+    background: #111;
+    box-shadow:
+        0 0 25px rgba(139,14,39,0.7),
+        0 0 60px rgba(88,106,106,0.4);
+    flex-shrink: 0;
+}
+
+.reenProfileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.reenMainInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reenProfileName {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #f5f5f5;
+    text-shadow:
+        0 0 5px #586a6a, 0 0 10px #586a6a, 0 0 20px #586a6a,
+        0 0 40px #586a6a;
+}
+
+.factionBadge {
+    width: fit-content;
+    padding: 10px 25px;
+    border-radius: 999px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid transparent;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(255,255,255,0.08);
+}
+
+.faction-1 {
+    background: rgba(88,106,106,0.25);
+    color: #9be7b1;
+    border-color: #9be7b1;
+}
+
+.faction-2 {
+    background: rgba(139,14,39,0.2);
+    color: #ff5a7d;
+    border-color: #ff5a7d;
+}
+
+.faction-3 {
+    background: rgba(183,182,193,0.15);
+    color: #d4d4dc;
+    border-color: #d4d4dc;
+}
+
+.faction-4 {
+    background: rgba(245,245,245,0.08);
+    color: #f5f5f5;
+    border-color: #f5f5f5;
+}
+
+.reenContent {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    padding: 50px 60px;
+}
+
+.reenLoreCard,
+.reenTalentsSection {
+    background: rgba(183,182,193,0.06);
+    border: 1px solid rgba(245,245,245,0.08);
+    border-radius: 22px;
+    padding: 30px;
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 0 25px rgba(0,0,0,0.35),
+        inset 0 0 25px rgba(255,255,255,0.02);
+}
+
+.reenLoreCard h2,
+.reenTalentsSection h2 {
+    margin-bottom: 20px;
+    color: #f5f5f5;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+}
+
+.reenLoreCard p {
+    line-height: 1.8;
+    color: #d7d7dc;
+}
+
+.talentsList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.talentCard {
+    background: linear-gradient(145deg, rgba(88,106,106,0.18), rgba(139,14,39,0.12));
+    border: 1px solid rgba(245,245,245,0.08);
+    border-left: 4px solid #8b0e27;
+    border-radius: 18px;
+    padding: 22px;
+    transition: 0.25s ease;
+}
+
+.talentCard:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 18px rgba(139,14,39,0.35),
+        0 0 35px rgba(88,106,106,0.18);
+}
+
+.talentHeader h3 {
+    font-size: 1.2rem;
+    color: #f5f5f5;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.talentDesc {
+    color: #cfcfd6;
+    line-height: 1.6;
+}
+
 
 /* ------------------- Mensaje al cambiar el formulario ------------------------ */
 .flashContainer {
@@ -408,5 +618,73 @@ input[type=submit]:hover,
     to {
         opacity: 0;
         transform: translateY(40px);
+    }
+}
+
+/* --------------------- Slider para el perfil de los Reencarnados (diferente al de las facciones poq soy así de guay ---------------- */
+.prev, .next {
+    position: fixed;
+    background: none;
+    border: none;
+    color:#f5f5f5;
+    font-size: 4em;
+    cursor: pointer;
+    margin: 0 2px;
+    text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A;
+    transition: all 0.3s ease;
+}
+
+.prev {
+    top: 50%;
+    left: 20%;
+}
+
+.next {
+    top: 50%;
+    right: 0%;
+}
+
+.prev:hover, .next:hover {
+    color: #ff0033;
+    text-shadow: 0 0 5px #000000, 0 0 10px #000000;
+}
+
+.imgTrans {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.imgIn {
+    animation: imgInAnim 0.3s ease;
+}
+
+@keyframes imgInAnim {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.textTrans {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.textOut {
+    animation: textFade 0.3s ease;
+}
+
+@keyframes textFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }

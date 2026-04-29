@@ -18,11 +18,11 @@ html {
     font-family: "Agency FB", sans-serif;
     font-size: 25px;
     overflow: hidden;
-
     background-image: url(../Imagenes/Background3.png);
     background-size: 120%;
     background-position: center;
     background-repeat: repeat;
+    background-attachment: fixed;
 }
 
 #login::-webkit-scrollbar,
@@ -100,13 +100,24 @@ html {
 }
 
 /* ------------------------ Formularios (parte interna) ------------------------ */
+label {
+    text-shadow:
+        0 0 5px #586a6a, 0 0 10px #586a6a, 0 0 20px #586a6a;
+}
+
 input[type=text],
 input[type=password],
 input[type=submit] {
-    font-family: "Agency FB", sans-serif;
     font-size: 25px;
     width: 100%;
-    padding: 2px;
+    padding: 2px 5px;
+    font-family: "Agency FB", sans-serif;
+    border-radius: 10px;
+    background-color: #141414;
+    border-color: #b7b6c1;
+    color: #f5f5f5;
+    box-shadow: 0 0 5px #586a6a, 
+        inset 0 0 20px #000000;
 }
 
 input[type=submit] {

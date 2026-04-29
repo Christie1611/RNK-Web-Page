@@ -212,11 +212,10 @@ class Usuario {
     }
 
     public function listarReencarnados() {
-        $sql = "
-            SELECT *
-            FROM reencarnados
-            WHERE idusuario = ?
-        ";
+        $sql = "SELECT reencarnados.*, talentos.idtalento, talentos.talento, talentos.descripcion AS descripcionTalento
+        FROM reencarnados LEFT JOIN talentos ON reencarnados.idreencarnado = talentos.idreencarnado
+        WHERE reencarnados.idusuario = ?
+        ORDER BY reencarnados.idreencarnado";
 
         $stmt = $this->conexion->prepare($sql);
         $stmt->bind_param("i", $this->id);
@@ -227,10 +226,28 @@ class Usuario {
         $reencarnados = [];
 
         while ($fila = $res->fetch_assoc()) {
-            $reencarnados[] = $fila;
+            $id = $fila["idreencarnado"];
+            if (!isset($reencarnados[$id])) {
+                $reencarnados[$id] = [
+                    "idreencarnado" => $fila["idreencarnado"],
+                    "nombre" => $fila["nombre"],
+                    "diseno" => $fila["diseno"],
+                    "idfaccion" => $fila["idfaccion"],
+                    "trasfondo" => $fila["trasfondo"],
+                    "talentos" => []
+                ];
+            }
+
+            if ($fila["idtalento"]) {
+                $reencarnados[$id]["talentos"][] = [
+                    "idtalento" => $fila["idtalento"],
+                    "talento" => $fila["talento"],
+                    "descripcion" => $fila["descripcionTalento"]
+                ];
+            }
         }
 
-        return $reencarnados;
+        return array_values($reencarnados);
     }
     // -------------------------------------------------------
 }
