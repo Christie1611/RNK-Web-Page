@@ -1,8 +1,10 @@
 <?php
     session_start();
     include_once "../PHP/userController.php";
+    include_once "../PHP/reenController.php";
 
     $user = new UsuarioController();
+    $reenController = new ReenController();
 
     $erroresUsers = [];
     $reenDataOld = [];
@@ -51,6 +53,8 @@
 
     $contReen = $user->listarCantReencarnados($id);
     $listaReen = $user->listarReencarnados($id);
+
+    $exploreReen = $reenController->explorar();
     
 ?>
 
@@ -107,5 +111,6 @@
         window.erroresReenEdit = <?= json_encode($erroresReenEdit); ?>;
         window.reenAction = <?= json_encode($reenAction); ?>;
         window.reenEditId = <?= json_encode($reenEditId); ?>;
+        window.exploreReen = <?= json_encode($exploreReen); ?>;
     </script>
 </html>

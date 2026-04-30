@@ -5,6 +5,7 @@ import { showDeleteModal, showLogoutModal } from "./modal.js";
 import { flashMessages } from "./flash.js";
 import { loadEditReenForm } from "./editReenForm.js";
 import { loadReenProfile } from "./reenProfile.js";
+import { loadExplore } from "./explore.js";
 
 let previousSection = null;
 const content = document.getElementById("mainContent");
@@ -22,7 +23,8 @@ export function loadSection(section) {
             break;
 
         case "explore":
-            content.innerHTML = `<h1>Explorar</h1>`;
+            //content.innerHTML = `<h1>Explorar</h1>`;
+            loadExplore();
             break;
 
         case "profile":

@@ -197,6 +197,31 @@ class Reencarnado {
         ];
     }
 
+    public function explorar() {
+        $sql = "SELECT reencarnados.*, usuarios.usuario
+            FROM reencarnados INNER JOIN usuarios ON reencarnados.idusuario = usuarios.id
+            ORDER BY reencarnados.idreencarnado DESC";
+
+        $res = $this->conexion->query($sql);
+        $reencarnados = [];
+        while ($fila = $res->fetch_assoc()) {
+            $stmtTal = $this->conexion->prepare("SELECT talento, descripcion FROM talentos WHERE idreencarnado = ?");
+            $stmtTal->bind_param("i", $fila["idreencarnado"]);
+
+            $stmtTal->execute();
+            $resTal = $stmtTal->get_result();
+            $fila["talentos"] = [];
+
+            while ($tal = $resTal->fetch_assoc()) {
+                $fila["talentos"][] = $tal;
+            }
+
+            $reencarnados[] = $fila;
+        }
+
+        return $reencarnados;
+    }
+
     public function borrar($id) {
         $stmt = $this->conexion->prepare("SELECT diseno FROM reencarnados WHERE idreencarnado = ?");
         $stmt->bind_param("i", $id);

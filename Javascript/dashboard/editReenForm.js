@@ -1,7 +1,7 @@
 import { talentosHandler, rebuildTalentos } from "./talents.js";
 import { previewImage, inputImage } from "./imagePreview.js";
 import { paintErrors } from "./errors.js";
-import { backToProfile } from "./reenProfile.js";
+import { goBack } from "./reenProfile.js";
 import { loadSection, setActiveMenu } from "./dashboard.js";
 
 const reenDataOld = window.reenDataOld;

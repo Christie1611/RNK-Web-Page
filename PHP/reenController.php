@@ -72,6 +72,11 @@ class ReenController {
         exit;
     }
 
+    public function explorar() {
+        $reen = new Reencarnado();
+        return $reen->explorar();
+    }
+
     public function borrar($id) {
         $reencarnado = new Reencarnado();
         $reencarnado->borrar($id);

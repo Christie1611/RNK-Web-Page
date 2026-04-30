@@ -47,14 +47,18 @@ export function reenProfileHandler() {
             menu.style.left = clickX + "px";
             menu.style.visibility = "visible";
 
-            menu.querySelector(".menuView")
-                .addEventListener("click", () => {
-                    localStorage.setItem("currentSection", "reenProfile");
-                    localStorage.setItem("currentReenProfile", id);
+            menu.querySelector(".menuView").addEventListener("click", () => {
+                localStorage.setItem("reenProfileOrigin", "profile");
+                localStorage.setItem("currentSection", "reenProfile");
+                localStorage.setItem("currentReenProfile", id);
 
-                    loadReenProfile(id);
-                    menu.remove();
+                loadReenProfile(id, {
+                    source: userReen,
+                    showAuthor: false
                 });
+
+                menu.remove();
+            });
 
             menu.querySelector(".menuEdit")
                 .addEventListener("click", () => {
@@ -77,16 +81,21 @@ function removeExistingMenus() {
         .forEach(menu => menu.remove());
 }
 
-export function backToProfile() {
-    localStorage.setItem("currentSection", "profile");
+export function goBack() {
+    const origin = localStorage.getItem("reenProfileOrigin") || "profile";
+
+    localStorage.setItem("currentSection", origin);
     localStorage.removeItem("currentReenProfile");
+    localStorage.removeItem("reenProfileOrigin");
     location.reload();
 }
 
-export function loadReenProfile(reenId) {
-    let currentIndex = userReen.findIndex(r => r.idreencarnado == reenId);
+export function loadReenProfile(reenId, options = {}) {
+    const {source = userReen, showAuthor = false} = options;
+    let currentIndex = source.findIndex(r => r.idreencarnado == reenId);
+
     if (currentIndex === -1) return;
-    renderReenProfile(userReen[currentIndex]);
+    renderReenProfile(source[currentIndex], options);
     attachSliderEvents();
 
     function attachSliderEvents() {
@@ -94,12 +103,12 @@ export function loadReenProfile(reenId) {
         const nextBtn = document.getElementById("nextReen");
 
         nextBtn.addEventListener("click", () => {
-            const newIndex = (currentIndex + 1) % userReen.length;
+            const newIndex = (currentIndex + 1) % source.length;
             animateReenChange(newIndex);
         });
 
         prevBtn.addEventListener("click", () => {
-            const newIndex = (currentIndex - 1 + userReen.length) % userReen.length;
+            const newIndex = (currentIndex - 1 + source.length) % source.length;
             animateReenChange(newIndex);
         });
     }
@@ -115,7 +124,7 @@ export function loadReenProfile(reenId) {
 
         setTimeout(() => {
             currentIndex = newIndex;
-            renderReenProfile(userReen[currentIndex]);
+            renderReenProfile(source[currentIndex], options);
             attachSliderEvents();
 
             const newImage = document.querySelector(".reenProfileImage");
@@ -136,11 +145,11 @@ export function loadReenProfile(reenId) {
     }
 }
 
-function renderReenProfile(reen) {
+function renderReenProfile(reen, options = {}) {
     let talentosHTML = "";
-    const reenImage = (reen.diseno && reen.diseno !== null)
-        ? `../reen/${reen.diseno}`
-        : "../uploads/defaultImage.png";
+    const {showAuthor = false} = options;
+
+    const reenImage = (reen.diseno && reen.diseno !== null) ? `../reen/${reen.diseno}` : "../uploads/defaultImage.png";
 
     if (reen.talentos && reen.talentos.length > 0) {
         reen.talentos.forEach(talento => {
@@ -169,6 +178,8 @@ function renderReenProfile(reen) {
                     <div class="factionBadge faction-${reen.idfaccion}">
                         ${getFactionName(reen.idfaccion)}
                     </div>
+
+                    ${showAuthor ? ` <p class="reenCreator">Creado por ${reen.usuario}</p>` : ""}
                 </div>
             </div>
 
@@ -193,24 +204,17 @@ function renderReenProfile(reen) {
         </div>
     `;
 
-    document.getElementById("goBackBtn").addEventListener("click", backToProfile);
+    document.getElementById("goBackBtn").addEventListener("click", goBack);
 }
 
+// Recordé cómo se hacía esto :D
+const factions = {
+    1: "Forest",
+    2: "Sinners",
+    3: "Strays",
+    4: "Others"
+};
+
 function getFactionName(id) {
-    switch(id) {
-        case 1:
-            return "Forest";
-
-        case 2:
-            return "Sinners";
-
-        case 3:
-            return "Strays";
-
-        case 4:
-            return "Others";
-
-        default:
-            return "Desconocida";
-    }
+    return factions[Number(id)] || "Desconocida";
 }
