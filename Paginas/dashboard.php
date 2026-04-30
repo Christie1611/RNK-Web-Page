@@ -6,7 +6,10 @@
 
     $erroresUsers = [];
     $reenDataOld = [];
-    $erroresRen = [];
+    $erroresReenCreate = [];
+    $erroresReenEdit = [];
+    $reenAction = "";
+    $reenEditId = "";
 
     if (!isset($_SESSION["auth"])) {
         header("Location: ../index.php");
@@ -23,9 +26,24 @@
         unset($_SESSION["oldReen"]);
     }
 
-    if (isset($_SESSION["erroresReen"])) {
-        $erroresRen = $_SESSION["erroresReen"];
-        unset($_SESSION["erroresReen"]);
+    if (isset($_SESSION["erroresReenCreate"])) {
+        $erroresReenCreate = $_SESSION["erroresReenCreate"];
+        unset($_SESSION["erroresReenCreate"]);
+    }
+
+    if (isset($_SESSION["erroresReenEdit"])) {
+        $erroresReenEdit = $_SESSION["erroresReenEdit"];
+        unset($_SESSION["erroresReenEdit"]);
+    }
+
+    if (isset($_SESSION["reenAction"])) {
+        $reenAction = $_SESSION["reenAction"];
+        unset($_SESSION["reenAction"]);
+    }
+
+    if (isset($_SESSION["reenEditId"])) {
+        $reenEditId = $_SESSION["reenEditId"];
+        unset($_SESSION["reenEditId"]);
     }
 
     $id = $_SESSION["auth"]["id"];
@@ -85,6 +103,9 @@
         window.userCantReen = <?= json_encode($contReen); ?>;
         window.userReen = <?= json_encode($listaReen); ?>;
         window.reenDataOld = <?= json_encode($reenDataOld); ?>;
-        window.reenErrors = <?= json_encode($erroresRen); ?>;
+        window.erroresReenCreate = <?= json_encode($erroresReenCreate); ?>;
+        window.erroresReenEdit = <?= json_encode($erroresReenEdit); ?>;
+        window.reenAction = <?= json_encode($reenAction); ?>;
+        window.reenEditId = <?= json_encode($reenEditId); ?>;
     </script>
 </html>

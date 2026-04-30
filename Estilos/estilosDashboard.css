@@ -196,6 +196,70 @@ html {
     display: none;
 }
 
+/* -------------------------- Cargar mini Menú para los Reencarnados ------------------------------- */
+.reenMenu {
+    position: absolute;
+    z-index: 9999;
+    background: #111;
+    border: 1px solid #8b0e27;
+    border-radius: 14px;
+    min-width: 220px;
+    overflow: hidden;
+    box-shadow:
+        0 0 20px rgba(139,14,39,.4),
+        0 0 50px rgba(0,0,0,.8);
+
+    animation: menuFade .2s ease;
+}
+
+.reenMenuList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.reenMenuTitle {
+    margin: 0;
+    padding: 16px;
+
+    background: #8b0e27;
+
+    color: #f5f5f5;
+
+    font-size: 1rem;
+}
+
+.reenMenuList li {
+    padding: 14px 16px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+    color: #f5f5f5;
+}
+
+.reenMenuList li:hover {
+    background: #586a6a;
+}
+
+.menuDelete:hover {
+    background: #8b0e27 !important;
+}
+
+@keyframes menuFade {
+
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* -------------------------- Borrar cuenta -------------------------- */
 .modal {
     position: fixed;
@@ -387,9 +451,38 @@ input[type=submit]:hover,
     box-shadow: inset 0 0 1.3rem #8b0e27; 
 }
 
+.goBack, .goBackReen {
+    font-family: "Agency FB", sans-serif;
+    margin-top: 20px;
+    font-size: 30px;
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s ease;
+    text-shadow:  0 0 5px #586A6A, 0 0 10px #586A6A, 0 0 20px #586A6A,
+        0 0 40px #586A6A;;
+}
+
+.goBack {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    z-index: 22;
+    width: 50px;
+    height: 50px;
+    font-size: 3em;
+}
+
+.goBack:hover, .goBackReen:hover {
+    color: #8b0e27;
+    text-shadow:  0 0 5px #000000, 0 0 10px #000000, 0 0 20px #000000,
+        0 0 40px #000000;;
+}
+
 .reenBanner {
     width: 100%;
-    height: 220px;
+    height: 150px;
     background: linear-gradient(#1d1d1d, black);
     position: relative;
     overflow: hidden;
@@ -543,6 +636,74 @@ input[type=submit]:hover,
     line-height: 1.6;
 }
 
+/* --------------------- Slider para el perfil de los Reencarnados (diferente al de las facciones poq soy así de guay ---------------- */
+.prev, .next {
+    position: fixed;
+    background: none;
+    border: none;
+    color:#f5f5f5;
+    font-size: 4em;
+    cursor: pointer;
+    margin: 0 2px;
+    text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A;
+    transition: all 0.3s ease;
+}
+
+.prev {
+    top: 50%;
+    left: 20%;
+}
+
+.next {
+    top: 50%;
+    right: 0%;
+}
+
+.prev:hover, .next:hover {
+    color: #ff0033;
+    text-shadow: 0 0 5px #000000, 0 0 10px #000000;
+}
+
+.imgTrans {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.imgIn {
+    animation: imgInAnim 0.3s ease;
+}
+
+@keyframes imgInAnim {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.textTrans {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.textOut {
+    animation: textFade 0.3s ease;
+}
+
+@keyframes textFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 
 /* ------------------- Mensaje al cambiar el formulario ------------------------ */
 .flashContainer {
@@ -618,73 +779,5 @@ input[type=submit]:hover,
     to {
         opacity: 0;
         transform: translateY(40px);
-    }
-}
-
-/* --------------------- Slider para el perfil de los Reencarnados (diferente al de las facciones poq soy así de guay ---------------- */
-.prev, .next {
-    position: fixed;
-    background: none;
-    border: none;
-    color:#f5f5f5;
-    font-size: 4em;
-    cursor: pointer;
-    margin: 0 2px;
-    text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A;
-    transition: all 0.3s ease;
-}
-
-.prev {
-    top: 50%;
-    left: 20%;
-}
-
-.next {
-    top: 50%;
-    right: 0%;
-}
-
-.prev:hover, .next:hover {
-    color: #ff0033;
-    text-shadow: 0 0 5px #000000, 0 0 10px #000000;
-}
-
-.imgTrans {
-    opacity: 0;
-    transition: 0.3s;
-}
-
-.imgIn {
-    animation: imgInAnim 0.3s ease;
-}
-
-@keyframes imgInAnim {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.textTrans {
-    opacity: 0;
-    transition: 0.3s;
-}
-
-.textOut {
-    animation: textFade 0.3s ease;
-}
-
-@keyframes textFade {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
     }
 }

@@ -3,6 +3,8 @@ import { loadEditForm } from "./editForm.js";
 import { loadReenForm } from "./reenForm.js";
 import { showDeleteModal, showLogoutModal } from "./modal.js";
 import { flashMessages } from "./flash.js";
+import { loadEditReenForm } from "./editReenForm.js";
+import { loadReenProfile } from "./reenProfile.js";
 
 let previousSection = null;
 const content = document.getElementById("mainContent");
@@ -11,7 +13,7 @@ const menuItems = document.querySelectorAll(".divMenu li");
 flashMessages();
 
 // Lo que cargará las secciones.
-function loadSection(section) {
+export function loadSection(section) {
     switch(section) {
         case "home":
             //content.innerHTML = `<h1>Bienvenido</h1>`;
@@ -50,7 +52,7 @@ function loadSection(section) {
 
 
 // Guarda la sección
-function setActiveMenu(section) {
+export function setActiveMenu(section) {
     menuItems.forEach(item => {
         item.classList.toggle("active", item.dataset.section === section);
     });
@@ -70,11 +72,31 @@ menuItems.forEach(item => {
         }
 
         localStorage.setItem("currentSection", section);
+
+        if (section !== "reenProfile") {localStorage.removeItem("currentReenProfile");}
         setActiveMenu(section);
         loadSection(section);
     });
 });
 
-const savedSection = localStorage.getItem("currentSection") || "profile";
-setActiveMenu(savedSection);
-loadSection(savedSection);
+if (reenAction === "modificar" && reenEditId) {
+    const reen = userReen.find(r => r.idreencarnado == reenEditId);
+    if (reen) {
+        setActiveMenu("profile");
+        loadEditReenForm(reen);
+    } else {
+        const savedSection = localStorage.getItem("currentSection") || "profile";
+        setActiveMenu(savedSection);
+        loadSection(savedSection);
+    }
+} else {
+    const savedSection = localStorage.getItem("currentSection") || "profile";
+    setActiveMenu(savedSection);
+    loadSection(savedSection);
+
+    const savedReenProfile = localStorage.getItem("currentReenProfile");
+
+    if (savedSection === "reenProfile" && savedReenProfile) {
+        loadReenProfile(savedReenProfile);
+    }
+}

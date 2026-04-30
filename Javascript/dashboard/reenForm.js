@@ -3,7 +3,7 @@ import { previewImage, inputImage } from "./imagePreview.js";
 import { paintErrors } from "./errors.js";
 
 const reenDataOld = window.reenDataOld;
-const reenErrors = window.reenErrors;
+const reenErrors = window.reenCreateErrors;
 
 // Contenido para crear a los Reencarnados
 export function loadReenForm(content) {
@@ -62,12 +62,9 @@ export function loadReenForm(content) {
                                 </div>
                                 <input type="text" name="talento[]" placeholder="Nombre del talento">
                                 <textarea name="descripcionTalento[]" placeholder="Descripción"></textarea>
-                                
-                                <span class="error" id="error-talento"></span>
-                                <span class="error" id="error-descripcion"></span>
 
-                                <span class="error error-talento"></span>
-                                <span class="error error-descripcion"></span>
+                                <span class="error error-talento" id="error-talento"></span>
+                                <span class="error error-descripcion" id="error-descripcion"></span>
                             </div>
                         </div>
                     </div>

@@ -18,8 +18,8 @@ export function talentosHandler() {
                 <input type="text" name="talento[]" placeholder="Nombre del talento">
                 <textarea name="descripcionTalento[]" placeholder="Descripción"></textarea>
                 
-                <span class="error error-talento"></span>
-                <span class="error error-descripcion"></span>
+                <span class="error error-talento" id="error-talento"></span>
+                <span class="error error-descripcion" id="error-descripcion"></span>
             </div>
         `;
 
@@ -55,8 +55,9 @@ export function rebuildTalentos() {
                 </div>
                 <input type="text" name="talento[]" value="${t.talento || ""}" placeholder="Nombre del talento">
                 <textarea name="descripcionTalento[]" placeholder="Descripción">${t.descripcion || ""}</textarea>
-                <span class="error error-talento"></span>
-                <span class="error error-descripcion"></span>
+
+                <span class="error error-talento" id="error-talento"></span>
+                <span class="error error-descripcion" id="error-descripcion"></span>
             </div>
         `;
 

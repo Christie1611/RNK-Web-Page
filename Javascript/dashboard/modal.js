@@ -1,5 +1,3 @@
-
-
 // BOTÓN DE CERRAR SESIÓN / BORRAR
 export function showLogoutModal() {
     showModal(
@@ -20,6 +18,16 @@ export function showDeleteModal() {
             window.location.href = `../PHP/eliminar.php?id=${userData.id}`;
         }
     );
+}
+
+export function showDeleteReenModal(id) {
+    showModal(
+        "delete",
+        "¿Seguro/a que quieres borrar este reencarnado?",
+        () => {
+            window.location.href =`../PHP/eliminarReen.php?id=${id}`;
+        }
+    )
 }
 
 export function showModal(type, message, onConfirm) {

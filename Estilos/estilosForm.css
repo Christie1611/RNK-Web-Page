@@ -21,6 +21,7 @@
 .formGroup > div label {
     float: left;
     padding-top: 18px;
+    margin-top: 0;
 }
 
 .formGroup > div button {
@@ -32,6 +33,8 @@
     font-size: 14px;
     margin-top: 4px;
     min-height: 18px;
+    opacity: 1;
+    transition: opacity .3s ease;
 }
 
 .errimage {

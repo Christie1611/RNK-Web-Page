@@ -79,9 +79,21 @@
         $errores["action"] = "Action no está definido";
     }
 
-    $_SESSION["erroresReen"] = $errores;
+    if ($action === "insertar") {
+        $_SESSION["erroresReenCreate"] = $errores;
+    }
 
-    if (array_filter($_SESSION["erroresReen"])) {
+    if ($action === "modificar") {
+        $_SESSION["erroresReenEdit"] = $errores;
+    }
+
+    if (array_filter($errores)) {
+        $_SESSION["reenAction"] = $action;
+
+        if ($action === "modificar") {
+            $_SESSION["reenEditId"] = $_POST["idreencarnado"];
+        }
+
         $talentosOld = [];
 
         if (isset($_POST["talento"])) {
@@ -94,9 +106,9 @@
         }
 
         $_SESSION["oldReen"] = [
-            "nombre" => $_POST["nombre"] ?? "",
+            "nombre" => trim(strip_tags($_POST["nombre"])) ?? "",
             "idfaccion" => $_POST["idfaccion"] ?? "",
-            "trasfondo" => $_POST["trasfondo"] ?? "",
+            "trasfondo" => trim(strip_tags($_POST["trasfondo"])) ?? "",
             "talentos" => $talentosOld
         ];
 

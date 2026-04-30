@@ -1,21 +1,89 @@
+import { loadEditReenForm } from "./editReenForm.js";
+import { showDeleteReenModal } from "./modal.js";
+
 const userReen = window.userReen;
 const content = document.getElementById("mainContent");
 
 export function reenProfileHandler() {
     const cards = document.querySelectorAll(".reenCard");
+
     cards.forEach(card => {
-        card.addEventListener("click", () => {
+        card.addEventListener("click", (e) => {
+            e.stopPropagation();
+
+            removeExistingMenus();
             const id = card.dataset.id;
             const reen = userReen.find(r => r.idreencarnado == id);
 
-            if (reen) {
-                loadReenProfile(id);
+            if (!reen) return;
+            const menu = document.createElement("div");
+            menu.classList.add("reenMenu");
+            menu.innerHTML = `
+                <ul class="reenMenuList">
+                    <h2 class="reenMenuTitle">${reen.nombre}</h2>
+                    <li class="menuView">Ver Perfil</li>
+                    <li class="menuEdit">Modificar</li>
+                    <li class="menuDelete">Eliminar</li>
+                </ul>
+            `;
+
+            document.body.appendChild(menu);
+            const clickX = e.pageX;
+            const clickY = e.pageY;
+
+            menu.style.visibility = "hidden";
+            menu.style.display = "block";
+
+            const menuHeight = menu.offsetHeight;
+
+            const spaceBelow = window.innerHeight - e.clientY;
+
+            if (spaceBelow < menuHeight) {
+                menu.style.top = (clickY - menuHeight) + "px";
+            } else {
+                menu.style.top = clickY + "px";
             }
+
+            menu.style.left = clickX + "px";
+            menu.style.visibility = "visible";
+
+            menu.querySelector(".menuView")
+                .addEventListener("click", () => {
+                    localStorage.setItem("currentSection", "reenProfile");
+                    localStorage.setItem("currentReenProfile", id);
+
+                    loadReenProfile(id);
+                    menu.remove();
+                });
+
+            menu.querySelector(".menuEdit")
+                .addEventListener("click", () => {
+                    loadEditReenForm(reen);
+                    menu.remove();
+                });
+
+            menu.querySelector(".menuDelete")
+                .addEventListener("click", () => {
+                    showDeleteReenModal(reen.idreencarnado);
+                    menu.remove();
+                });
         });
     });
+    document.addEventListener("click", removeExistingMenus);
 }
 
-function loadReenProfile(reenId) {
+function removeExistingMenus() {
+    document.querySelectorAll(".reenMenu")
+        .forEach(menu => menu.remove());
+}
+
+export function backToProfile() {
+    localStorage.setItem("currentSection", "profile");
+    localStorage.removeItem("currentReenProfile");
+    location.reload();
+}
+
+export function loadReenProfile(reenId) {
     let currentIndex = userReen.findIndex(r => r.idreencarnado == reenId);
     if (currentIndex === -1) return;
     renderReenProfile(userReen[currentIndex]);
@@ -119,10 +187,13 @@ function renderReenProfile(reen) {
                     </div>
                 </div>
             </div>
+        <button class="goBack" id="goBackBtn">X</button>
         <button class="sliderBtn sliderLeft prev" id="prevReen">&#10094;</button>
         <button class="sliderBtn sliderRight next" id="nextReen">&#10095;</button>
         </div>
     `;
+
+    document.getElementById("goBackBtn").addEventListener("click", backToProfile);
 }
 
 function getFactionName(id) {

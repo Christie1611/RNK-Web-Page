@@ -141,6 +141,48 @@ class Reencarnado {
             $this->idreencarnado
         );
 
+        $stmtDelete = $this->conexion->prepare("
+            DELETE FROM talentos
+            WHERE idreencarnado = ?
+        ");
+
+        $stmtDelete->bind_param(
+            "i",
+            $this->idreencarnado
+        );
+
+        $stmtDelete->execute();
+        if (!empty($talentos)) {
+
+            $stmtTalento = $this->conexion->prepare("
+                INSERT INTO talentos (
+                    idreencarnado,
+                    talento,
+                    descripcion
+                )
+                VALUES (?, ?, ?)
+            ");
+
+            foreach ($talentos as $i => $talento) {
+                $nombreTalento = trim($talento);
+
+                $descripcion = trim(
+                    $descripciones[$i] ?? ""
+                );
+
+                if ($nombreTalento === "") continue;
+
+                $stmtTalento->bind_param(
+                    "iss",
+                    $this->idreencarnado,
+                    $nombreTalento,
+                    $descripcion
+                );
+
+                $stmtTalento->execute();
+            }
+        }
+
         if ($stmt->execute()) {
             return [
                 "success" => true,
