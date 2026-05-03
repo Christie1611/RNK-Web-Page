@@ -6,6 +6,12 @@ switch (page) {
         import("./funcionesQuestions.js");
         break;
 
+    case "factions":
+        import("./factions/factions.js");
+        import("./funcionesQuestions.js");
+        break;
+
+/*
     case "forest":
         import ("./factions/forest.js");
         import ("./factions/funcionesFactions.js");
@@ -28,7 +34,7 @@ switch (page) {
         import ("./factions/strays.js");
         import ("./factions/funcionesFactions.js");
         import("./funcionesQuestions.js");
-        break;
+        break; */
 
     case "dashboard":
         import ("./dashboard/dashboard.js");

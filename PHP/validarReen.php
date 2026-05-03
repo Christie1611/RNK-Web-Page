@@ -99,6 +99,7 @@
         if (isset($_POST["talento"])) {
             foreach ($_POST["talento"] as $i => $t) {
                 $talentosOld[] = [
+                    "idtalento" => $_POST["talentoIds"][$i] ?? "",
                     "talento" => trim(strip_tags($t)),
                     "descripcion" => trim(strip_tags($_POST["descripcionTalento"][$i] ?? ""))
                 ];

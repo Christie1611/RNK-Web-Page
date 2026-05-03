@@ -95,7 +95,7 @@ class Reencarnado {
         return mysqli_query($this->conexion, $sql);
     }
 
-    public function modificar($file = null, $talentos = [], $descripciones = []) {
+    public function modificar($file = null, $talentos = [], $descripciones = [], $talentoIds = []) {
         $stmt = $this->conexion->prepare("SELECT diseno FROM reencarnados WHERE idreencarnado = ?");
         $stmt->bind_param("i", $this->idreencarnado);
         $stmt->execute();
@@ -141,45 +141,71 @@ class Reencarnado {
             $this->idreencarnado
         );
 
-        $stmtDelete = $this->conexion->prepare("
-            DELETE FROM talentos
-            WHERE idreencarnado = ?
-        ");
-
-        $stmtDelete->bind_param(
-            "i",
-            $this->idreencarnado
-        );
-
-        $stmtDelete->execute();
         if (!empty($talentos)) {
+            $stmtExistentes = $this->conexion->prepare("SELECT idtalento FROM talentos WHERE idreencarnado = ?");
+            $stmtExistentes->bind_param("i", $this->idreencarnado);
+            $stmtExistentes->execute();
+            $resExistentes = $stmtExistentes->get_result();
+            $idsExistentes = [];
 
-            $stmtTalento = $this->conexion->prepare("
-                INSERT INTO talentos (
-                    idreencarnado,
-                    talento,
-                    descripcion
-                )
-                VALUES (?, ?, ?)
-            ");
+            while ($row = $resExistentes->fetch_assoc()) {
+                $idsExistentes[] = $row["idtalento"];
+            }
+
+            $idsRecibidos = [];
 
             foreach ($talentos as $i => $talento) {
                 $nombreTalento = trim($talento);
-
-                $descripcion = trim(
-                    $descripciones[$i] ?? ""
-                );
+                $descripcion = trim($descripciones[$i] ?? "");
+                $idTalento = $talentoIds[$i] ?? "";
 
                 if ($nombreTalento === "") continue;
 
-                $stmtTalento->bind_param(
-                    "iss",
-                    $this->idreencarnado,
-                    $nombreTalento,
-                    $descripcion
-                );
+                if (!empty($idTalento)) {
+                    $idsRecibidos[] = $idTalento;
+                    $stmtUpdateTal = $this->conexion->prepare("
+                        UPDATE talentos
+                        SET talento = ?, descripcion = ?
+                        WHERE idtalento = ?
+                    ");
 
-                $stmtTalento->execute();
+                    $stmtUpdateTal->bind_param(
+                        "ssi",
+                        $nombreTalento,
+                        $descripcion,
+                        $idTalento
+                    );
+                    $stmtUpdateTal->execute();
+                } else {
+                    $stmtInsertTal = $this->conexion->prepare("
+                        INSERT INTO talentos (
+                            idreencarnado,
+                            talento,
+                            descripcion
+                        )
+                        VALUES (?, ?, ?)
+                    ");
+
+                    $stmtInsertTal->bind_param(
+                        "iss",
+                        $this->idreencarnado,
+                        $nombreTalento,
+                        $descripcion
+                    );
+
+                    $stmtInsertTal->execute();
+                }
+            }
+
+            $idsAEliminar = array_diff($idsExistentes, $idsRecibidos);
+
+            if (!empty($idsAEliminar)) {
+                $placeholders = implode(",", array_fill(0, count($idsAEliminar), "?"));
+                $types = str_repeat("i", count($idsAEliminar));
+
+                $stmtDelete = $this->conexion->prepare("DELETE FROM talentos WHERE idtalento IN ($placeholders)");
+                $stmtDelete->bind_param($types, ...$idsAEliminar);
+                $stmtDelete->execute();
             }
         }
 
@@ -205,7 +231,7 @@ class Reencarnado {
         $res = $this->conexion->query($sql);
         $reencarnados = [];
         while ($fila = $res->fetch_assoc()) {
-            $stmtTal = $this->conexion->prepare("SELECT talento, descripcion FROM talentos WHERE idreencarnado = ?");
+            $stmtTal = $this->conexion->prepare("SELECT idtalento, talento, descripcion FROM talentos WHERE idreencarnado = ?");
             $stmtTal->bind_param("i", $fila["idreencarnado"]);
 
             $stmtTal->execute();

@@ -86,10 +86,17 @@
     text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A, 0 0 20px #586A6A,
                 0 0 40px #586A6A, 0 0 80px #586A6A;
 }
+
+.faction {
+    text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A, 0 0 20px #586A6A,
+                0 0 40px #586A6A, 0 0 80px #586A6A;
+}
     
 .active {
     background: rgba(139, 14, 39, 0.2);
     box-shadow: 0 0 10px #8B0E27;
+    text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A, 0 0 20px #586A6A,
+                0 0 40px #586A6A, 0 0 80px #586A6A;
 }
 
 .menu li.danger {

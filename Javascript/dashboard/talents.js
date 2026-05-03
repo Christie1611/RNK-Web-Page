@@ -11,6 +11,7 @@ export function talentosHandler() {
 
         div.innerHTML = `
             <div class="formGroup">
+            <input type="hidden" name="talentoIds[]" value="">
                 <div>
                     <label>Talento</label> 
                     <button type="button" class="removeTalento">Eliminar</button>

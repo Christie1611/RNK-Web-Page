@@ -52,7 +52,8 @@ class ReenController {
         $res = $reen->modificar(
             $_FILES["diseno"] ?? null,
             $_POST["talento"] ?? [],
-            $_POST["descripcionTalento"] ?? []
+            $_POST["descripcionTalento"] ?? [],
+            $_POST["talentoIds"] ?? []
         );
 
         if ($res["success"]) {

@@ -40,7 +40,7 @@
                 <div class="copyright">&#169; Mikihisa Konishi / Mag Garden&#x2022;Comité de Producción de <br>"Reincarnation no Kaben"</div>
             </div>
             <div id="content">
-                    <h1 class="factionTitle">Greats</h1>
+                <h1 class="factionTitle">Greats</h1>
                 <div class="divFaction">
                     <p>
                         El Bosque de los Grandes, Bosque de los Magníficos o Forest of the Greats, es la organización compuesta de todos

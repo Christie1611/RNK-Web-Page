@@ -10,10 +10,7 @@ html {
 }
 
 /* ----------------------- BODY ------------------------- */
-#forest,
-#sinners,
-#strays,
-#others {
+#factions {
     background-image: url(../Imagenes/Background3.png);
     background-size: 120%;
     background-position: center;
@@ -24,22 +21,9 @@ html {
     overflow-x: hidden;
 }
 
-#forest::-webkit-scrollbar,
-#sinners::-webkit-scrollbar,
-#strays::-webkit-scrollbar,
-#others::-webkit-scrollbar {
+#factions::-webkit-scrollbar {
     display: none;
 }
-
-#forest .forest-link,
-#sinners .sinners-link,
-#strays .strays-link,
-#others .others-link {
-    text-decoration: underline;
-    text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A, 0 0 20px #586A6A,
-                0 0 40px #586A6A, 0 0 80px #586A6A;
-}
-
 /* ----------------- COPYRIGHT ------------------------ */
 .copyright {
     width: 100%;

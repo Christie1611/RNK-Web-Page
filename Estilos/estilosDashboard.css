@@ -612,6 +612,7 @@ input[type=submit]:hover,
     flex-direction: column;
     gap: 35px;
     padding: 50px 60px;
+    font-size: 18px;
 }
 
 .reenLoreCard,
@@ -740,7 +741,6 @@ input[type=submit]:hover,
         opacity: 1;
     }
 }
-
 
 /* ------------------- Mensaje al cambiar el formulario ------------------------ */
 .flashContainer {

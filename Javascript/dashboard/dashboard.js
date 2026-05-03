@@ -55,8 +55,14 @@ export function loadSection(section) {
 
 // Guarda la sección
 export function setActiveMenu(section) {
+    let activeSection = section;
+
+    if (section === "reenProfile") {
+        activeSection = localStorage.getItem("reenProfileOrigin") || "profile";
+    }
+
     menuItems.forEach(item => {
-        item.classList.toggle("active", item.dataset.section === section);
+        item.classList.toggle("active", item.dataset.section === activeSection);
     });
 }
 
@@ -99,6 +105,18 @@ if (reenAction === "modificar" && reenEditId) {
     const savedReenProfile = localStorage.getItem("currentReenProfile");
 
     if (savedSection === "reenProfile" && savedReenProfile) {
-        loadReenProfile(savedReenProfile);
+        const origin = localStorage.getItem("reenProfileOrigin") || "profile";
+
+        if (origin === "explore") {
+            loadReenProfile(savedReenProfile, {
+                source: window.exploreReen,
+                showAuthor: true
+            });
+        } else {
+            loadReenProfile(savedReenProfile, {
+                source: window.userReen,
+                showAuthor: false
+            });
+        }
     }
 }

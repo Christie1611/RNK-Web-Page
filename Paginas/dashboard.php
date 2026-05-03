@@ -55,7 +55,6 @@
     $listaReen = $user->listarReencarnados($id);
 
     $exploreReen = $reenController->explorar();
-    
 ?>
 
 <!DOCTYPE html>

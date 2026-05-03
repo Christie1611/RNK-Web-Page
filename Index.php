@@ -70,24 +70,24 @@
         <section id="content">
             <div class="sect">
                 <div class="cont">
-                    <a href="Paginas/Forest.php">
+                    <a href="Paginas/Factions.php?section=forest">
                         <div class="reen forest">
                             <div class="textreen">Greats</div>
                         </div>
                     </a>
-                    <a href="Paginas/Sinners.php">
+                    <a href="Paginas/Factions.php?section=sinners">
                         <div class="reen sinners">
                             <div class="textreen">Sinners</div>
                         </div>
                     </a>
                 </div>
                 <div class="cont">
-                    <a href="Paginas/Strays.php">
+                    <a href="Paginas/Factions.php?section=strays">
                         <div class="reen strays">
                             <div class="textreen">Strays</div>
                         </div>
                     </a>
-                    <a href="Paginas/Others.php">
+                    <a href="Paginas/Factions.php?section=others">
                         <div class="reen others">
                             <div class="textreen">Others</div>
                         </div>

@@ -20,6 +20,7 @@ export function loadEditReenForm(reen) {
 
             talentosHTML += `
                 <div class="talentoItem">
+                <input type="hidden" name="talentoIds[]" value="${talento.idtalento || ""}">
                     <div class="formGroup">
                         <div>
                             <label>Talento</label> 
