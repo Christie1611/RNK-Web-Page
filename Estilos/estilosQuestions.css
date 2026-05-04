@@ -140,11 +140,14 @@
 
 .contentQuestions > div {
     margin: 0 auto;
-    width: 28vw;
+    width: 78vw;
 }
 
 .contentQuestions > div img {
     width: 100%;
+    border-style: double;
+    border-color: #8b0e27;
+    box-shadow: 0 0 15px #8b0e27;
 }
 
 /* 

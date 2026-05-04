@@ -20,9 +20,11 @@
     <body id="factions" data-page="factions">
         <section class="layout">
             <div class="divMenu">
-                <a href="../Index.php#index"><img src="../Imagenes/RNKLogo.png" alt=""></a>
+                <!--<img src="../Imagenes/RNKLogo.png" alt="">-->
+                <h2 id="user"><?= $usuario === "" ? "Usuario" : $usuario?></h2>
                 <!--<p class="cite">"Death is not the end"</p>-->
                 <ul class="menu">
+                    <li><a href="../Index.php#index">Inicio</a></li>
                     <li><a href="../Index.php#story">Historia</a></li>
                     <li>
                         <a href="#" class="faction">Facciones</a>
@@ -35,7 +37,7 @@
                     </li>
                     <li><a href="../Index.php#gallery">Galeria</a></li>
                     <li><a href="<?= isset($_SESSION["auth"]["usuario"]) ? "dashboard.php" : "login.php" ?>">
-                    <?= $usuario === "" ? "Iniciar Sesión" : $usuario ?></a></li>
+                    <?= $usuario === "" ? "Iniciar Sesión" : "Perfil" ?></a></li>
                 </ul>
                 <div class="copyright">&#169; Mikihisa Konishi / Mag Garden&#x2022;Comité de Producción de <br>"Reincarnation no Kaben"</div>
             </div>

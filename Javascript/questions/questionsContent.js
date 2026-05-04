@@ -126,6 +126,11 @@ export const who = `
     profundo que es el lore de esta historia.
 </p><br>
 <p>
+    Si ya eres lo suficientemente experimentado dentro del mundo de Reincarnation no Kaben, puedes registrarte en nuestra web para 
+    recibir nuevos beneficios, como el poder crear tus propios Reencarnados e implementarlos dentro de la historia, así como 
+    ver los perfiles creados por otros fans en nuestro tablón de exploración.
+</p><br>
+<p>
     Esta es una página hecha de una fan para fans, no se tiene ninguna intención de lucro.
 </p><br>
 <div><img src="Imagenes/RNKportada.png"></div>

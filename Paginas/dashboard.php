@@ -101,15 +101,16 @@
     <script type="module" src="../Javascript/main.js"></script>
     </body>
     <script>
-        window.userData = <?= json_encode($_SESSION["auth"]); ?>;
+        window.userReen = <?= json_encode($listaReen ?? []); ?>;
+        window.exploreReen = <?= json_encode($exploreReen ?? []); ?>;
+        window.userData = <?= json_encode($_SESSION["auth"] ?? null); ?>;
         window.userErrors = <?= json_encode($erroresUsers); ?>;
         window.userCantReen = <?= json_encode($contReen); ?>;
-        window.userReen = <?= json_encode($listaReen); ?>;
         window.reenDataOld = <?= json_encode($reenDataOld); ?>;
         window.erroresReenCreate = <?= json_encode($erroresReenCreate); ?>;
         window.erroresReenEdit = <?= json_encode($erroresReenEdit); ?>;
         window.reenAction = <?= json_encode($reenAction); ?>;
         window.reenEditId = <?= json_encode($reenEditId); ?>;
-        window.exploreReen = <?= json_encode($exploreReen); ?>;
+
     </script>
 </html>

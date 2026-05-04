@@ -37,7 +37,6 @@ export function loadExplore() {
     filter.addEventListener("change", applyFilters);
     
     applyFilters();
-    applyFilters();
 }
 
 function renderExploreCards(data) {
