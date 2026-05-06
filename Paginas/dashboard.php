@@ -72,6 +72,15 @@
                 <h2 id="user"><?= $usuario === "" ? "Usuario" : $usuario?></h2>
                 <ul class="menu">
                     <li data-section="home">Inicio</li>
+                    <li>
+                        <a>Facciones</a>
+                        <ul class="submenu">
+                            <li><a href="Factions.php?section=forest" data-section="forest">Greats</a></li>
+                            <li><a href="Factions.php?section=sinners" data-section="sinners">Sinners</a></li>
+                            <li><a href="Factions.php?section=strays" data-section="strays">Strays</a></li>
+                            <li><a href="Factions.php?section=others" data-section="others">Others</a></li>
+                        </ul>
+                    </li>
                     <li data-section="explore">Explorar</li>
                     <li data-section="profile" class="active">Perfil</li>
                     <li data-section="edit">Editar perfil</li>

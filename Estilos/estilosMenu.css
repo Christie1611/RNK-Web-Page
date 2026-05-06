@@ -26,6 +26,11 @@
     rgba(27, 27, 27, 0.8), rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0.8));
     padding: 10px;
     border-right: solid #586A6A 2px;
+    overflow-y: auto;
+}
+
+.divMenu::-webkit-scrollbar {
+    display: none;
 }
 
 /*
@@ -92,6 +97,11 @@
     box-shadow: 0 0 10px #8B0E27;
     text-shadow: 0 0 5px #586A6A, 0 0 10px #586A6A, 0 0 20px #586A6A,
                 0 0 40px #586A6A, 0 0 80px #586A6A;
+}
+
+.submenu a.activeFaction {
+    background: rgba(139, 14, 39, 0.2);
+    box-shadow: 0 0 10px #8B0E27;
 }
 
 .menu li.danger {

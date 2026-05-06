@@ -29,14 +29,15 @@
                     <li>
                         <a href="#" class="faction">Facciones</a>
                         <ul class="submenu">
-                            <li><a href="?section=forest" data-section="forest" class="forest-link">Greats</a></li>
-                            <li><a href="?section=sinners" data-section="sinners" class="sinners-link">Sinners</a></li>
-                            <li><a href="?section=strays" data-section="strays" class="strays-link">Strays</a></li>
-                            <li><a href="?section=others" data-section="others" class="others-link">Others</a></li>
+                            <li><a href="?section=forest" data-section="forest">Greats</a></li>
+                            <li><a href="?section=sinners" data-section="sinners">Sinners</a></li>
+                            <li><a href="?section=strays" data-section="strays">Strays</a></li>
+                            <li><a href="?section=others" data-section="others">Others</a></li>
                         </ul>
                     </li>
                     <li><a href="../Index.php#gallery">Galeria</a></li>
-                    <li><a href="<?= isset($_SESSION["auth"]["usuario"]) ? "dashboard.php" : "login.php" ?>">
+                    <li><a href="<?= isset($_SESSION["auth"]["usuario"]) ? "dashboard.php" : "login.php" ?>" 
+                    onclick="localStorage.setItem('currentSection','profile')">
                     <?= $usuario === "" ? "Iniciar Sesión" : "Perfil" ?></a></li>
                 </ul>
                 <div class="copyright">&#169; Mikihisa Konishi / Mag Garden&#x2022;Comité de Producción de <br>"Reincarnation no Kaben"</div>

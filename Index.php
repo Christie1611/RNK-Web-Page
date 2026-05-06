@@ -26,7 +26,7 @@
                 <li><a href="Index.php#gallery">Galeria</a></li>
                 <!--<li><a>Crear</a></li>-->
                 <li><a href="<?= isset($_SESSION["auth"]["usuario"]) ? "Paginas/dashboard.php" : "Paginas/login.php" ?>">
-                <?= $usuario === "" ? "Iniciar Sesión" : $usuario ?></a></li>
+                <?= $usuario === "" ? "Iniciar Sesión" : "Perfil" ?></a></li>
             </ul>
         </nav>
         <div class="video-container">

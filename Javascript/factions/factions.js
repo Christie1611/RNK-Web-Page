@@ -3,19 +3,23 @@ import { factionsData } from "./factionData.js";
 
 const content = document.getElementById("factionContent");
 const params = new URLSearchParams(window.location.search);
-const section = params.get("section") || localStorage.getItem("currentFaction") || "forest";
+const initialFaction = params.get("section") || localStorage.getItem("currentFaction") || "forest";
 
-loadFaction(section);
+loadFaction(initialFaction);
 
 export function loadFaction(section) {
     const faction = factionsData[section];
     if (!faction) return;
+
+    const scrollY = window.scrollY;
 
     localStorage.setItem("currentFaction", section);
     history.replaceState(null, "", `?section=${section}`);
     setActiveFaction(section);
     renderFaction(faction);
     initializeFactionEvents(faction);
+
+    window.scrollTo(0, scrollY);
 }
 
 function renderFaction(faction) {
@@ -86,7 +90,7 @@ function initializeReadMore() {
     });
 }
 
-const links = document.querySelectorAll(".menu li > a");
+const links = document.querySelectorAll(".menu > li > a");
 links.forEach(link => {
     link.addEventListener("click", (e) => {
         const submenu = link.nextElementSibling;
@@ -98,26 +102,12 @@ links.forEach(link => {
 });
 
 function setActiveFaction(section) {
-    const items = document.querySelectorAll("[data-section]");
+    const items = document.querySelectorAll(".submenu a");
 
     items.forEach(item => {
         item.classList.toggle(
-            "active",
+            "activeFaction",
             item.dataset.section === section
         );
-
     });
 }
-
-const menuItems = document.querySelectorAll("[data-section]");
-
-menuItems.forEach(item => {
-    item.addEventListener("click", () => {
-        const section = item.dataset.section;
-        loadFaction(section);
-    });
-
-});
-
-const savedFaction = localStorage.getItem("currentFaction") || "forest";
-loadFaction(savedFaction);

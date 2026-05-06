@@ -9,7 +9,7 @@ import { loadExplore } from "./explore.js";
 
 let previousSection = null;
 const content = document.getElementById("mainContent");
-const menuItems = document.querySelectorAll(".divMenu li");
+const menuItems = document.querySelectorAll(".menu > li[data-section]");
 
 flashMessages();
 
@@ -69,6 +69,9 @@ export function setActiveMenu(section) {
 menuItems.forEach(item => {
     item.addEventListener("click", () => {
         const section = item.dataset.section;
+
+        if (!section) return;
+
         if (section === "delete") {
             loadSection("delete");
             return;
@@ -93,12 +96,20 @@ if (reenAction === "modificar" && reenEditId) {
         setActiveMenu("profile");
         loadEditReenForm(reen);
     } else {
-        const savedSection = localStorage.getItem("currentSection") || "profile";
+        let savedSection = localStorage.getItem("currentSection");
+
+        if (!savedSection || savedSection === "home") {
+            savedSection = "profile";
+        }
         setActiveMenu(savedSection);
         loadSection(savedSection);
     }
 } else {
-    const savedSection = localStorage.getItem("currentSection") || "profile";
+    let savedSection = localStorage.getItem("currentSection");
+
+    if (!savedSection || savedSection === "home") {
+        savedSection = "profile";
+    }
     setActiveMenu(savedSection);
     loadSection(savedSection);
 
@@ -119,4 +130,43 @@ if (reenAction === "modificar" && reenEditId) {
             });
         }
     }
+}
+
+// Todo lo de Factions para que funcione.
+const links = document.querySelectorAll(".menu > li > a");
+links.forEach(link => {
+    link.addEventListener("click", (e) => {
+        const submenu = link.nextElementSibling;
+        if (submenu && submenu.classList.contains("submenu")) {
+            e.preventDefault();
+            submenu.classList.toggle("open");
+        }
+    });
+});
+
+if (window.location.pathname.includes("Factions.php")) {
+    const params = new URLSearchParams(window.location.search);
+    const currentFaction = params.get("section");
+
+    if (currentFaction) {
+        const links = document.querySelectorAll(".submenu a");
+
+        links.forEach(link => {
+            link.classList.toggle(
+                "activeFaction",
+                link.dataset.section === currentFaction
+            );
+        });
+    }
+}
+
+document.querySelectorAll(".submenu a").forEach(link => {
+    link.addEventListener("click", () => {
+        localStorage.setItem("fromDashboard", "true");
+    });
+});
+
+if (localStorage.getItem("fromDashboard")) {
+    localStorage.setItem("currentSection", "profile");
+    localStorage.removeItem("fromDashboard");
 }
