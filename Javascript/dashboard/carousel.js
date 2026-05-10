@@ -9,7 +9,7 @@ export function infiniteCarousel() {
     const cards = carousel.querySelectorAll(".reenCard");
     if (cards.length === 0) return;
 
-    const cardWidth = cards[0].offsetWidth + 300;
+    const cardWidth = cards[0].offsetWidth + 200;
     let index = 0;
 
     function updateButtons() {

@@ -80,7 +80,7 @@
                             <div class="textreen">Sinners</div>
                         </div>
                     </a>
-                </div>
+                </div><br class="sep">
                 <div class="cont">
                     <a href="Paginas/Factions.php?section=strays">
                         <div class="reen strays">
@@ -101,13 +101,15 @@
         </div>
         <section id="content">
             <div class="sect">
-                <div class="carousel">
-                    
-                    <img id="img1" class="active" src="Imagenes/Gallery-1.png" alt="">
-                    <img id="img2" src="Imagenes/Gallery-1.png">
+                <div class="divCarousel">
+                    <div class="carousel">
+                        
+                        <img id="img1" class="active" src="Imagenes/Gallery-1.png" alt="">
+                        <img id="img2" src="Imagenes/Gallery-1.png">
 
-                    <button class="prev">&#9664;</button>
-                    <button class="next">&#9654;</button>
+                        <button class="prev">&#9664;</button>
+                        <button class="next">&#9654;</button>
+                    </div>
                 </div>
 
                 <div class="thumbnails">

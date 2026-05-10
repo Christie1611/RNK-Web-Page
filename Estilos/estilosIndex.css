@@ -24,9 +24,11 @@ html {
 
 /* ----------------------- Contenedor de Video ----------------------- */
 .video-container {
-    width: auto;
+    width: 100%;
     height: 100vh;
     position: relative;
+    overflow: hidden;
+    background: black;
 }
 
 .video-container video {
@@ -221,6 +223,10 @@ html {
     text-decoration: none;
 }
 
+.sep {
+    display: none;
+}
+
 .reen {
     display: flex;
     margin: 5px 5px;
@@ -284,8 +290,7 @@ html {
     border-radius: 5px;
     box-shadow: 0 0 .2rem #F5F5F5,
             0 0 .2rem #F5F5F5,
-            0 0 0.8rem #586A6A,
-            inset 0 0 1.3rem #586A6A; 
+            0 0 0.8rem #586A6A; 
     /*box-shadow: 0px 0px 5px 1px #586A6A;*/
 }
 
@@ -403,4 +408,211 @@ footer {
 
 .imglogoIndex img:hover {
     opacity: 0.7;
+}
+
+/* ----------------------------- ¡¡RESPONSIVE!! ------------------------------- */
+/* -------------------------- TABLETS -------------------------- */
+@media (max-width: 1024px) {
+    .divMenu {
+        font-size: 2em;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .dividerTitle div {
+        font-size: 3em;
+    }
+
+    .divStory {
+        width: 80%;
+        font-size: 22px;
+    }
+
+    .reen {
+        width: 42vw;
+        height: 28vh;
+    }
+
+    .textreen {
+        font-size: 3.5em;
+    }
+
+    .carousel {
+        width: 90%;
+        height: 500px;
+    }
+
+    .thumbnails {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    .thumbnails img {
+        width: 12vw;
+        height: 70px;
+    }
+
+    footer {
+        max-height: none;
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .imglogoIndex img {
+        width: 50vw;
+    }
+}
+
+/* -------------------------- TELÉFONOS -------------------------- */
+@media (max-width: 768px) {
+    .divMenu {
+        font-size: 1.2em;
+        padding: 10px;
+    }
+
+    .menu li {
+        padding: 5px 0;
+    }
+
+    .video-container {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .video-container video {
+        position: relative;
+        object-fit: contain;
+    }
+
+    .dividerTitle {
+        height: 9vh;
+    }
+
+    .dividerTitle div {
+        font-size: 2em;
+    }
+
+    .divStory {
+        width: 95%;
+        font-size: 18px;
+        padding: 20px;
+        border-radius: 25px;
+    }
+
+    .divStory::before,
+    .divStory::after {
+        width: 80px;
+        height: 80px;
+    }
+
+    .divStory::before {
+        top: -20px;
+        left: -20px;
+    }
+
+    .divStory::after {
+        bottom: -20px;
+        right: -20px;
+    }
+
+    .cont {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cont a {
+        width: 100%;
+    }
+
+    .sep {
+        display: block;
+    }
+
+    .reen {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        margin: 0;
+        background-size: cover;
+    }
+
+    .reen:hover {
+        background-size: cover;
+    }
+
+    .textreen {
+        font-size: 2.5em;
+    }
+
+    .carousel {
+        width: 95%;
+        height: 300px;
+    }
+
+    .carousel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    button {
+        font-size: 1.2em;
+    }
+
+    .thumbnails {
+        gap: 5px;
+    }
+
+    .thumbnails img {
+        width: 18vw;
+        height: 50px;
+    }
+
+    footer {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .imglogoIndex img {
+        width: 70vw;
+    }
+
+    .copyright {
+        font-size: 0.9em;
+    }
+}
+
+/* -------------------------- TELÉFONOS PEQUEÑOS -------------------------- */
+@media (max-width: 480px) {
+    .divMenu {
+        font-size: 1em;
+    }
+
+    .dividerTitle div {
+        font-size: 1.5em;
+    }
+
+    .divStory {
+        font-size: 16px;
+    }
+
+    .textreen {
+        font-size: 2em;
+    }
+
+    .carousel {
+        height: 220px;
+    }
+
+    .thumbnails img {
+        width: 22vw;
+        height: 45px;
+    }
+
+    .questions {
+        width: 50px;
+        height: 50px;
+    }
 }

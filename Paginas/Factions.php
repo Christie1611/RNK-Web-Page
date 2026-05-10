@@ -18,6 +18,9 @@
         <link rel="stylesheet" type="text/css" href="../Estilos/estilosMenu.css">
     </head>
     <body id="factions" data-page="factions">
+        <button class="menuToggle" id="menuToggle">☰</button>
+        <div class="menuOverlay" id="menuOverlay"></div>
+
         <section class="layout">
             <div class="divMenu">
                 <!--<img src="../Imagenes/RNKLogo.png" alt="">-->

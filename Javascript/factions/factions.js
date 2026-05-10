@@ -7,6 +7,7 @@ const initialFaction = params.get("section") || localStorage.getItem("currentFac
 
 loadFaction(initialFaction);
 
+// CARGAR LAS FACCIONES
 export function loadFaction(section) {
     const faction = factionsData[section];
     if (!faction) return;
@@ -22,6 +23,7 @@ export function loadFaction(section) {
     window.scrollTo(0, scrollY);
 }
 
+// CONTENIDO DE CADA FACCIÓN
 function renderFaction(faction) {
     const firstCharacter = faction.members[0];
     content.innerHTML = `
@@ -101,6 +103,7 @@ links.forEach(link => {
     });
 });
 
+// PARA LA FACCIÓN QUE ESTÁ ACTIVA
 function setActiveFaction(section) {
     const items = document.querySelectorAll(".submenu a");
 
@@ -109,5 +112,36 @@ function setActiveFaction(section) {
             "activeFaction",
             item.dataset.section === section
         );
+    });
+}
+
+// PARA EL MENÚ DEL TELÉFONO
+const menuToggle = document.getElementById("menuToggle");
+const divMenu = document.querySelector(".divMenu");
+const menuOverlay = document.getElementById("menuOverlay");
+
+if (menuToggle && divMenu && menuOverlay) {
+    menuToggle.addEventListener("click", () => {
+        divMenu.classList.toggle("openMenu");
+        menuOverlay.classList.toggle("show");
+    });
+
+    menuOverlay.addEventListener("click", () => {
+        divMenu.classList.remove("openMenu");
+        menuOverlay.classList.remove("show");
+    });
+
+    document.querySelectorAll(".menu a").forEach(link => {
+        link.addEventListener("click", (e) => {
+
+            const submenu = link.nextElementSibling;
+
+            if (submenu && submenu.classList.contains("submenu")) return;
+
+            if (window.innerWidth <= 1024) {
+                divMenu.classList.remove("openMenu");
+                menuOverlay.classList.remove("show");
+            }
+        });
     });
 }

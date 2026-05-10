@@ -16,16 +16,21 @@
 
 .formGroup > div {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
 }
 
 .formGroup > div label {
-    float: left;
-    padding-top: 18px;
-    margin-top: 0;
+    padding-top: 0;
+    margin: 0;
 }
 
 .formGroup > div button {
-    float: right;
+    width: auto;
+    flex-shrink: 0;
 }
 
 .error {
@@ -52,4 +57,128 @@
     padding: 5px;
     margin-bottom: 15px;
     text-shadow: 0 0 5px #8b0e27;
+}
+
+/* ----------------------- ¡¡RESPONSIVE!! -----------------------*/
+/* ----------------------- TABLETS ----------------------- */
+@media (max-width: 1024px) {
+    .titForm {
+        font-size: 2.5em;
+    }
+
+    .formGroup {
+        margin-bottom: 18px;
+    }
+
+    .formGroup p {
+        font-size: 0.95em;
+    }
+
+    .error {
+        font-size: 13px;
+    }
+
+    .message {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        width: 100%;
+        margin-top: 25px;
+        margin-bottom: 0;
+        font-size: 14px;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* ----------------------- TELÉFONOS ----------------------- */
+@media (max-width: 768px) {
+    .titForm {
+        width: 100%;
+        text-align: center;
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+
+    .formGroup {
+        margin-bottom: 16px;
+    }
+
+    .formGroup label {
+        font-size: 0.95em;
+    }
+
+    .formGroup p {
+        width: 100%;
+        text-align: center;
+        font-size: 0.92em;
+        margin-top: 12px;
+    }
+
+    .formGroup > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .formGroup > div label {
+        float: none;
+        padding-top: 0;
+    }
+
+    .formGroup > div button {
+        float: none;
+        width: auto;
+        padding: 6px 14px;
+        flex-shrink: 0;
+    }
+
+    .error {
+        font-size: 12px;
+        min-height: 16px;
+    }
+
+    .message {
+        position: relative;
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 13px;
+        text-align: center;
+        justify-content: center;
+        border: 1px solid rgba(139, 14, 39, 0.4);
+        background: rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* ----------------------- TELÉFONOS PEQUEÑOS ----------------------- */
+@media (max-width: 480px) {
+    .titForm {
+        font-size: 1.9em;
+    }
+
+    .formGroup {
+        margin-bottom: 14px;
+    }
+
+    .formGroup label {
+        font-size: 0.9em;
+    }
+
+    .formGroup p {
+        font-size: 0.88em;
+    }
+
+    .error {
+        font-size: 11px;
+    }
+
+    .message {
+        font-size: 12px;
+        line-height: 1.5;
+        padding: 8px;
+    }
 }

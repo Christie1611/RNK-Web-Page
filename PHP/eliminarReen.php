@@ -10,6 +10,5 @@ session_start();
     $reencarnado = new ReenController();
 
         $reencarnado->borrar($id);
-        header("Location: ../Paginas/dashboard.php");
         exit;
 ?>

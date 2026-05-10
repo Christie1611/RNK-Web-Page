@@ -37,7 +37,7 @@
     <body id="login">
         <section class="content">
             <form class="form" action="../PHP/validarUsers.php" method="POST">
-                <a href="../Index.html" class="close">&#10005;</a>
+                <a href="../Index.php" class="close">&#10005;</a>
 
                 <div class="divNeon"></div>
                 <div class="divForm">

@@ -80,7 +80,23 @@ class ReenController {
 
     public function borrar($id) {
         $reencarnado = new Reencarnado();
-        $reencarnado->borrar($id);
+        $res = $reencarnado->borrar($id);
+
+        if ($res["success"]) {
+            $_SESSION["flash"] = [
+                "type" => "success",
+                "message" => $res["message"]
+            ];
+
+        } else {
+            $_SESSION["flash"] = [
+                "type" => "error",
+                "message" => $res["message"]
+            ];
+        }
+
+        header("Location: ../Paginas/dashboard.php");
+        exit;
     }
 }
 ?>

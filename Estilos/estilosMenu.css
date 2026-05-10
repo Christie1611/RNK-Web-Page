@@ -107,3 +107,85 @@
 .menu li.danger {
     color: #bebebe;
 }
+
+/* ---------------- MENU PARA EL TELÉFONO ---------------- */
+.menuToggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 800;
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.85);
+    color: #F5F5F5;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px #8B0E27;
+    text-shadow: 0 0 10px #8B0E27;
+    transition: all 0.3s ease;
+}
+
+.menuToggle:hover {
+    background: #8B0E27;
+    color: #F5F5F5;
+}
+
+.menuOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1500;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.menuOverlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+/* ----------------------- TABLETS -------------------------- */
+@media (max-width: 1024px) {
+    .menuToggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .divMenu {
+        width: 320px;
+        max-width: 85%;
+        transform: translateX(-105%);
+        transition: transform 0.35s ease;
+        z-index: 2000;
+    }
+
+    .divMenu.openMenu {
+        transform: translateX(0);
+    }
+
+    #content {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* ----------------------- TELÉFONOS ----------------------- */
+@media (max-width: 768px) {
+    .divMenu {
+        font-size: 1.5em;
+    }
+
+    .menu li {
+        padding: 8px;
+    }
+
+    .menu li a {
+        width: 105%;
+    }
+}

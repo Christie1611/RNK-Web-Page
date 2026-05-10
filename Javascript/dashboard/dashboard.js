@@ -170,3 +170,34 @@ if (localStorage.getItem("fromDashboard")) {
     localStorage.setItem("currentSection", "profile");
     localStorage.removeItem("fromDashboard");
 }
+
+// PARA EL MENÚ DEL TELÉFONO
+const menuToggle = document.getElementById("menuToggle");
+const divMenu = document.querySelector(".divMenu");
+const menuOverlay = document.getElementById("menuOverlay");
+
+if (menuToggle && divMenu && menuOverlay) {
+    menuToggle.addEventListener("click", () => {
+        divMenu.classList.toggle("openMenu");
+        menuOverlay.classList.toggle("show");
+    });
+
+    menuOverlay.addEventListener("click", () => {
+        divMenu.classList.remove("openMenu");
+        menuOverlay.classList.remove("show");
+    });
+
+    document.querySelectorAll(".menu a").forEach(link => {
+        link.addEventListener("click", (e) => {
+
+            const submenu = link.nextElementSibling;
+
+            if (submenu && submenu.classList.contains("submenu")) return;
+
+            if (window.innerWidth <= 1024) {
+                divMenu.classList.remove("openMenu");
+                menuOverlay.classList.remove("show");
+            }
+        });
+    });
+}

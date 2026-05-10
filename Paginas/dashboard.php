@@ -67,6 +67,9 @@
         <link rel="stylesheet" type="text/css" href="../Estilos/estilosForm.css">
     </head>
     <body id="dashboard" data-page="dashboard">
+        <button class="menuToggle" id="menuToggle">☰</button>
+        <div class="menuOverlay" id="menuOverlay"></div>
+
         <section class="layout">
             <div class="divMenu">
                 <h2 id="user"><?= $usuario === "" ? "Usuario" : $usuario?></h2>
@@ -120,6 +123,5 @@
         window.erroresReenEdit = <?= json_encode($erroresReenEdit); ?>;
         window.reenAction = <?= json_encode($reenAction); ?>;
         window.reenEditId = <?= json_encode($reenEditId); ?>;
-
     </script>
 </html>

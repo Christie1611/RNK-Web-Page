@@ -282,7 +282,7 @@ export const factionsData = {
                     },
                     {
                         name: "Hans Ulrich Rudel",
-                        img: "../Imagenes/Rudel.png",
+                        img: "../Imagenes/Rudel2.png",
                         desc: `<div>
                                     <p>Uno de los 5 Generales del ejército de los Pecadores. Cuando Kouu desertó del Bosque de los Grandes, él fue de
                                     los primeros en avivar las llamas para iniciar una guerra, queriendo pelear contra aquellos que estaban en

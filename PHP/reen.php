@@ -271,6 +271,17 @@ class Reencarnado {
 
         $stmt = $this->conexion->prepare("DELETE FROM reencarnados WHERE idreencarnado = ?");
         $stmt->bind_param("i", $id);
-        return $stmt->execute();
+
+        if ($stmt->execute()) {
+            return [
+                "success" => true,
+                "message" => "Reencarnado eliminado correctamente"
+            ];
+        }
+
+        return [
+            "success" => false,
+            "message" => "Error al borrar al Reencarnado"
+        ];
     }
 }

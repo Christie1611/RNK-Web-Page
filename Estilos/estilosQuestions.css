@@ -180,3 +180,72 @@
     background-color: #c8c8c8;
     cursor: pointer;
 }
+
+/* ----------------------------- ¡¡RESPONSIVE!! ------------------------------- */
+/* -------------------------- TELÉFONO -------------------------- */
+@media (max-width: 768px) {
+    .box {
+        width: 95%;
+        height: 90%;
+        border-radius: 25px;
+    }
+
+    .box::before,
+    .box::after {
+        width: 65px;
+        height: 65px;
+    }
+
+    .box::before {
+        top: -14px;
+        left: -14px;
+    }
+
+    .box::after {
+        bottom: -14px;
+        right: -14px;
+    }
+
+    .inner {
+        border-radius: 25px;
+    }
+
+    .contentQuestions {
+        padding: 20px;
+        font-size: 1em;
+    }
+
+    .contentQuestions > h1 {
+        font-size: 2em;
+    }
+
+    .contentQuestions > div {
+        width: 100%;
+    }
+
+    .close {
+        font-size: 35px;
+        top: 0;
+        right: 15px;
+    }
+
+    .questions {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* -------------------------- TELÉFONOS PEQUEÑOS -------------------------- */
+@media (max-width: 480px) {
+    .contentQuestions {
+        font-size: 0.95em;
+    }
+
+    .contentQuestions > h1 {
+        font-size: 1.6em;
+    }
+
+    .contentQuestions > h2 {
+        font-size: 1.2em;
+    }
+}

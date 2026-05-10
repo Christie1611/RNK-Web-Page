@@ -818,3 +818,388 @@ input[type=submit]:hover,
         transform: translateY(40px);
     }
 }
+
+/* ---------------- RESPONSIVE ---------------- */
+/* ---------------- TABLETS ---------------- */
+@media (max-width: 1024px) {
+    .mainContent {
+        padding: 20px;
+    }
+
+    /* ---------------- PERFIL ---------------- */
+    .profileCard {
+        flex-direction: column;
+        align-items: center;
+        padding: 25px;
+    }
+
+    .profileLeft,
+    .profileRight {
+        width: 100%;
+    }
+
+    .profileRight {
+        text-align: center;
+    }
+
+    .previewContainer {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        aspect-ratio: 3 / 4;
+    }
+
+    .profileImage {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* ---------------- CARRUSEL ---------------- */
+    .reenCarousel {
+        padding: 15px 35px;
+        gap: 15px;
+    }
+
+    .reenCard {
+        width: 170px;
+    }
+
+    .reenImage {
+        height: 220px;
+    }
+
+    .carouselBtn {
+        width: 42px;
+        height: 42px;
+        font-size: 24px;
+    }
+
+    .carouselBtn.left {
+        left: 0;
+    }
+
+    .carouselBtn.right {
+        right: 0;
+    }
+
+    /* ---------------- EXPLORAR ---------------- */
+    .exploreTop {
+        flex-direction: column;
+    }
+
+    .exploreGrid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .exploreImage {
+        height: 260px;
+        object-position: top;
+    }
+
+    /* ---------------- MODAL ---------------- */
+    .modalBox {
+        width: 80%;
+        font-size: 2em;
+    }
+
+    /* ---------------- FORMULARIOS ---------------- */
+    .form {
+        font-size: 22px;
+    }
+
+    textarea {
+        height: 170px;
+    }
+
+    /* ---------------- PERFIL REENCARNADO ---------------- */
+    .reenTop {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 25px;
+        gap: 25px;
+    }
+
+    .reenImageContainer {
+        width: 240px;
+        height: 320px;
+    }
+
+    .reenProfileImage {
+        object-fit: cover;
+    }
+
+    .reenMainInfo {
+        align-items: center;
+    }
+
+    .reenProfileName {
+        font-size: 2.5rem;
+    }
+
+    .reenContent {
+        padding: 35px 25px;
+    }
+
+    /* ---------------- FLECHAS REENCARNADO ---------------- */
+    .prev,
+    .next {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 3em;
+        z-index: 50;
+    }
+
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
+
+    /* ---------------- GO BACK ---------------- */
+    .goBack {
+        left: 5px;
+    }
+}
+
+/* ---------------- TELÉFONOS ---------------- */
+@media (max-width: 768px) {
+    .mainContent {
+        padding: 15px;
+    }
+
+    /* ---------------- PERFIL ---------------- */
+    .profileCard {
+        padding: 18px;
+        gap: 20px;
+    }
+
+    .profileRight h2 {
+        font-size: 1.7em;
+    }
+
+    .email {
+        font-size: 18px;
+    }
+
+    .infoBlock {
+        padding: 12px;
+    }
+
+    /* ---------------- CARRUSEL ---------------- */
+    .reenSection {
+        padding: 15px;
+    }
+
+    .reenTitle {
+        text-align: center;
+    }
+
+    .reenCarousel {
+        padding: 10px 30px;
+    }
+
+    .reenCard {
+        width: 150px;
+    }
+
+    .reenImage {
+        height: 190px;
+    }
+
+    .reenName {
+        font-size: 19px;
+    }
+
+    .carouselBtn {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+    }
+
+    /* ---------------- EXPLORAR ---------------- */
+    .exploreContainer {
+        gap: 20px;
+    }
+
+    .exploreGrid {
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    /* ---------------- FORM ---------------- */
+    .form {
+        font-size: 20px;
+    }
+
+    input[type=text],
+    input[type=password],
+    textarea,
+    select,
+    input[type=submit] {
+        font-size: 18px;
+    }
+
+    textarea {
+        height: 150px;
+    }
+
+    .removeTalento,
+    #addTalento {
+        font-size: 20px;
+    }
+
+    /* ---------------- PERFIL REENCARNADO ---------------- */
+    .reenBanner {
+        height: 120px;
+    }
+
+    .reenTop {
+        margin-top: -70px;
+    }
+
+    .reenImageContainer {
+        width: 200px;
+        height: 280px;
+    }
+
+    .reenProfileName {
+        font-size: 2rem;
+    }
+
+    .reenContent {
+        padding: 25px 15px;
+        font-size: 17px;
+    }
+
+    .reenLoreCard,
+    .reenTalentsSection {
+        padding: 20px;
+    }
+
+    .factionBadge {
+        font-size: 14px;
+        padding: 8px 18px;
+    }
+
+    /* ---------------- FLECHAS ---------------- */
+    .prev,
+    .next {
+        font-size: 2.4em;
+    }
+
+    /* ---------------- GO BACK ---------------- */
+    .goBack {
+        width: 42px;
+        height: 42px;
+        font-size: 2.2em;
+    }
+
+    /* ---------------- MODAL ---------------- */
+    .modalBox {
+        width: 90%;
+        font-size: 1.5em;
+        padding: 20px;
+    }
+
+    /* ---------------- FLASH ---------------- */
+    .flashContainer {
+        right: 10px;
+        left: 10px;
+        bottom: 10px;
+    }
+
+    .flash {
+        max-width: 100%;
+    }
+}
+
+/* ---------------- TELÉFONOS PEQUEÑOS ---------------- */
+@media (max-width: 480px) {
+    .mainContent {
+        padding: 10px;
+    }
+
+    /* ---------------- PERFIL ---------------- */
+    .profileCard {
+        padding: 14px;
+        border-radius: 15px;
+    }
+
+    .profileRight h2 {
+        font-size: 1.5em;
+    }
+
+    .previewContainer {
+        max-width: 240px;
+    }
+
+    /* ---------------- CARRUSEL ---------------- */
+    .reenCarousel {
+        padding: 10px 25px;
+    }
+
+    .reenCard {
+        width: 135px;
+        padding: 8px;
+    }
+
+    .reenImage {
+        height: 170px;
+    }
+
+    .reenName {
+        font-size: 17px;
+    }
+
+    /* ---------------- PERFIL REENCARNADO ---------------- */
+    .reenImageContainer {
+        width: 170px;
+        height: 240px;
+    }
+
+    .reenProfileName {
+        font-size: 1.7rem;
+    }
+
+    .reenContent {
+        font-size: 16px;
+    }
+
+    .reenLoreCard h2,
+    .reenTalentsSection h2 {
+        font-size: 1.3rem;
+    }
+
+    /* ---------------- FLECHAS ---------------- */
+    .prev,
+    .next {
+        font-size: 2em;
+    }
+
+    .prev {
+        left: 2px;
+    }
+
+    .next {
+        right: 2px;
+    }
+
+    /* ---------------- BOTONES ---------------- */
+    input[type=submit],
+    .cancel,
+    .confirm,
+    .removeTalento,
+    #addTalento {
+        font-size: 18px;
+        padding: 6px;
+    }
+
+    /* ---------------- MODAL ---------------- */
+    .modalBox {
+        font-size: 1.2em;
+    }
+}

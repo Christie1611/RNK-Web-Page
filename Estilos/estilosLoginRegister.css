@@ -222,3 +222,235 @@ input[type=submit]:hover {
                 0 0 10px #586A6A,
                 0 0 15px #586A6A;
 }
+
+/* ----------------------- ¡¡RESPONSIVE!! -----------------------*/
+/* ----------------------- TABLETS -------------------------- */
+@media (max-width: 1024px) {
+    #login,
+    #register {
+        overflow-y: auto;
+        font-size: 22px;
+        background-size: cover;
+    }
+
+    .content {
+        padding: 40px 20px;
+        align-items: flex-start;
+    }
+
+    .form {
+        width: 90vw;
+        height: auto;
+        min-height: unset;
+        aspect-ratio: unset;
+        margin: 0 auto;
+        border-radius: 55px;
+    }
+
+    .divNeon {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 55px;
+    }
+
+    .divForm {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        min-height: 100%;
+    }
+
+    .divFormImg {
+        position: relative;
+        width: 100%;
+        height: 320px;
+        min-height: 320px;
+        border-radius: 55px 55px 0 0;
+        background-position: center bottom;
+        background-size: cover;
+        flex-shrink: 0;
+    }
+
+    .divFormImg::after {
+        border-radius: 55px 55px 0 0;
+    }
+
+    .divForm > div:nth-child(2) {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 35px;
+    }
+
+    .form::before,
+    .form::after {
+        width: 110px;
+        height: 110px;
+    }
+
+    .form::after {
+        top: -19px;
+        left: -19px;
+    }
+
+    .form::before {
+        bottom: -19px;
+        right: -19px;
+    }
+}
+
+/* ----------------------- TELÉFONOS ----------------------- */
+@media (max-width: 768px) {
+    #login,
+    #register {
+        font-size: 20px;
+        overflow-y: auto;
+    }
+
+    .content {
+        padding: 25px 12px;
+        align-items: flex-start;
+    }
+
+    .form {
+        width: 100%;
+        height: auto;
+        aspect-ratio: unset;
+        border-radius: 35px;
+    }
+
+    .divNeon {
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 35px;
+    }
+
+    .divForm {
+        height: auto;
+    }
+
+    .divFormImg {
+        width: 100%;
+        height: 240px;
+        min-height: 240px;
+        border-radius: 35px 35px 0 0;
+        background-position: center bottom;
+        background-size: cover;
+    }
+
+    .divFormImg::after {
+        border-radius: 35px 35px 0 0;
+    }
+
+    .divForm > div:nth-child(2) {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 22px 18px 28px;
+    }
+
+    .titForm {
+        font-size: 2em;
+    }
+
+    .formGroup {
+        margin-bottom: 18px;
+    }
+
+    input[type=text],
+    input[type=password],
+    input[type=submit] {
+        font-size: 20px;
+    }
+
+    input[type=submit] {
+        padding: 10px;
+    }
+
+    .message {
+        font-size: 0.95em;
+        line-height: 1.4;
+    }
+
+    .close {
+        font-size: 38px;
+        top: 8px;
+        right: 16px;
+    }
+
+    .form::before,
+    .form::after {
+        width: 80px;
+        height: 80px;
+    }
+
+    .form::after {
+        top: -15px;
+        left: -15px;
+    }
+
+    .form::before {
+        bottom: -15px;
+        right: -15px;
+    }
+}
+
+/* ---------------- TELÉFONOS PEQUEÑOS --------------------- */
+@media (max-width: 480px) {
+    #login,
+    #register {
+        font-size: 18px;
+    }
+
+    .content {
+        padding: 15px 10px;
+    }
+
+    .form {
+        border-radius: 25px;
+    }
+
+    .divNeon {
+        border-radius: 25px;
+    }
+
+    .divFormImg {
+        height: 180px;
+        min-height: 180px;
+        border-radius: 25px 25px 0 0;
+    }
+
+    .divFormImg::after {
+        border-radius: 25px 25px 0 0;
+    }
+
+    .divForm > div:nth-child(2) {
+        padding: 18px 14px 24px;
+    }
+
+    .titForm {
+        font-size: 1.8em;
+    }
+
+    input[type=text],
+    input[type=password],
+    input[type=submit] {
+        font-size: 18px;
+    }
+
+    .message {
+        font-size: 0.9em;
+    }
+
+    .close {
+        font-size: 32px;
+    }
+
+    .form::before,
+    .form::after {
+        display: none;
+    }
+}
