@@ -72,6 +72,11 @@ menuItems.forEach(item => {
 
         if (!section) return;
 
+        if (window.innerWidth <= 1024) {
+            divMenu.classList.remove("openMenu");
+            menuOverlay.classList.remove("show");
+        }
+
         if (section === "delete") {
             loadSection("delete");
             return;
