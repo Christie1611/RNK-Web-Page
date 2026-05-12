@@ -8,6 +8,7 @@
 
     $erroresUsers = [];
     $reenDataOld = [];
+    $reenEditOld = [];
     $erroresReenCreate = [];
     $erroresReenEdit = [];
     $reenAction = "";
@@ -26,6 +27,11 @@
     if (isset($_SESSION["oldReen"])) {
         $reenDataOld = $_SESSION["oldReen"];
         unset($_SESSION["oldReen"]);
+    }
+
+    if (isset($_SESSION["oldReenEdit"])) {
+        $reenEditOld = $_SESSION["oldReenEdit"];
+        unset($_SESSION["oldReenEdit"]);
     }
 
     if (isset($_SESSION["erroresReenCreate"])) {
@@ -119,6 +125,7 @@
         window.userErrors = <?= json_encode($erroresUsers); ?>;
         window.userCantReen = <?= json_encode($contReen); ?>;
         window.reenDataOld = <?= json_encode($reenDataOld); ?>;
+        window.reenEditOld = <?= json_encode($reenEditOld); ?>;
         window.erroresReenCreate = <?= json_encode($erroresReenCreate); ?>;
         window.erroresReenEdit = <?= json_encode($erroresReenEdit); ?>;
         window.reenAction = <?= json_encode($reenAction); ?>;

@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS talentos (
         ON DELETE CASCADE
 );
 
-INSERT INTO Facciones (Nombre) VALUES
+INSERT INTO facciones (Nombre) VALUES
 ('Forest'),
 ('Sinners'),
 ('Strays'),

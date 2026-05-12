@@ -9,6 +9,11 @@ html {
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Agency FB';
+    src: url('/Font/AGENCYR.woff2') format('woff2');
+}
+
 /* ----------------------- BODY ------------------------- */
 #factions {
     background-image: url(../Imagenes/Background3.png);
@@ -28,8 +33,6 @@ html {
 .copyright {
     width: 100%;
     font-size: 15px;
-    position: absolute;
-    bottom: 0;
     text-shadow: 0px 0px 8px #f5f5f5;
     margin-bottom: 10px;
 }

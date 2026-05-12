@@ -4,7 +4,7 @@ import { paintErrors } from "./errors.js";
 import { goBack } from "./reenProfile.js";
 import { loadSection, setActiveMenu } from "./dashboard.js";
 
-const reenDataOld = window.reenDataOld;
+const reenEditOld = window.reenEditOld;
 const reenErrors = window.erroresReenEdit;
 const content = document.getElementById("mainContent");
 localStorage.setItem("reenReturn", localStorage.getItem("currentSection") || "profile");
@@ -26,8 +26,8 @@ export function loadEditReenForm(reen) {
                             <label>Talento</label> 
                             <button type="button" class="removeTalento">Eliminar</button>
                         </div>
-                        <input type="text" name="talento[]" value="${reenDataOld?.talentos?.[index]?.talento || talento.talento}">
-                        <textarea name="descripcionTalento[]">${reenDataOld?.talentos?.[index]?.descripcion || talento.descripcion || ""}</textarea>
+                        <input type="text" name="talento[]" value="${reenEditOld?.talentos?.[index]?.talento || talento.talento}">
+                        <textarea name="descripcionTalento[]">${reenEditOld?.talentos?.[index]?.descripcion || talento.descripcion || ""}</textarea>
 
                         <span class="error error-talento" id="error-talento"></span>
                         <span class="error error-descripcion" id="error-descripcion"></span>
@@ -60,7 +60,7 @@ export function loadEditReenForm(reen) {
                 <div class="profileRight">
                     <div class="formGroup">
                         <label>Nombre</label>
-                        <input type="text" name="nombre" value="${reenDataOld?.nombre || reen.nombre}">
+                        <input type="text" name="nombre" value="${reenEditOld?.nombre || reen.nombre}">
                         <span class="error" id="error-nombre"></span>
                     </div>
 
@@ -78,7 +78,7 @@ export function loadEditReenForm(reen) {
 
                     <div class="formGroup">
                         <label>Trasfondo</label>
-                        <textarea name="trasfondo">${reenDataOld?.trasfondo || reen.trasfondo}</textarea>
+                        <textarea name="trasfondo">${reenEditOld?.trasfondo || reen.trasfondo}</textarea>
                         <span class="error" id="error-trasfondo"></span>
                     </div>
 

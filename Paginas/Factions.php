@@ -43,7 +43,7 @@
                     onclick="localStorage.setItem('currentSection','profile')">
                     <?= $usuario === "" ? "Iniciar Sesión" : "Perfil" ?></a></li>
                 </ul>
-                <div class="copyright">&#169; Mikihisa Konishi / Mag Garden&#x2022;Comité de Producción de <br>"Reincarnation no Kaben"</div>
+                <div class="copyright">&#169; Mikihisa Konishi / Mag Garden&#x2022;Comité de Producción de "Reincarnation no Kaben"</div>
             </div>
             <div id="content">
                 <div id="factionContent"></div>

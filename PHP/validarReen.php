@@ -106,12 +106,23 @@
             }
         }
 
-        $_SESSION["oldReen"] = [
-            "nombre" => trim(strip_tags($_POST["nombre"])) ?? "",
-            "idfaccion" => $_POST["idfaccion"] ?? "",
-            "trasfondo" => trim(strip_tags($_POST["trasfondo"])) ?? "",
-            "talentos" => $talentosOld
-        ];
+        if ($action === "insertar") {
+            $_SESSION["oldReen"] = [
+                "nombre" => trim(strip_tags($_POST["nombre"])) ?? "",
+                "idfaccion" => $_POST["idfaccion"] ?? "",
+                "trasfondo" => trim(strip_tags($_POST["trasfondo"])) ?? "",
+                "talentos" => $talentosOld
+            ];
+        }
+
+        if ($action === "modificar") {
+            $_SESSION["oldReenEdit"] = [
+                "nombre" => trim(strip_tags($_POST["nombre"])) ?? "",
+                "idfaccion" => $_POST["idfaccion"] ?? "",
+                "trasfondo" => trim(strip_tags($_POST["trasfondo"])) ?? "",
+                "talentos" => $talentosOld
+            ];
+        }
 
         header("Location: ../Paginas/dashboard.php");
         exit;
