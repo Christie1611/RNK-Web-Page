@@ -2,7 +2,8 @@
     session_start();
     $old = [];
     $errores = [];
-     $error = "";
+    $error = "";
+    $mensaje = "";
 
     if (isset($_GET["error"])) {
         $error = $_GET["error"];
@@ -18,6 +19,12 @@
         unset($_SESSION["errores"]);
     }
 
+    if (isset($_SESSION["flash"]["message"])) {
+        if ($_SESSION["flash"]["type"] === "errorRegister") {
+            $mensaje = $_SESSION["flash"]["message"];
+            unset($_SESSION["flash"]["message"]);
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -41,17 +48,16 @@
                             <div class="formGroup">
                                 <h1 class="titForm">Registro</h1>
                                 <span class="error">
-                                    <?php if ($error === "registro") {
-                                        echo "El correo ya está registrado";
-                                        // header('Refresh: 1.5; URL=login.php');
-                                    }?>
+                                    <span class="error">
+                                        <?= $mensaje ?>
+                                    </span>
                                 </span>
                             </div>
                             <input type="hidden" name="action" value="registrar"/>
 
                             <div class="formGroup">
                                 <label>Usuario</label>
-                                <input type="text" name="usuario" placeholder="Usuario" value="<?= $old["usuario"] ?? "" ?>" required>
+                                <input type="text" name="usuario" placeholder="Usuario" value="<?= $old["usuario"] ?? "" ?>">
                                 <span class="error">
                                     <?php if (!empty($errores['usuario'])): ?>
                                         <?php echo $errores['usuario']; ?>
@@ -61,7 +67,7 @@
 
                             <div class="formGroup">
                                 <label>Email</label>
-                                <input type="text" name="email" placeholder="Email" value="<?= $old["email"] ?? "" ?>" required>
+                                <input type="text" name="email" placeholder="Email" value="<?= $old["email"] ?? "" ?>">
                                 <span class="error">
                                     <?php if (!empty($errores['email'])): ?>
                                         <?php echo $errores['email']; ?>
@@ -71,7 +77,7 @@
 
                             <div class="formGroup">
                                 <label>Contraseña</label>
-                                <input type="password" name="contrasena" placeholder="Contraseña" value="<?= $old["contrasena"] ?? "" ?>" required>
+                                <input type="password" name="contrasena" placeholder="Contraseña">
                                 <span class="error">
                                     <?php if (!empty($errores['contrasena'])): ?>
                                         <?php echo $errores['contrasena']; ?>

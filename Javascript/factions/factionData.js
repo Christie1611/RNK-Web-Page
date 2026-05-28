@@ -261,7 +261,7 @@ export const factionsData = {
                     },
                     {
                         name: "Nostradamus",
-                        img: "../Imagenes/Nostradamus.png",
+                        img: "../Imagenes/Nostradamus2.png",
                         desc: `<div>
                                     <p>Uno de los Reencarnados más fieles a Kouu dentro de los Pecadores. Está constantemente a su lado como una especie
                                     de secretario, avisándole sobre el futuro y aconsejándole sobre cuál puede ser el curso de acciones más indicado.</p>

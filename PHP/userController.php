@@ -34,9 +34,13 @@ class UsuarioController {
         }
 
         $_SESSION["flash"] = [
-            "type" => "error",
-            "message" => "El correo ya está registrado"
+            "type" => "errorRegister",
+            "message" => "El email ya está registrado"
         ];
+
+        $_SESSION["old"] = array_map(function($value) {
+            return is_string($value) ? trim(strip_tags($value)) : $value;
+        }, $_POST);
 
         header("Location: ../Paginas/register.php");
         exit;
@@ -67,9 +71,13 @@ class UsuarioController {
         }
 
         $_SESSION["flash"] = [
-            "type" => "error",
+            "type" => "errorLogin",
             "message" => "Usuario o contraseña incorrectos"
         ];
+
+        $_SESSION["old"] = array_map(function($value) {
+            return is_string($value) ? trim(strip_tags($value)) : $value;
+        }, $_POST);
 
         header("Location: ../Paginas/login.php");
         exit;

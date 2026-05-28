@@ -20,8 +20,10 @@
     }
 
     if (isset($_SESSION["flash"]["message"])) {
-        $mensaje = $_SESSION["flash"]["message"];
-        unset($_SESSION["flash"]["message"]);
+        if ($_SESSION["flash"]["type"] === "errorLogin") {
+            $mensaje = $_SESSION["flash"]["message"];
+            unset($_SESSION["flash"]["message"]);
+        }
     }
 
 ?>
@@ -54,7 +56,7 @@
 
                         <div class="formGroup">
                             <label>Usuario</label>
-                            <input type="text" name="usuario" placeholder="Usuario" value="<?= $old["usuario"] ?? "" ?>" required>
+                            <input type="text" name="usuario" placeholder="Usuario" value="<?= $old["usuario"] ?? "" ?>">
                             <span class="error">
                                 <?php if (!empty($errores['usuario'])): ?>
                                     <?php echo $errores['usuario']; ?>
@@ -64,7 +66,7 @@
 
                         <div class="formGroup">
                             <label>Contraseña</label>
-                            <input type="password" name="contrasena" placeholder="Contraseña" value="<?= $old["contrasena"] ?? "" ?>" required>
+                            <input type="password" name="contrasena" placeholder="Contraseña">
                             <span class="error">
                                 <?php if (!empty($errores['contrasena'])) {
                                     echo $errores['contrasena'];
