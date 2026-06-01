@@ -96,9 +96,24 @@ class Usuario {
         return false;
     }
 
-    public function listar() {
-        $sql = "SELECT * FROM usuarios WHERE id = $this->id";
-        return mysqli_query($this->conexion, $sql);
+    public function listarUsuarios() {
+        $sql = "SELECT * FROM usuarios ORDER BY usuario";
+        $res = mysqli_query($this->conexion, $sql);
+
+        $usuarios = [];
+
+        while ($fila = $res->fetch_assoc()) {
+            $usuarios[] = $fila;
+        }
+
+        return $usuarios;
+    }
+
+    public function contarUsuarios() {
+        $sql = "SELECT COUNT(*) AS total FROM usuarios";
+        $res = mysqli_query($this->conexion, $sql);
+
+        return $res->fetch_assoc()["total"];
     }
 
     public function modificar($file = null) {
@@ -193,7 +208,18 @@ class Usuario {
 
         $stmt = $this->conexion->prepare("DELETE FROM usuarios WHERE id = ?");
         $stmt->bind_param("i", $id);
-        return $stmt->execute();
+
+        if ($stmt->execute()) {
+            return [
+                "success" => true,
+                "message" => "Usuario eliminado correctamente"
+            ];
+        }
+
+        return [
+            "error" => true,
+            "message" => "Error al borrar al usuario"
+        ];
     }
 
     
@@ -212,15 +238,15 @@ class Usuario {
     }
 
     public function listarReencarnados() {
-        $sql = "SELECT reencarnados.*, talentos.idtalento, talentos.talento, talentos.descripcion AS descripcionTalento
-        FROM reencarnados LEFT JOIN talentos ON reencarnados.idreencarnado = talentos.idreencarnado
-        WHERE reencarnados.idusuario = ?
-        ORDER BY reencarnados.idreencarnado";
+        $sql = "SELECT reencarnados.*, subfacciones.nombre AS nombreSubfaccion, talentos.idtalento, talentos.talento, talentos.descripcion AS descripcionTalento
+                FROM reencarnados LEFT JOIN subfacciones ON reencarnados.idsubfaccion = subfacciones.idsubfaccion LEFT JOIN talentos ON reencarnados.idreencarnado = talentos.idreencarnado
+                WHERE reencarnados.idusuario = ?
+                ORDER BY reencarnados.idreencarnado
+                ";
 
         $stmt = $this->conexion->prepare($sql);
         $stmt->bind_param("i", $this->id);
         $stmt->execute();
-
         $res = $stmt->get_result();
 
         $reencarnados = [];
@@ -233,6 +259,8 @@ class Usuario {
                     "nombre" => $fila["nombre"],
                     "diseno" => $fila["diseno"],
                     "idfaccion" => $fila["idfaccion"],
+                    "idsubfaccion" => $fila["idsubfaccion"],
+                    "subfaccion" => $fila["nombreSubfaccion"],
                     "trasfondo" => $fila["trasfondo"],
                     "talentos" => []
                 ];

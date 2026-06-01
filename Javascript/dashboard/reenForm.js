@@ -3,7 +3,8 @@ import { previewImage, inputImage } from "./imagePreview.js";
 import { paintErrors } from "./errors.js";
 
 const reenDataOld = window.reenDataOld;
-const reenErrors = window.reenCreateErrors;
+const reenErrors = window.erroresReenCreate;
+const subfacciones = window.subfacciones || [];
 
 // Contenido para crear a los Reencarnados
 export function loadReenForm(content) {
@@ -47,6 +48,18 @@ export function loadReenForm(content) {
                         <span class="error" id="error-idfaccion"></span>
                     </div>
 
+                    <div class="formGroup" id="subFactionContainer" style="display:none">
+                        <label>Subfacción</label>
+                        <select name="idsubfaccion" id="subFactionSelect">
+                            <option value=""></option>
+                            ${subfacciones.map(sub => `
+                                <option value="${sub.idsubfaccion}">${sub.nombre}</option>
+                            `).join("")}
+                        </select>
+
+                        <span class="error" id="error-idsubfaccion"></span>
+                    </div>
+
                     <div class="formGroup">
                         <label>Trasfondo</label>
                         <textarea name="trasfondo">${reenDataOld?.trasfondo || ""}</textarea>
@@ -74,6 +87,23 @@ export function loadReenForm(content) {
         </form>
     `;
 
+    const factionSelect = document.querySelector('select[name="idfaccion"]');
+    const subContainer = document.getElementById("subFactionContainer");
+
+    function toggleSubFaction() {
+        if (factionSelect.value === "4") {
+            subContainer.style.display = "block";
+        } else {
+            subContainer.style.display = "none";
+
+            const select = document.getElementById("subFactionSelect");
+            select.value = "";
+        }
+    }
+
+    factionSelect.addEventListener("change", toggleSubFaction);
+
+    toggleSubFaction();
     inputImage();
     previewImage();
     rebuildTalentos();

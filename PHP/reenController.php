@@ -3,7 +3,6 @@ require_once "reen.php";
 
 class ReenController {
     public function insertar() {
-        session_start();
 
         $idusuario = $_SESSION["auth"]["id"];
 
@@ -12,11 +11,13 @@ class ReenController {
             $_POST["nombre"],
             null,
             $_POST["idfaccion"],
+            !empty($_POST["idsubfaccion"]) ? (int)$_POST["idsubfaccion"] : null,
             $_POST["trasfondo"],
             $idusuario
         );
 
         $res = $reen->insertar($_FILES["diseno"] ?? null,
+                                !empty($_POST["idsubfaccion"]) ? (int)$_POST["idsubfaccion"] : null,
                                 $_POST["talento"] ?? [], 
                                 $_POST["descripcionTalento"] ?? []);
 
@@ -45,12 +46,14 @@ class ReenController {
             $_POST["nombre"],
             null,
             $_POST["idfaccion"],
+            !empty($_POST["idsubfaccion"]) ? (int)$_POST["idsubfaccion"] : null,
             $_POST["trasfondo"],
             $idusuario
         );
 
         $res = $reen->modificar(
             $_FILES["diseno"] ?? null,
+            !empty($_POST["idsubfaccion"]) ? (int)$_POST["idsubfaccion"] : null,
             $_POST["talento"] ?? [],
             $_POST["descripcionTalento"] ?? [],
             $_POST["talentoIds"] ?? []
@@ -73,6 +76,11 @@ class ReenController {
         exit;
     }
 
+    public function contarReencarnados() {
+        $reen = new Reencarnado();
+        return $reen->contarReencarnados();
+    }
+
     public function explorar() {
         $reen = new Reencarnado();
         return $reen->explorar();
@@ -87,16 +95,12 @@ class ReenController {
                 "type" => "success",
                 "message" => $res["message"]
             ];
-
         } else {
             $_SESSION["flash"] = [
                 "type" => "error",
                 "message" => $res["message"]
             ];
         }
-
-        header("Location: ../Paginas/dashboard.php");
-        exit;
     }
 }
 ?>

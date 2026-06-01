@@ -6,6 +6,7 @@ import { loadSection, setActiveMenu } from "./dashboard.js";
 
 const reenEditOld = window.reenEditOld;
 const reenErrors = window.erroresReenEdit;
+const subfacciones = window.subfacciones || [];
 const content = document.getElementById("mainContent");
 localStorage.setItem("reenReturn", localStorage.getItem("currentSection") || "profile");
 
@@ -76,6 +77,18 @@ export function loadEditReenForm(reen) {
                         <span class="error" id="error-idfaccion"></span>
                     </div>
 
+                    <div class="formGroup" id="subFactionContainer" style="display:none">
+                        <label>Subfacción</label>
+                        <select name="idsubfaccion" id="subFactionSelect">
+                            <option value=""></option>
+                            ${subfacciones.map(sub => `
+                                <option value="${sub.idsubfaccion}">${sub.nombre}</option>
+                            `).join("")}
+                        </select>
+
+                        <span class="error" id="error-idsubfaccion"></span>
+                    </div>
+
                     <div class="formGroup">
                         <label>Trasfondo</label>
                         <textarea name="trasfondo">${reenEditOld?.trasfondo || reen.trasfondo}</textarea>
@@ -99,6 +112,23 @@ export function loadEditReenForm(reen) {
         loadSection(returnTo);
     });
 
+    const factionSelect = document.querySelector('select[name="idfaccion"]');
+    const subContainer = document.getElementById("subFactionContainer");
+
+    function toggleSubFaction() {
+        if (factionSelect.value === "4") {
+            subContainer.style.display = "block";
+        } else {
+            subContainer.style.display = "none";
+
+            const select = document.getElementById("subFactionSelect");
+            select.value = "";
+        }
+    }
+
+    factionSelect.addEventListener("change", toggleSubFaction);
+
+    toggleSubFaction();
     inputImage();
     previewImage();
     talentosHandler();

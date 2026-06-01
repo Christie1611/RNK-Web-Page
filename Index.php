@@ -6,6 +6,19 @@
     if (isset($_SESSION["auth"]["usuario"])) {
         $usuario = $_SESSION["auth"]["usuario"];
     }
+
+    $link = "Paginas/login.php";
+    $texto = "Iniciar Sesión";
+
+    if (isset($_SESSION["auth"])) {
+        if ($_SESSION["auth"]["rol"] === "admin") {
+            $link = "Paginas/adminDashboard.php";
+            $texto = "Panel Admin";
+        } else {
+            $link = "Paginas/dashboard.php";
+            $texto = "Perfil";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +38,7 @@
                 <li><a href="Index.php#factions">Facciones</a></li>
                 <li><a href="Index.php#gallery">Galeria</a></li>
                 <!--<li><a>Crear</a></li>-->
-                <li><a href="<?= isset($_SESSION["auth"]["usuario"]) ? "Paginas/dashboard.php" : "Paginas/login.php" ?>">
-                <?= $usuario === "" ? "Iniciar Sesión" : "Perfil" ?></a></li>
+                <li><a href="<?= $link ?>"><?= $texto ?></a></li>
             </ul>
         </nav>
         <div class="video-container">

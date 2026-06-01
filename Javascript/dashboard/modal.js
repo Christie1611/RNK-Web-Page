@@ -30,6 +30,16 @@ export function showDeleteReenModal(id) {
     )
 }
 
+export function showDeleteUserModal(id) {
+    showModal(
+        "delete",
+        "¿Seguro/a que quieres borrar este usuario?",
+        () => {
+            window.location.href = `../PHP/eliminar.php?id=${id}`;
+        }
+    );
+}
+
 export function showModal(type, message, onConfirm) {
     const modal = document.createElement("div");
     modal.classList.add("modal");

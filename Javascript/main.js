@@ -14,4 +14,8 @@ switch (page) {
     case "dashboard":
         import ("./dashboard/dashboard.js");
         break;
+    
+    case "admin":
+        import ("./adminDashboard/admin.js");
+        break;
 }

@@ -6,15 +6,17 @@ class Reencarnado {
     private $nombre;
     private $diseno;
     private $idfaccion;
+    private $idsubfaccion;
     private $trasfondo;
     private $idusuario;
     private $conexion;
 
-    public function __construct($idreencarnado = null, $nombre = null, $diseno = null, $idfaccion = null, $trasfondo = null, $idusuario = null) {
+    public function __construct($idreencarnado = null, $nombre = null, $diseno = null, $idfaccion = null, $idsubfaccion = null, $trasfondo = null, $idusuario = null) {
         $this->idreencarnado = $idreencarnado;
         $this->nombre = $nombre;
         $this->diseno = $diseno;
         $this->idfaccion = $idfaccion;
+        $this->idsubfaccion = $idsubfaccion;
         $this->trasfondo = $trasfondo;
         $this->idusuario = $idusuario;
 
@@ -34,7 +36,7 @@ class Reencarnado {
         }
     }
 
-    public function insertar($file = null, $talentos = [], $descripciones = []) {
+    public function insertar($file = null, $idsubfaccion = null, $talentos = [], $descripciones = []) {
         $newImage = null;
 
         if ($file && $file["error"] === UPLOAD_ERR_OK) {
@@ -45,15 +47,16 @@ class Reencarnado {
         }
 
         $stmt = $this->conexion->prepare("
-            INSERT INTO reencarnados (nombre, diseno, idfaccion, trasfondo, idusuario)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO reencarnados (nombre, diseno, idfaccion, idsubfaccion, trasfondo, idusuario)
+            VALUES (?, ?, ?, ?, ?, ?)
         ");
 
         $stmt->bind_param(
-            "ssisi",
+            "ssiisi",
             $this->nombre,
             $newImage,
             $this->idfaccion,
+            $idsubfaccion,
             $this->trasfondo,
             $this->idusuario
         );
@@ -90,12 +93,7 @@ class Reencarnado {
         ];
     }
 
-    public function listar() {
-        $sql = "SELECT * FROM reencarnados WHERE idreencarnado = $this->idreencarnado";
-        return mysqli_query($this->conexion, $sql);
-    }
-
-    public function modificar($file = null, $talentos = [], $descripciones = [], $talentoIds = []) {
+    public function modificar($file = null, $idsubfaccion = null, $talentos = [], $descripciones = [], $talentoIds = []) {
         $stmt = $this->conexion->prepare("SELECT diseno FROM reencarnados WHERE idreencarnado = ?");
         $stmt->bind_param("i", $this->idreencarnado);
         $stmt->execute();
@@ -126,16 +124,18 @@ class Reencarnado {
                 nombre = ?,
                 diseno = ?,
                 idfaccion = ?,
+                idsubfaccion = ?,
                 trasfondo = ?,
                 idusuario = ?
             WHERE idreencarnado = ?
         ");
 
         $stmt->bind_param(
-            "ssisii",
+            "ssiisii",
             $this->nombre,
             $this->diseno,
             $this->idfaccion,
+            $idsubfaccion,
             $this->trasfondo,
             $this->idusuario,
             $this->idreencarnado
@@ -248,6 +248,13 @@ class Reencarnado {
         return $reencarnados;
     }
 
+    public function contarReencarnados() {
+        $sql = "SELECT COUNT(*) AS total FROM reencarnados";
+        $res = mysqli_query($this->conexion, $sql);
+
+        return $res->fetch_assoc()["total"];
+    }
+
     public function borrar($id) {
         $stmt = $this->conexion->prepare("SELECT diseno FROM reencarnados WHERE idreencarnado = ?");
         $stmt->bind_param("i", $id);
@@ -280,7 +287,7 @@ class Reencarnado {
         }
 
         return [
-            "success" => false,
+            "error" => true,
             "message" => "Error al borrar al Reencarnado"
         ];
     }

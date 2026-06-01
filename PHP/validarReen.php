@@ -38,6 +38,12 @@
 
             if ($idfaccion === "") {
                 $errores["idfaccion"] = "La facción no puede estar vacía";
+            } elseif ($idfaccion == 4) {
+                if (!isset($_POST["idsubfaccion"])) {
+                    $errores["idsubfaccion"] = "La subfacción no está definida";
+                }
+            } else {
+                $_POST["idsubfaccion"] = null;
             }
         } else {
             $errores["idfaccion"] = "La facción no está definida";
@@ -113,9 +119,7 @@
                 "trasfondo" => trim(strip_tags($_POST["trasfondo"])) ?? "",
                 "talentos" => $talentosOld
             ];
-        }
-
-        if ($action === "modificar") {
+        } elseif ($action === "modificar") {
             $_SESSION["oldReenEdit"] = [
                 "nombre" => trim(strip_tags($_POST["nombre"])) ?? "",
                 "idfaccion" => $_POST["idfaccion"] ?? "",

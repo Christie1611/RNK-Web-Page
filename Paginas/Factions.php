@@ -6,6 +6,23 @@
     if (isset($_SESSION["auth"]["usuario"])) {
         $usuario = $_SESSION["auth"]["usuario"];
     }
+
+    $link = "login.php";
+    $texto = "Iniciar Sesión";
+    $onclick = "";
+
+    if (isset($_SESSION["auth"])) {
+
+        if ($_SESSION["auth"]["rol"] === "admin") {
+            $link = "adminDashboard.php";
+            $texto = "Panel Admin";
+            $onclick = "localStorage.setItem('adminSection','control')";
+        } else {
+            $link = "dashboard.php";
+            $texto = "Perfil";
+            $onclick = "localStorage.setItem('currentSection','profile')";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -39,9 +56,7 @@
                         </ul>
                     </li>
                     <li><a href="../Index.php#gallery">Galeria</a></li>
-                    <li><a href="<?= isset($_SESSION["auth"]["usuario"]) ? "dashboard.php" : "login.php" ?>" 
-                    onclick="localStorage.setItem('currentSection','profile')">
-                    <?= $usuario === "" ? "Iniciar Sesión" : "Perfil" ?></a></li>
+                    <li><a href="<?= $link ?>" onclick="<?= $onclick ?>"><?= $texto ?></a></li>
                 </ul>
                 <div class="copyright">&#169; Mikihisa Konishi / Mag Garden&#x2022;Comité de Producción de "Reincarnation no Kaben"</div>
             </div>

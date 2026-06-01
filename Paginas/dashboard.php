@@ -2,9 +2,11 @@
     session_start();
     include_once "../PHP/userController.php";
     include_once "../PHP/reenController.php";
+    include_once "../PHP/subController.php";
 
     $user = new UsuarioController();
     $reenController = new ReenController();
+    $subController = new SubController();
 
     $erroresUsers = [];
     $reenDataOld = [];
@@ -59,8 +61,8 @@
 
     $contReen = $user->listarCantReencarnados($id);
     $listaReen = $user->listarReencarnados($id);
-
     $exploreReen = $reenController->explorar();
+    $subfacciones = $subController->listarSubfacciones();
 ?>
 
 <!DOCTYPE html>
@@ -71,6 +73,7 @@
         <link rel="stylesheet" type="text/css" href="../Estilos/estilosDashboard.css">
         <link rel="stylesheet" type="text/css" href="../Estilos/estilosMenu.css">
         <link rel="stylesheet" type="text/css" href="../Estilos/estilosForm.css">
+        <link rel="stylesheet" type="text/css" href="../Estilos/estilosModalFlash.css">
     </head>
     <body id="dashboard" data-page="dashboard">
         <button class="menuToggle" id="menuToggle">☰</button>
@@ -130,5 +133,6 @@
         window.erroresReenEdit = <?= json_encode($erroresReenEdit); ?>;
         window.reenAction = <?= json_encode($reenAction); ?>;
         window.reenEditId = <?= json_encode($reenEditId); ?>;
+        window.subfacciones = <?= json_encode($subfacciones); ?>;
     </script>
 </html>

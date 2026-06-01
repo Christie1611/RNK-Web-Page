@@ -175,8 +175,16 @@ function renderReenProfile(reen, options = {}) {
                         ${reen.nombre}
                     </h1>
 
-                    <div class="factionBadge faction-${reen.idfaccion}">
-                        ${getFactionName(reen.idfaccion)}
+                    <div class="faction-sub">
+                        <div class="factionBadge faction-${reen.idfaccion}">
+                            ${getFactionName(reen.idfaccion)}
+                        </div>
+
+                        ${reen.idfaccion == 4 && reen.subfaccion ? `
+                        <div class="factionBadge faction-${reen.idfaccion}">
+                            ${reen.subfaccion}
+                        </div>
+                        ` : ""}
                     </div>
 
                     ${showAuthor ? ` <p class="reenCreator">Creado por ${reen.usuario}</p>` : ""}

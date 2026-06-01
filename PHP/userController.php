@@ -20,16 +20,14 @@ class UsuarioController {
                 "message" => "Usuario registrado correctamente"
             ];
 
-            $_SESSION["auth"] = [
-                "id" => $res["id"],
-                "usuario" => $res["usuario"],
-                "email" => $res["email"],
-                "contrasena" => $res["contrasena"],
-                "imagen" => $res["imagen"],
-                "descripcion" => $res["descripcion"]
-            ];
+            $_SESSION["auth"] = $res;
 
-            header("Location: ../Paginas/dashboard.php");
+            if ($res["rol"] === "admin") {
+                header("Location: ../Paginas/adminDashboard.php");
+            } else {
+                header("Location: ../Paginas/dashboard.php");
+            }
+
             exit;
         }
 
@@ -66,7 +64,12 @@ class UsuarioController {
 
             $_SESSION["auth"] = $res;
 
-            header("Location: ../Paginas/dashboard.php");
+            if ($res["rol"] === "admin") {
+                header("Location: ../Paginas/adminDashboard.php");
+            } else {
+                header("Location: ../Paginas/dashboard.php");
+            }
+
             exit;
         }
 
@@ -81,6 +84,16 @@ class UsuarioController {
 
         header("Location: ../Paginas/login.php");
         exit;
+    }
+
+    public function contarUsuarios() {
+        $usuario = new Usuario();
+        return $usuario->contarUsuarios();
+    }
+
+    public function listarUsuarios() {
+        $usuario = new Usuario();
+        return $usuario->listarUsuarios();
     }
 
     public function listarCantReencarnados($id) {
@@ -141,7 +154,20 @@ class UsuarioController {
 
     public function borrar($id) {
         $usuario = new Usuario();
-        $usuario->borrar($id);
+        $res = $usuario->borrar($id);
+
+        if ($res["success"]) {
+            $_SESSION["flash"] = [
+                "type" => "success",
+                "message" => $res["message"]
+            ];
+
+        } else {
+            $_SESSION["flash"] = [
+                "type" => "error",
+                "message" => $res["message"]
+            ];
+        }
     }
 }
 ?>
