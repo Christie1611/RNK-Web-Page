@@ -9,7 +9,7 @@ export function loadAdminUsers(content){
             ${adminUsers.map(user => `
                 <div class="adminRow">
                     <div>
-                        <strong>${user.usuario}</strong>
+                        <span class="subName">${user.usuario}</span>
                         <p>${user.email}</p>
                     </div>
 

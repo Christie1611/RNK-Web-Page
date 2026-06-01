@@ -9,6 +9,7 @@ export function loadAdminReen(content){
                 <div class="adminRow">
                     <div>
                         <span class="subName">${reen.nombre}</span>
+                        <p>${reen.usuario}</p>
                     </div>
 
                     <button class="adminDelete" data-id="${reen.idreencarnado}">Eliminar</button>
