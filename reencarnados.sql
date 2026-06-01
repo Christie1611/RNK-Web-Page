@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS talentos (
     FOREIGN KEY (idreencarnado) REFERENCES reencarnados(idreencarnado) ON DELETE CASCADE
 );
 
+/* ADMIN */
 INSERT INTO usuarios (usuario, email, contrasena, rol) VALUES (
   'Neumann',
   'technodemon@gmail.com',

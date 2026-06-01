@@ -82,8 +82,10 @@ export function loadEditReenForm(reen) {
                         <select name="idsubfaccion" id="subFactionSelect">
                             <option value=""></option>
                             ${subfacciones.map(sub => `
-                                <option value="${sub.idsubfaccion}">${sub.nombre}</option>
-                            `).join("")}
+                            <option value="${sub.idsubfaccion}" ${reen.idsubfaccion == sub.idsubfaccion ? "selected" : ""}>
+                                ${sub.nombre}
+                            </option>
+                        `).join("")}
                         </select>
 
                         <span class="error" id="error-idsubfaccion"></span>
